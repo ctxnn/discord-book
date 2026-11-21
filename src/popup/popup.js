@@ -38,12 +38,12 @@ async function refreshSaved() {
   const summary = key ? await getSummary(key) : null;
   const saved = $('saved');
   saved.replaceChildren();
-  $('go').textContent = summary ? `Replace PDF (edition ${summary.version + 1})` : 'Create PDF';
+  $('go').textContent = summary ? `Replace book (edition ${summary.version + 1})` : 'Create book';
   if (!summary) return;
   const line = document.createElement('span');
   line.className = 'grow';
   line.textContent = `Saved edition ${summary.version} · ${summary.messageCount.toLocaleString()} messages · ${fmtDate(summary.createdAt)}`;
-  saved.append(line, button('Edit messages', () => openBook(key, true)), button('Open', () => openBook(key)));
+  saved.append(line, button('Edit messages', () => openBook(key, true)), button('Open book', () => openBook(key)));
   if (summary.download?.id != null) saved.append(button('Show PDF', () => chrome.downloads.show(summary.download.id)));
 }
 

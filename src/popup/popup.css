@@ -150,6 +150,3 @@ button.primary:disabled { opacity: .45; cursor: default; filter: grayscale(.4); 
 .seg.scope button { font-size: 11.5px; padding: 6px 4px; }
 #conversation { margin-bottom: 10px; }
 #conversation label.check { margin: 6px 0; }
-.review-check { margin: 4px 0 10px; }
-
-

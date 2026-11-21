@@ -30,11 +30,11 @@
     </div>
 
     <div class="seg" role="tablist">
-      <button type="button" data-mode="pair" class="on">Two people</button>
-      <button type="button" data-mode="full">Whole chat</button>
+      <button type="button" data-mode="full" class="on">Whole chat</button>
+      <button type="button" data-mode="pair">Two people only</button>
     </div>
 
-    <div id="pair">
+    <div id="pair" hidden>
       <div class="pair-fields">
         <label>First person<input id="p1" list="authors" placeholder="Name or user ID" autocomplete="off"></label>
         <span class="amp" aria-hidden="true">&amp;</span>
@@ -49,8 +49,8 @@
       <div id="conversation" hidden>
         <label class="check"><input id="f-replies" type="checkbox" checked><span>Replies and @mentions between them</span></label>
         <label class="check"><input id="f-quick" type="checkbox" checked><span>Quick answers to each other (within 3 min)</span></label>
-        <label>Also keep messages that say <span class="muted">(comma-separated)</span><input id="f-says" placeholder="e.g. x, see you, good night" autocomplete="off"></label>
-        <label>…when said by<select id="f-who"><option value="either">Either of them</option><option value="0">First person</option><option value="1">Second person</option></select></label>
+        <label>Also when they say <span class="muted">(comma-separated)</span><input id="f-says" placeholder="e.g. x, see you, good night" autocomplete="off"></label>
+        <label>Said by<select id="f-who"><option value="either">Either of them</option><option value="0">First person</option><option value="1">Second person</option></select></label>
       </div>
     </div>
 
@@ -76,8 +76,9 @@
       <label class="check"><input id="images" type="checkbox" checked><span>Include images</span></label>
     </details>
 
-    <label class="check review-check"><input id="review" type="checkbox" checked><span>Let me review and add or remove messages before the PDF</span></label>
-    <button id="go" class="primary">Create PDF</button>
+    <label class="check"><input id="review" type="checkbox" checked><span>Let me review and add or remove messages before the PDF</span></label>
+
+    <button id="go" class="primary">Create book</button>
     <p class="error" id="error" hidden></p>
   </section>
 

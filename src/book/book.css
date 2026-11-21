@@ -1302,3 +1302,130 @@ mark.said {
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }
+
+/* ==========================================================================
+   CLEAN, with a little more funk (later rules win)
+   ========================================================================== */
+
+.theme-clean .clean-head { position: relative; }
+
+/* ribbon in the corner of the first page */
+.theme-clean .clean-head::before {
+  content: "";
+  position: absolute;
+  top: -3mm;
+  right: 2mm;
+  width: 10mm;
+  height: 26mm;
+  background: linear-gradient(180deg, var(--accent-2) 0 60%, var(--accent-3) 60%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 84%, 0 100%);
+  opacity: 0.92;
+  z-index: 1;
+}
+
+/* candy-striped accent bar */
+.theme-clean .ch-bar {
+  height: 3.2mm;
+  border-radius: 1.6mm;
+  margin-right: 16mm;
+  background:
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.28) 0 1.8mm, transparent 1.8mm 4.4mm),
+    linear-gradient(90deg, #5865f2 0 52%, #ff7a59 52% 78%, #ffc531 78%);
+}
+
+/* highlighted title */
+.theme-clean .ch-title {
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  background: linear-gradient(transparent 64%, rgba(255, 197, 49, 0.55) 64% 94%, transparent 94%);
+  padding: 0 0.6mm;
+}
+
+/* coloured dots beside each fact */
+.theme-clean .cf { position: relative; padding-left: 3.6mm; }
+.theme-clean .cf::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1mm;
+  width: 2.1mm;
+  height: 2.1mm;
+  border-radius: 50%;
+  background: var(--dot, var(--accent));
+}
+.theme-clean .cf:nth-child(2) { --dot: var(--accent-2); }
+.theme-clean .cf:nth-child(3) { --dot: var(--accent-3); }
+.theme-clean .cf:nth-child(4) { --dot: #2eb872; }
+
+/* day pills, a touch louder */
+.theme-clean .day-pill {
+  background: linear-gradient(180deg, #ffffff, #f1f2ff);
+  border: 0.3mm solid #d9ddfb;
+  color: #3d45c4;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.theme-clean h2.day { color: #3d45c4; }
+.theme-clean h2.day::before, .theme-clean h2.day::after { border-top-color: #e2e4f7; }
+
+/* bubbles: soft gradients and a slightly cheekier shape */
+.theme-clean .msg {
+  background: linear-gradient(180deg, #f7f8fc, #eceef6);
+  box-shadow: 0 0.35mm 0 rgba(31, 35, 41, 0.05);
+}
+.theme-clean .group[data-side="right"] .msg {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--who) 9%, #fff), color-mix(in srgb, var(--who) 15%, #fff));
+}
+.theme-clean .group[data-side="right"] .speaker .name::after,
+.theme-clean .group:not([data-side="right"]) .speaker .name::after {
+  content: "";
+  display: inline-block;
+  width: 1.5mm;
+  height: 1.5mm;
+  margin-left: 1.4mm;
+  border-radius: 50%;
+  background: var(--who);
+  vertical-align: 0.4mm;
+}
+
+/* reaction pills in two friendly tints */
+.theme-clean .rxn { background: #fff8e6; border-color: #f2dca4; }
+.theme-clean .rxn:nth-child(2n) { background: #eef6ff; border-color: #cfe2f8; }
+.theme-clean .rxn:nth-child(3n) { background: #fdeef1; border-color: #f6cfd8; }
+
+/* interludes: dashed, tinted */
+.theme-clean .interlude { color: #8a8fa8; }
+.theme-clean .interlude::before, .theme-clean .interlude::after { border-top-color: #d8dbf0; }
+
+/* the end: a striped rule, a rotated highlighter and a sprinkle of confetti */
+.theme-clean .clean-end { position: relative; }
+.theme-clean .clean-end::before {
+  content: "";
+  display: block;
+  height: 2.6mm;
+  border-radius: 1.3mm;
+  margin-bottom: 6.5mm;
+  background:
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.28) 0 1.8mm, transparent 1.8mm 4.4mm),
+    linear-gradient(90deg, #5865f2, #ff7a59 55%, #ffc531);
+}
+.theme-clean .ce-fin { position: relative; margin-top: 11mm; padding-top: 5mm; }
+.theme-clean .ce-fin::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70mm;
+  height: 9mm;
+  background-image:
+    radial-gradient(circle, #ffc531 0 0.6mm, transparent 0.75mm),
+    radial-gradient(circle, #ff7a59 0 0.5mm, transparent 0.62mm),
+    radial-gradient(circle, #5865f2 0 0.45mm, transparent 0.58mm);
+  background-size: 7mm 6mm, 11mm 7mm, 13mm 8mm;
+  background-position: 0 0, 3mm 2.4mm, 6mm 1mm;
+  opacity: 0.75;
+}
+.theme-clean .ce-word { transform: rotate(-1.6deg); }
+

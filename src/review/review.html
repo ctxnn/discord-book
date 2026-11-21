@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review messages · Discord Book</title>
+  <link rel="stylesheet" href="review.css">
+  <script type="module" src="review.js"></script>
+</head>
+<body>
+  <header class="top">
+    <div class="title">
+      <p class="eyebrow">Review before the PDF</p>
+      <h1 id="title">Loading…</h1>
+      <p class="sub" id="sub"></p>
+    </div>
+    <div class="cta">
+      <p class="count"><strong id="count">0</strong> messages will be in the PDF</p>
+      <button id="make" class="primary" disabled>Make PDF</button>
+    </div>
+  </header>
+
+  <nav class="tools">
+    <div class="seg" role="tablist">
+      <button type="button" data-view="selected" class="on">In the PDF <span id="n-selected"></span></button>
+      <button type="button" data-view="all">Whole chat <span id="n-all"></span></button>
+    </div>
+    <input id="search" type="search" placeholder="Search messages or names" autocomplete="off">
+    <select id="who"><option value="">Everyone</option></select>
+    <span class="spacer"></span>
+    <button type="button" id="add-shown" class="ghost">Add all shown</button>
+    <button type="button" id="remove-shown" class="ghost">Remove all shown</button>
+    <button type="button" id="reset" class="ghost">Reset to my filters</button>
+  </nav>
+  <p class="help" id="help">Click a message to remove it from the PDF. Switch to <em>Whole chat</em> to add any other message. Shift-click selects a range.</p>
+  <p class="error" id="error" hidden></p>
+  <main id="list"></main>
+</body>
+</html>

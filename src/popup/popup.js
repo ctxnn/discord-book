@@ -8,7 +8,7 @@ const titleOf = (s) => (s.mode === 'pair' ? `${s.pair[0]} & ${s.pair[1]} · ${s.
 
 let tab = null;
 let chat = null;
-let mode = 'full';
+let mode = 'pair';
 let scope = 'all';
 
 function button(label, onClick, cls = '') {
@@ -19,7 +19,7 @@ function button(label, onClick, cls = '') {
   return b;
 }
 
-const openBook = (key) => chrome.runtime.sendMessage({ type: 'export:open', key, options: { includeImages: $('images').checked, theme: $('theme').value } });
+const openBook = (key, review = false) => chrome.runtime.sendMessage({ type: 'export:open', key, options: { includeImages: $('images').checked, theme: $('theme').value, review } });
 
 function showError(text) {
   $('error').textContent = text;
@@ -38,12 +38,12 @@ async function refreshSaved() {
   const summary = key ? await getSummary(key) : null;
   const saved = $('saved');
   saved.replaceChildren();
-  $('go').textContent = summary ? `Replace book (edition ${summary.version + 1})` : 'Create book';
+  $('go').textContent = summary ? `Replace PDF (edition ${summary.version + 1})` : 'Create PDF';
   if (!summary) return;
   const line = document.createElement('span');
   line.className = 'grow';
   line.textContent = `Saved edition ${summary.version} · ${summary.messageCount.toLocaleString()} messages · ${fmtDate(summary.createdAt)}`;
-  saved.append(line, button('Open book', () => openBook(key)));
+  saved.append(line, button('Edit messages', () => openBook(key, true)), button('Open', () => openBook(key)));
   if (summary.download?.id != null) saved.append(button('Show PDF', () => chrome.downloads.show(summary.download.id)));
 }
 
@@ -98,11 +98,12 @@ async function start() {
     fromDate: $('from').value || null,
     includeImages: $('images').checked,
     theme: $('theme').value,
-    filter: { scope, replies: $('f-replies').checked, backAndForth: $('f-quick').checked, phrases: phrasesOf($('f-says').value) }
+    review: $('review').checked,
+    filter: { scope, replies: $('f-replies').checked, backAndForth: $('f-quick').checked, phrases: phrasesOf($('f-says').value), saidBy: $('f-who').value === 'either' ? 'either' : Number($('f-who').value) }
   };
   if (mode === 'pair' && !options.pair.every(Boolean)) return showError('Enter both names.');
   if (mode === 'pair' && scope === 'conversation' && !options.filter.replies && !options.filter.backAndForth && !options.filter.phrases.length) return showError('Tick at least one option or type words to look for.');
-  await chrome.storage.local.set({ lastOptions: { includeImages: options.includeImages, theme: options.theme } });
+  await chrome.storage.local.set({ lastOptions: { includeImages: options.includeImages, theme: options.theme, review: options.review } });
   const r = await chrome.tabs.sendMessage(tab.id, { type: 'start', options });
   if (!r?.ok) return showError(r?.error || 'Could not start.');
   window.close();
@@ -112,6 +113,7 @@ async function init() {
   const { lastOptions } = await chrome.storage.local.get('lastOptions');
   if (lastOptions) {
     $('images').checked = lastOptions.includeImages !== false;
+    $('review').checked = lastOptions.review !== false;
     $('theme').value = lastOptions.theme || '';
     if ($('theme').selectedIndex < 0) $('theme').selectedIndex = 0;
   }
@@ -133,7 +135,14 @@ async function init() {
   $('chat-title').textContent = chat.title;
   $('chat-sub').textContent = chat.kind === 'channel' ? `Channel in ${chat.serverName || 'a server'}` : chat.kind === 'group' ? 'Group DM' : 'Direct message';
   $('authors').replaceChildren(...info.authors.map((a) => Object.assign(document.createElement('option'), { value: a.name })));
-  if (chat.kind === 'channel') setMode('pair'); else refreshSaved();
+  if (chat.kind === 'dm') {
+    const [first = '', second = ''] = info.authors.map((a) => a.name);
+    $('p1').value = first;
+    $('p2').value = second;
+  } else {
+    setScope('conversation');
+  }
+  setMode('pair');
   if (info.busy) {
     $('go').disabled = true;
     $('go').textContent = 'Export running in this tab…';

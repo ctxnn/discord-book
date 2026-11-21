@@ -127,7 +127,7 @@
       );
       const quickAnswer = filter.backAndForth && last && last.who !== who &&
         Date.parse(m.ts) - Date.parse(last.m.ts) <= 3 * 60 * 1000 && othersSince < 5;
-      if (addressesOther || says(m)) keep.add(m);
+      if (addressesOther || ((filter.saidBy === 'either' || filter.saidBy === who) && says(m))) keep.add(m);
       if (quickAnswer) {
         keep.add(m);
         keep.add(last.m);
@@ -148,7 +148,8 @@
       scope: options.filter?.scope === 'conversation' ? 'conversation' : 'all',
       replies: options.filter?.replies !== false,
       backAndForth: options.filter?.backAndForth !== false,
-      phrases: (options.filter?.phrases || []).map((p) => p.trim()).filter(Boolean)
+      phrases: (options.filter?.phrases || []).map((p) => p.trim()).filter(Boolean),
+      saidBy: [0, 1].includes(options.filter?.saidBy) ? options.filter.saidBy : 'either'
     } : null;
     if (filter?.scope === 'conversation' && !filter.replies && !filter.backAndForth && !filter.phrases.length) {
       throw new Error('Pick at least one thing to keep, or type words to look for.');
@@ -164,7 +165,8 @@
       onProgress: (p) => show(`Reading ${chat.title}…\n${p.collected.toLocaleString()} messages${p.oldestTs ? ` · back to ${monthYear(p.oldestTs)}` : ''}`)
     });
 
-    let messages = result.messages;
+    const pool = result.messages;
+    let messages = pool;
     if (pair) {
       const missing = pair.filter((name) => !messages.some((m) => matchesPerson(m.author, name)));
       if (missing.length) {
@@ -179,7 +181,7 @@
     }
     if (!messages.length) throw new Error('No messages found in this chat.');
 
-    show(`Saving ${messages.length.toLocaleString()} messages and opening your book…`);
+    show(`Saving ${messages.length.toLocaleString()} messages…`);
     const data = {
       chat,
       mode: pair ? 'pair' : 'full',
@@ -187,11 +189,13 @@
       filter,
       complete: result.complete && !options.fromDate,
       participants: participantsOf(messages),
-      messages
+      messages,
+      pool,
+      autoIds: messages.map((m) => m.id)
     };
-    const reply = await chrome.runtime.sendMessage({ type: 'export:save', data, options: { includeImages: options.includeImages !== false, theme: options.theme } });
+    const reply = await chrome.runtime.sendMessage({ type: 'export:save', data, options: { includeImages: options.includeImages !== false, theme: options.theme, review: options.review === true } });
     if (!reply?.ok) throw new Error(reply?.error || 'Could not save the export.');
-    return { count: messages.length, version: reply.version, complete: data.complete };
+    return { count: messages.length, version: reply.version, complete: data.complete, review: options.review === true };
   }
 
   chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
@@ -208,7 +212,7 @@
       sendResponse({ ok: true });
       run(message.options).then(
         (r) => {
-          show(`Done: ${r.count.toLocaleString()} messages, edition ${r.version}.${r.complete ? '' : '\nThe book starts partway through the chat.'}\nYour PDF is being made in the new tab.`, 'done');
+          show(`Done: ${r.count.toLocaleString()} messages picked, edition ${r.version}.${r.complete ? '' : '\nThe chat history starts partway through.'}\n${r.review ? 'Check the messages in the new tab, then make the PDF.' : 'Your PDF is being made in the new tab.'}`, 'done');
           setTimeout(hide, 8000);
         },
         (e) => show(e?.name === 'AbortError' ? 'Cancelled.' : String(e?.message || e), e?.name === 'AbortError' ? 'done' : 'error')

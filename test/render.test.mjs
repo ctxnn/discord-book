@@ -18,7 +18,7 @@ const OUT = path.join(ROOT, 'test', 'out');
 const PAGES = path.join(OUT, 'pages');
 const CHROME = '/usr/local/bin/google-chrome';
 const PREVIEW = 'file://' + path.join(ROOT, 'test', 'preview.html');
-const THEMES = ['clothbound', 'playscript', 'album'];
+const THEMES = ['clean', 'clothbound', 'playscript', 'album'];
 
 if (!existsSync(CHROME)) throw new Error('Chrome not found at ' + CHROME);
 await mkdir(PAGES, { recursive: true });
@@ -127,6 +127,27 @@ for (const theme of THEMES) {
   if (n <= 8) throw new Error(theme + ': only ' + n + ' pages');
   if (!outline.length) throw new Error(theme + ': PDF has no outline');
   console.log(theme + ': ' + path.basename(pdf) + ' \u2014 ' + n + ' pages, ' + outline.length + ' top-level outline entries, ' + info.h2 + ' h2 / ' + info.h3 + ' h3');
+
+if (theme === 'clean') {
+  if (!pages[0].includes(squash('Made with Discord Book'))) throw new Error('clean: first page lacks the source line');
+  if (!pages[0].includes(squash('messages'))) throw new Error('clean: first page lacks the message count');
+  snap(pdf, 1, 'clean-first');
+  snap(pdf, 2, 'clean-body-1');
+  snap(pdf, 3, 'clean-body-2');
+  snap(pdf, find(pages, 'sunset at the pier'), 'clean-image');
+  snap(pdf, find(pages, 'reactor to the idea'), 'clean-code-emoji');
+  snap(pdf, n, 'clean-last');
+  const pairPdfClean = path.join(OUT, 'sample-clean-pair.pdf');
+  await renderAndPrint(pairRecord, { theme }, pairPdfClean);
+  snap(pairPdfClean, 1, 'clean-pair-first');
+  snap(pairPdfClean, 2, 'clean-pair-body');
+  const convPdfClean = path.join(OUT, 'conversation-clean.pdf');
+  await renderAndPrint(conversation, { theme }, convPdfClean);
+  snap(convPdfClean, 1, 'clean-interior-1');
+  snap(convPdfClean, 2, 'clean-interior-2');
+  console.log('clean: interior pages rendered');
+  continue;
+}
 
   const colophon = find(pages, 'About this Book');
   const toc = find(pages, 'Contents', colophon || 1);

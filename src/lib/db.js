@@ -91,3 +91,16 @@ export function deleteExport(key) {
     tx.objectStore('summaries').delete(key);
   });
 }
+
+export function saveSelection(key, messages, participants) {
+  return run(['exports', 'summaries'], 'readwrite', async (tx) => {
+    const record = await request(tx.objectStore('exports').get(key));
+    if (!record) throw new Error('This export is no longer saved.');
+    const updated = { ...record, messages, participants };
+    tx.objectStore('exports').put(updated);
+    const summary = await request(tx.objectStore('summaries').get(key));
+    tx.objectStore('summaries').put(summarize(updated, summary?.download ?? null));
+    return updated;
+  });
+}
+

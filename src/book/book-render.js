@@ -64,11 +64,24 @@ function sanitizeInto(src, dest, doc) {
 
 /* --------------------------------------------------------------- themes */
 
-export const THEMES = ['clothbound', 'playscript', 'album'];
+export const THEMES = ['clean', 'clothbound', 'playscript', 'album'];
 const resolveTheme = (t) => (THEMES.includes(t) ? t : THEMES[0]);
 
 const SERIF_HEAD = 'font-family:"EB Garamond",Georgia,serif;';
+const SANS = 'font-family:"DM Sans",system-ui,sans-serif;';
 const THEME = {
+  clean: {
+    page: [210, 297],
+    margin: { top: 20, bottom: 19, inner: 20, outer: 20 },
+    paper: '#ffffff',
+    board: '#ffffff',
+    muted: '#7b8190',
+    people: ['#5865f2', '#e8590c', '#0c8f6b', '#c2255c', '#7048e8', '#1c7ed6', '#b7791f'],
+    head: SANS + 'font-size:7.4pt;font-weight:600;letter-spacing:0.02em;',
+    folio: SANS + 'font-size:7.4pt;font-weight:600;font-variant-numeric:tabular-nums;',
+    fonts: 'Set in DM Sans, with DM Mono for code.',
+    word: '',
+  },
   clothbound: {
     page: [138, 216],
     margin: { top: 20, bottom: 24, inner: 17, outer: 20 },
@@ -737,6 +750,18 @@ function buildTitlePage(ctx) {
 
 /* ------------------------------------------------------------ colophon */
 
+/** What the book contains: the whole chat, or two people filtered out of it. */
+function modeText(record) {
+  if (record.mode !== 'pair') return 'Whole chat: every message in the conversation.';
+  const pair = joinNames((record.pair || []).map(cap));
+  if (record.filter?.scope !== 'conversation') return 'Two people only: everything ' + pair + ' wrote, taken from a busier conversation.';
+  return 'Two people only: the conversation between ' + pair + ', taken from a busier channel. Kept: ' + [
+    record.filter.replies && 'their replies to and @mentions of each other',
+    record.filter.backAndForth && 'quick answers to each other within three minutes',
+    record.filter.phrases?.length && 'every message where either says ' + record.filter.phrases.map((p) => '\u201c' + p + '\u201d').join(', ') + ' (highlighted)'
+  ].filter(Boolean).join('; ') + '.';
+}
+
 function buildColophon(ctx) {
   const { record, meta, theme } = ctx;
   const sec = el('section', 'front colophon');
@@ -784,15 +809,7 @@ function buildColophon(ctx) {
   row('History', record.complete
     ? 'Complete: this book begins with the very first message.'
     : 'Partial: the conversation began before the first page; earlier messages were not collected.');
-  row('Mode', record.mode !== 'pair'
-    ? 'Whole chat: every message in the conversation.'
-    : record.filter?.scope !== 'conversation'
-      ? 'Two people only: everything ' + joinNames((record.pair || []).map(cap)) + ' wrote, taken from a busier conversation.'
-      : 'Two people only: the conversation between ' + joinNames((record.pair || []).map(cap)) + ', taken from a busier channel. Kept: ' + [
-        record.filter.replies && 'their replies to and @mentions of each other',
-        record.filter.backAndForth && 'quick answers to each other within three minutes',
-        record.filter.phrases?.length && 'every message where either says ' + record.filter.phrases.map((p) => '\u201c' + p + '\u201d').join(', ') + ' (highlighted)'
-      ].filter(Boolean).join('; ') + '.');
+  row('Mode', modeText(record));
   inner.appendChild(list);
 
   inner.appendChild(el('p', 'colophon-fonts', THEME[theme].fonts));
@@ -979,6 +996,11 @@ function buildOpener(ctx, ch) {
 /* ------------------------------------------------------- chapter body */
 
 function dayHeading(ctx, d, sceneNo, firstTs, count) {
+  if (ctx.theme === 'clean') {
+    const h2 = el('h2', 'day');
+    h2.appendChild(el('span', 'day-pill', WEEKDAYS[d.getDay()] + ', ' + d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear()));
+    return h2;
+  }
   const h3 = el('h3', 'day');
   if (ctx.theme === 'playscript') {
     h3.appendChild(el('span', 'scene-no', 'Scene ' + sceneNo));
@@ -1073,6 +1095,7 @@ function buildGroup(ctx, msgs, opening) {
 
   const speaker = el('div', 'speaker');
   if (theme === 'album') speaker.appendChild(initialBadge(name, people.color(author), 'who-badge badge'));
+  if (theme === 'clean') speaker.appendChild(author ? avatar(ctx, author, 'who-avatar') : initialBadge(name, people.color(author), 'who-avatar badge'));
   speaker.appendChild(el('span', 'name', name));
   speaker.appendChild(el('span', 'time', clockTime(msgs[0].ts)));
   group.appendChild(speaker);
@@ -1156,7 +1179,7 @@ function buildMessage(ctx, m, name) {
 
   if (m.reply) {
     const r = el('p', 'reply');
-    r.appendChild(el('span', 'reply-lead', ctx.theme === 'playscript' ? 'to ' : ctx.theme === 'album' ? '\u21b3 ' : 'replying to '));
+    r.appendChild(el('span', 'reply-lead', ctx.theme === 'playscript' ? 'to ' : ctx.theme === 'album' ? '\u21b3 ' : ctx.theme === 'clean' ? '' : 'replying to '));
     r.appendChild(el('span', 'reply-name', m.reply.author || 'someone'));
     if (m.reply.text) {
       const t = m.reply.text.length > 110 ? m.reply.text.slice(0, 108).trim() + '\u2026' : m.reply.text;
@@ -1253,8 +1276,8 @@ function imageFigure(ctx, att, m, author) {
   frame.appendChild(img);
   fig.appendChild(frame);
   const cap = el('figcaption');
-  const label = ctx.theme === 'album' ? pad2(no) : ctx.theme === 'playscript' ? 'Fig. ' + no : 'Plate ' + roman(no);
-  cap.appendChild(el('span', 'plate-no', label));
+  const label = ctx.theme === 'clean' ? null : ctx.theme === 'album' ? pad2(no) : ctx.theme === 'playscript' ? 'Fig. ' + no : 'Plate ' + roman(no);
+  if (label) cap.appendChild(el('span', 'plate-no', label));
   cap.appendChild(el('span', 'plate-title', prettyFileName(att.name || 'image')));
   cap.appendChild(el('span', 'plate-meta', author + ', ' + shortDate(m.ts)));
   fig.appendChild(cap);
@@ -1506,6 +1529,156 @@ function buildBoard(ctx) {
   return sec;
 }
 
+/* ------------------------------------------------------- clean style */
+
+const MON = (d) => MONTHS[d.getMonth()].slice(0, 3);
+
+function dateSpan(first, last) {
+  if (!first) return 'No messages';
+  const sameYear = first.getFullYear() === last.getFullYear();
+  if (sameYear && first.getMonth() === last.getMonth()) {
+    return first.getDate() === last.getDate()
+      ? longDate(first.toISOString())
+      : first.getDate() + '\u2013' + last.getDate() + ' ' + MONTHS[first.getMonth()] + ' ' + first.getFullYear();
+  }
+  return first.getDate() + ' ' + MON(first) + (sameYear ? '' : ' ' + first.getFullYear())
+    + ' \u2013 ' + last.getDate() + ' ' + MON(last) + ' ' + last.getFullYear();
+}
+
+/** Messages per participant, counted from the messages actually in the book. */
+function countBy(ctx) {
+  const counts = new Map();
+  for (const m of ctx.record.messages) {
+    if (m.system || !m.author) continue;
+    const i = ctx.people.index(m.author);
+    if (i >= 0) counts.set(i, (counts.get(i) || 0) + 1);
+  }
+  return counts;
+}
+
+function shownPeople(ctx) {
+  const { record } = ctx;
+  const counts = countBy(ctx);
+  let list = record.participants.map((p, i) => ({ p, n: counts.get(i) ?? p.count ?? 0 }));
+  if (record.mode === 'pair' && record.pair?.length) {
+    const want = record.pair.map((n) => String(n).toLowerCase());
+    const pair = list.filter(({ p }) => want.includes(p.name.toLowerCase()));
+    if (pair.length) list = pair;
+  }
+  return list.sort((a, b) => b.n - a.n);
+}
+
+function buildCleanHead(ctx) {
+  const { record, meta, stats } = ctx;
+  const { chat } = record;
+  const sec = el('section', 'clean-head');
+  sec.appendChild(el('div', 'ch-bar'));
+  sec.appendChild(el('p', 'ch-kicker', chat.kind === 'channel' ? 'Discord channel' : chat.kind === 'group' ? 'Discord group chat' : 'Discord direct messages'));
+  sec.appendChild(el('h1', 'ch-title', meta.title));
+  const sub = record.mode === 'pair' ? meta.subtitle
+    : chat.kind === 'channel' ? (chat.serverName ? 'on ' + chat.serverName : null)
+      : chat.kind === 'group' && meta.title !== joinNames(meta.people) ? joinNames(meta.people) : null;
+  if (sub) sec.appendChild(el('p', 'ch-sub', sub));
+
+  const people = el('div', 'ch-people');
+  const list = shownPeople(ctx);
+  for (const { p, n } of list.slice(0, 6)) {
+    const row = el('div', 'hp');
+    row.style.setProperty('--who', ctx.people.color(p));
+    row.appendChild(avatar(ctx, p, 'hp-avatar'));
+    const text = el('span', 'hp-text');
+    text.appendChild(el('span', 'hp-name', p.name));
+    text.appendChild(el('span', 'hp-count', fmtNum(n) + (n === 1 ? ' message' : ' messages')));
+    row.appendChild(text);
+    people.appendChild(row);
+  }
+  if (list.length > 6) people.appendChild(el('div', 'hp hp-more', '+ ' + fmtNum(list.length - 6) + ' more'));
+  if (list.length) sec.appendChild(people);
+
+  const facts = el('div', 'ch-facts');
+  const fact = (value, label) => {
+    const f = el('div', 'cf');
+    f.appendChild(el('span', 'cf-value', value));
+    f.appendChild(el('span', 'cf-label', label));
+    facts.appendChild(f);
+  };
+  fact(dateSpan(meta.first, meta.last), 'Dates');
+  fact(fmtNum(record.messages.length), record.messages.length === 1 ? 'Message' : 'Messages');
+  fact(fmtNum(stats.activeDays), stats.activeDays === 1 ? 'Day active' : 'Days active');
+  fact(fmtNum(stats.totalWords), 'Words');
+  sec.appendChild(facts);
+
+  if (record.mode === 'pair' && record.filter?.scope === 'conversation') {
+    sec.appendChild(el('p', 'ch-filter', modeText(record)));
+  }
+  const phrases = record.mode === 'pair' ? (record.filter?.phrases || []).filter((p) => String(p).trim()) : [];
+  if (phrases.length) {
+    const row = el('p', 'ch-phrases', 'Highlighted');
+    for (const p of phrases) row.appendChild(el('mark', 'said chip', String(p).trim()));
+    sec.appendChild(row);
+  }
+  const exported = new Date(record.createdAt || Date.now());
+  const made = el('p', 'ch-made', 'Exported ' + exported.getDate() + ' ' + MON(exported) + ' ' + exported.getFullYear()
+    + ' \u00b7 edition ' + (record.version || 1)
+    + (record.complete ? '' : ' \u00b7 earlier messages not collected')
+    + ' \u00b7 Made with ');
+  made.appendChild(el('b', null, 'Discord Book'));
+  sec.appendChild(made);
+  return sec;
+}
+
+function buildCleanEnd(ctx) {
+  const { record, stats, meta } = ctx;
+  const sec = el('section', 'clean-end');
+  const strip = el('div', 'ce-stats');
+  const cell = (label, ...kids) => {
+    const c = el('div', 'ce-cell');
+    c.appendChild(el('p', 'ce-label', label));
+    append(c, ...kids);
+    strip.appendChild(c);
+  };
+
+  const list = shownPeople(ctx).slice(0, 4);
+  const max = Math.max(1, ...list.map((x) => x.n));
+  const bars = el('div', 'ce-people');
+  for (const { p, n } of list) {
+    const r = el('div', 'ce-person');
+    r.style.setProperty('--who', ctx.people.color(p));
+    r.style.setProperty('--w', Math.round((n / max) * 100) + '%');
+    r.appendChild(el('span', 'ce-name', p.name));
+    r.appendChild(el('span', 'ce-n', fmtNum(n)));
+    r.appendChild(el('span', 'ce-bar'));
+    bars.appendChild(r);
+  }
+  cell('Messages', bars);
+  if (stats.busiest) {
+    cell('Busiest day',
+      el('p', 'ce-big', weekdayDate(dayDate(stats.busiest.day))),
+      el('p', 'ce-small', fmtNum(stats.busiest.count) + (stats.busiest.count === 1 ? ' message' : ' messages')));
+  }
+  const emoji = stats.reactions.length ? stats.reactions : stats.emoji;
+  if (emoji.length) {
+    const row = el('p', 'ce-emoji');
+    for (const [e, n] of emoji.slice(0, 3)) {
+      const s = el('span', 'ce-e');
+      s.appendChild(el('span', e.startsWith(':') ? 'ce-glyph ce-custom' : 'ce-glyph', e));
+      s.appendChild(el('span', 'ce-small', '\u00d7' + fmtNum(n)));
+      row.appendChild(s);
+    }
+    cell('Top emoji', row);
+  } else {
+    cell('Busiest hour', el('p', 'ce-big', pad2(stats.peakHour) + ':00'), el('p', 'ce-small', 'most messages sent'));
+  }
+  sec.appendChild(strip);
+
+  const fin = el('div', 'ce-fin');
+  fin.appendChild(el('p', 'ce-word', 'That\u2019s all, folks!'));
+  fin.appendChild(el('p', 'ce-sub', fmtNum(record.messages.length) + (record.messages.length === 1 ? ' message' : ' messages')
+    + (meta.first ? ' \u00b7 ' + dateSpan(meta.first, meta.last) : '') + ' \u00b7 Made with Discord Book'));
+  sec.appendChild(fin);
+  return sec;
+}
+
 /* ------------------------------------------------- injected page rules */
 
 let injectedStyle = null;
@@ -1554,6 +1727,25 @@ function injectPageRules(ctx) {
   const recto = top + 'mm ' + outer + 'mm ' + bottom + 'mm ' + inner + 'mm';
   const topBox = 'vertical-align:bottom;padding-bottom:' + (theme === 'album' ? 6 : 7) + 'mm;';
   const botBox = 'vertical-align:top;padding-top:' + (theme === 'album' ? 7.5 : 8) + 'mm;';
+
+  if (theme === 'clean') {
+    const box = (pos, content, style) => '  @' + pos + ' { content: ' + content + '; ' + style + ' }\n';
+    const css = '@page { size: ' + w + 'mm ' + h + 'mm; margin: ' + top + 'mm ' + outer + 'mm ' + bottom + 'mm ' + inner + 'mm; background: ' + paper + ';\n'
+      + box('top-left', '"' + title + '"', head + 'color:#4b5160;vertical-align:bottom;padding-bottom:6mm;')
+      + box('top-right', '"' + cssEsc(meta.dateRange) + '"', head + 'vertical-align:bottom;padding-bottom:6mm;')
+      + box('bottom-left', '"Discord Book"', head + 'color:#b3b8c4;vertical-align:top;padding-top:6mm;')
+      + box('bottom-right', 'counter(page) " / " counter(pages)', folio + 'vertical-align:top;padding-top:6mm;')
+      + '}\n@page :first {\n  @top-left { content: none; }\n  @top-right { content: none; }\n}\n';
+    if (injectedStyle) injectedStyle.remove();
+    injectedStyle = document.createElement('style');
+    injectedStyle.textContent = css;
+    document.head.appendChild(injectedStyle);
+    document.documentElement.style.setProperty('--page-w', w + 'mm');
+    document.documentElement.style.setProperty('--page-h', h + 'mm');
+    document.documentElement.style.setProperty('--m-top', top + 'mm');
+    document.documentElement.style.setProperty('--m-bottom', bottom + 'mm');
+    return;
+  }
 
   let css = '@page { size: ' + w + 'mm ' + h + 'mm; margin: ' + verso + '; background: ' + paper + '; }\n'
     + '@page :left { margin: ' + verso + '; }\n'
@@ -1647,6 +1839,15 @@ export async function renderBook(record, root, { includeImages = true, theme } =
   };
 
   root.replaceChildren();
+  if (theme === 'clean') {
+    root.appendChild(buildCleanHead(ctx));
+    root.appendChild(buildChapterBody(ctx, { messages: record.messages }));
+    root.appendChild(buildCleanEnd(ctx));
+    injectPageRules(ctx);
+    await finishImages(20000);
+    await (document.fonts ? document.fonts.ready : Promise.resolve());
+    return;
+  }
   root.appendChild(buildCover(ctx));
   if (theme === 'clothbound') {
     root.appendChild(buildEndpaper(ctx, true));

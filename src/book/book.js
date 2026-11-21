@@ -4,7 +4,8 @@ import { pdfFilename } from '../lib/keys.js';
 
 const params = new URLSearchParams(location.search);
 const key = params.get('key');
-const options = { includeImages: params.get('images') !== '0', theme: params.get('theme') || 'classic' };
+const options = { includeImages: params.get('images') !== '0', theme: params.get('theme') || undefined };
+const reviewUrl = () => chrome.runtime.getURL(`src/review/review.html?${new URLSearchParams({ key, images: params.get('images') ?? '1', theme: params.get('theme') ?? '' })}`);
 
 const toolbarCss = document.createElement('link');
 toolbarCss.rel = 'stylesheet';
@@ -97,7 +98,7 @@ async function makePdf(record) {
     const item = await savePdf(record);
     const where = item.filename.split(/[\\/]/).slice(-2).join('/');
     status(`Saved ${where} (edition ${record.version})${record.version > 1 ? ', replacing the previous edition' : ''}.`, 'done');
-    actions([['Show in folder', () => chrome.downloads.show(item.id), true], ['Save again', () => makePdf(record)], ['Print…', () => window.print()]]);
+    actions([['Show in folder', () => chrome.downloads.show(item.id), true], ['Edit messages', () => { location.href = reviewUrl(); }], ['Save again', () => makePdf(record)], ['Print…', () => window.print()]]);
   } catch (error) {
     status(`Could not save the PDF automatically: ${error.message}. Use Print and choose "Save as PDF".`, 'error');
     actions([['Print / Save as PDF…', () => window.print(), true], ['Try again', () => makePdf(record)]]);
@@ -119,6 +120,7 @@ async function main() {
     status(`Edition ${record.version} · ${record.messages.length.toLocaleString()} messages`, 'done');
     actions([
       ['Save PDF', () => makePdf(record), true],
+      ['Edit messages', () => { location.href = reviewUrl(); }],
       ...(summary?.download?.id != null ? [['Show last PDF', () => chrome.downloads.show(summary.download.id).catch(() => status('That PDF file was moved or deleted.', 'error'))]] : []),
       ['Print…', () => window.print()]
     ]);

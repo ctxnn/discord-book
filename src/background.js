@@ -1,8 +1,8 @@
 import { saveExport, setDownload, deleteExport, listSummaries, getSummary } from './lib/db.js';
 import { exportKey } from './lib/keys.js';
 
-const bookUrl = (key, opts) => chrome.runtime.getURL(
-  `src/book/book.html?${new URLSearchParams({ key, images: opts.includeImages ? '1' : '0', theme: opts.theme || 'classic', download: '1' })}`
+const pageUrl = (key, opts) => chrome.runtime.getURL(
+  `src/${opts.review ? 'review/review' : 'book/book'}.html?${new URLSearchParams({ key, images: opts.includeImages ? '1' : '0', theme: opts.theme || '', download: '1' })}`
 );
 
 async function handle(message, sender) {
@@ -10,11 +10,11 @@ async function handle(message, sender) {
     case 'export:save': {
       const { data, options } = message;
       const record = await saveExport({ ...data, key: exportKey(data.chat, data.mode, data.pair) });
-      await chrome.tabs.create({ url: bookUrl(record.key, options), index: sender.tab ? sender.tab.index + 1 : undefined, openerTabId: sender.tab?.id });
+      await chrome.tabs.create({ url: pageUrl(record.key, options), index: sender.tab ? sender.tab.index + 1 : undefined, openerTabId: sender.tab?.id });
       return { key: record.key, version: record.version };
     }
     case 'export:open': {
-      await chrome.tabs.create({ url: bookUrl(message.key, message.options || { includeImages: true }) });
+      await chrome.tabs.create({ url: pageUrl(message.key, message.options || { includeImages: true }) });
       return {};
     }
     case 'export:list':

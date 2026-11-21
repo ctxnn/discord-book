@@ -171,6 +171,35 @@ const colophon = await book.$eval('#colophon', (e) => e.textContent).catch(() =>
 check(marks > 0 && colophon.includes(phrase), `phrase highlighted ${marks}x and listed on the About page`);
 await book.close();
 
+{
+  const before = new Set(browser.targets());
+  const reply = await sendToTab(dm, { type: 'start', options: { mode: 'pair', pair: ['Alice', 'Bob'], includeImages: false, review: true, filter: { scope: 'all' } } });
+  check(reply?.ok, 'review flow: export started');
+  const target = await browser.waitForTarget((t) => !before.has(t) && t.url().includes('/src/review/review.html'), { timeout: 240000 });
+  const review = await target.page();
+  await review.bringToFront();
+  await review.waitForSelector('.row');
+  const initial = Number((await review.$eval('#count', (e) => e.textContent)).replace(/\D/g, ''));
+  const rows = await review.$$('.row');
+  for (const row of rows.slice(0, 3)) await row.click();
+  await review.click('.seg [data-view="all"]');
+  await review.select('#who', (await review.$$eval('#who option', (os) => os.map((o) => o.value).find((v) => v.startsWith('Charlie')))));
+  await review.waitForSelector('.row:not(.on)');
+  const added = await review.$eval('.row:not(.on)', (r) => r.querySelector('.text').firstChild.textContent);
+  await review.click('.row:not(.on)');
+  const finalCount = Number((await review.$eval('#count', (e) => e.textContent)).replace(/\D/g, ''));
+  check(finalCount === initial - 2, `review: removed 3 and added 1 (${initial} -> ${finalCount})`);
+  await review.screenshot({ path: join(out, 'review.png') });
+  await review.click('#make');
+  await review.waitForFunction(() => location.pathname.endsWith('/book.html'), { timeout: 30000 });
+  await review.waitForFunction(() => ['done', 'error'].includes(document.querySelector('.db-toolbar')?.dataset.state), { timeout: 240000 });
+  check(await review.$eval('.db-toolbar', (e) => e.dataset.state) === 'done', 'review: PDF saved after review');
+  const saved = await review.evaluate(async () => (await import('../lib/db.js')).getExport(new URLSearchParams(location.search).get('key')));
+  check(saved.messages.length === finalCount && saved.messages.some((m) => m.author?.name === 'Charlie' && m.text.startsWith(added.slice(0, 20))), `review: saved selection has ${saved.messages.length} messages including the added Charlie message`);
+  check(saved.pool.length === truth.length, `review: whole chat kept for adding later (${saved.pool.length})`);
+  await review.close();
+}
+
 const popup = await browser.newPage();
 await popup.setViewport({ width: 360, height: 600 });
 const tabId = await sw.evaluate(async () => (await chrome.tabs.query({ url: 'https://discord.com/channels/987654321098765432/*' }))[0].id);

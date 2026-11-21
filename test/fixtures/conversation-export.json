@@ -1,0 +1,1244 @@
+{
+ "key": "dm:300000000000000001",
+ "chat": {
+  "guildId": "@me",
+  "channelId": "300000000000000001",
+  "kind": "dm",
+  "title": "jonah",
+  "serverName": null,
+  "url": "https://discord.com/channels/@me/300000000000000001"
+ },
+ "mode": "full",
+ "pair": null,
+ "createdAt": "2026-11-21T10:00:00.000Z",
+ "version": 1,
+ "complete": true,
+ "participants": [
+  {
+   "name": "Maya",
+   "id": "200000000000000001",
+   "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E",
+   "count": 31
+  },
+  {
+   "name": "Jonah",
+   "id": "200000000000000002",
+   "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png",
+   "count": 31
+  }
+ ],
+ "messages": [
+  {
+   "id": "1401490275041280001",
+   "ts": "2025-08-03T09:02:00.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>morning</p>",
+   "text": "morning",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1401490279235584002",
+   "ts": "2025-08-03T09:02:01.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>are you awake</p>",
+   "text": "are you awake",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1401490535088128003",
+   "ts": "2025-08-03T09:03:02.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>I have news</p>",
+   "text": "I have news",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1401492552548352004",
+   "ts": "2025-08-03T09:11:03.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>barely. coffee is happening</p>",
+   "text": "barely. coffee is happening",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1401492556742656005",
+   "ts": "2025-08-03T09:11:04.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>what news</p>",
+   "text": "what news",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1401492812595200006",
+   "ts": "2025-08-03T09:12:05.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>the lighthouse cottage said <strong>yes</strong>. we have it for the last week of august</p>",
+   "text": "the lighthouse cottage said yes. we have it for the last week of august",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1401492816789504007",
+   "ts": "2025-08-03T09:12:06.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>the one with the red stripes and the terrible kettle</p>",
+   "text": "the one with the red stripes and the terrible kettle",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🎉",
+     "emojiUrl": null,
+     "count": 2
+    },
+    {
+     "emoji": "❤️",
+     "emojiUrl": null,
+     "count": 1
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1401493324300288008",
+   "ts": "2025-08-03T09:14:07.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>WAIT</p>",
+   "text": "WAIT",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1401493328494592009",
+   "ts": "2025-08-03T09:14:08.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>the one we tried to book three years in a row?</p>",
+   "text": "the one we tried to book three years in a row?",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1401493584347136010",
+   "ts": "2025-08-03T09:15:09.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>the very same. I emailed the owner at 1am like a gremlin and she answered at 6</p>",
+   "text": "the very same. I emailed the owner at 1am like a gremlin and she answered at 6",
+   "edited": false,
+   "reply": {
+    "author": "Jonah",
+    "text": "the one we tried to book three years in a row?"
+   },
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1401493840199680011",
+   "ts": "2025-08-03T09:16:10.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>I am taking back everything I said about your sleep schedule</p>",
+   "text": "I am taking back everything I said about your sleep schedule",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1401493844393984012",
+   "ts": "2025-08-03T09:16:11.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>noted. framed. hung above the fireplace</p>",
+   "text": "noted. framed. hung above the fireplace",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "😂",
+     "emojiUrl": null,
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1401545186869248013",
+   "ts": "2025-08-03T12:40:12.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>ok I looked at trains. there is a 07:52 that gets in before lunch, or a slow one with two changes that goes along the coast</p>",
+   "text": "ok I looked at trains. there is a 07:52 that gets in before lunch, or a slow one with two changes that goes along the coast",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1401545442721792014",
+   "ts": "2025-08-03T12:41:13.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>the slow one is objectively worse and I want it very much</p>",
+   "text": "the slow one is objectively worse and I want it very much",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1401546956865536015",
+   "ts": "2025-08-03T12:47:14.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>slow one. obviously. we bring the good thermos</p>",
+   "text": "slow one. obviously. we bring the good thermos",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1402037946286080016",
+   "ts": "2025-08-04T21:18:15.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>can I tell you something slightly embarrassing</p>",
+   "text": "can I tell you something slightly embarrassing",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1402038202138624017",
+   "ts": "2025-08-04T21:19:16.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>always</p>",
+   "text": "always",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1402039967940608018",
+   "ts": "2025-08-04T21:26:17.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>I have been keeping a list of every place we said we would go \"one day\". it lives in my notes app and it is now forty-one items long. some of them are real places, some of them are things like \"the bakery from the dream\" and \"wherever that train in the film was going\". I started it as a joke after the second time we missed the lighthouse, and somewhere along the way it stopped being a joke and turned into the most honest document I own.</p><p>anyway. the lighthouse is item four. I get to cross something off.</p>",
+   "text": "I have been keeping a list of every place we said we would go \"one day\". it lives in my notes app and it is now forty-one items long. some of them are real places, some of them are things like \"the bakery from the dream\" and \"wherever that train in the film was going\". I started it as a joke after the second time we missed the lighthouse, and somewhere along the way it stopped being a joke and turned into the most honest document I own.anyway. the lighthouse is item four. I get to cross something off.",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🥹",
+     "emojiUrl": null,
+     "count": 1
+    },
+    {
+     "emoji": "❤️",
+     "emojiUrl": null,
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1402041230426112019",
+   "ts": "2025-08-04T21:31:18.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>jonah</p>",
+   "text": "jonah",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1402041234620416020",
+   "ts": "2025-08-04T21:31:19.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>that is not embarrassing, that is the best thing you have ever told me</p>",
+   "text": "that is not embarrassing, that is the best thing you have ever told me",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1402041490472960021",
+   "ts": "2025-08-04T21:32:20.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>send me the list. I want to read it like a menu</p>",
+   "text": "send me the list. I want to read it like a menu",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1402043507933184022",
+   "ts": "2025-08-04T21:40:21.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>here it is, exported badly</p>",
+   "text": "here it is, exported badly",
+   "edited": false,
+   "reply": null,
+   "attachments": [
+    {
+     "type": "file",
+     "url": "https://cdn.discordapp.com/attachments/1/2/one-day-list.txt",
+     "name": "one-day-list.txt",
+     "size": "3 KB"
+    }
+   ],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1402044518760448023",
+   "ts": "2025-08-04T21:44:22.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>\"the bakery from the dream\" is item <em>nine</em>?? it should be item one</p>",
+   "text": "\"the bakery from the dream\" is item nine?? it should be item one",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1402044522954752024",
+   "ts": "2025-08-04T21:44:23.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>the list is in the order things occurred to me, not by importance. I am not a monster</p>",
+   "text": "the list is in the order things occurred to me, not by importance. I am not a monster",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1402713686409216025",
+   "ts": "2025-08-06T18:03:24.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p><span class=\"mention\">@Jonah</span> tide times for the week, so we don't get stranded on the causeway again</p>",
+   "text": "@Jonah tide times for the week, so we don't get stranded on the causeway again",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [
+    {
+     "provider": "Tide Tables",
+     "author": null,
+     "title": "Lantern Point · tide times, 25–31 August",
+     "description": "High water 06:42 and 19:05 on Monday, getting about forty minutes later each day. The causeway is passable for roughly three hours either side of low tide.",
+     "url": "https://example.com/tides/lantern-point",
+     "image": null,
+     "color": 3907726
+    }
+   ],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1402715452211200026",
+   "ts": "2025-08-06T18:10:25.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>\"again\" is doing a lot of work in that sentence</p>",
+   "text": "\"again\" is doing a lot of work in that sentence",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1402715456405504027",
+   "ts": "2025-08-06T18:10:26.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>it was ONE time and the fisherman was very kind about it</p>",
+   "text": "it was ONE time and the fisherman was very kind about it",
+   "edited": true,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1402716718891008028",
+   "ts": "2025-08-06T18:15:27.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>I made us a little packing script because I am a normal person</p>",
+   "text": "I made us a little packing script because I am a normal person",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1402716723085312029",
+   "ts": "2025-08-06T18:15:28.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<pre><code>const bag = [\"thermos\", \"two jumpers\", \"the good pen\"];\nif (forecast.includes(\"rain\")) bag.push(\"the ugly coat\");\nconsole.log(bag.join(\", \"));</code></pre>",
+   "text": "const bag = [\"thermos\", \"two jumpers\", \"the good pen\"];\nif (forecast.includes(\"rain\")) bag.push(\"the ugly coat\");\nconsole.log(bag.join(\", \"));",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1402717230596096030",
+   "ts": "2025-08-06T18:17:29.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>you wrote <code>the ugly coat</code> into software. it will outlive us both</p>",
+   "text": "you wrote the ugly coat into software. it will outlive us both",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "😂",
+     "emojiUrl": null,
+     "count": 2
+    },
+    {
+     "emoji": null,
+     "emojiUrl": "https://cdn.discordapp.com/emojis/12345.png",
+     "count": 1
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1402717486448640031",
+   "ts": "2025-08-06T18:18:30.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>as it should</p>",
+   "text": "as it should",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1402801544495104032",
+   "ts": "2025-08-06T23:52:31.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>also: <a href=\"https://example.com/lantern-point-walks\">the coastal walks page</a> says there is a seal colony past the second headland</p>",
+   "text": "also: the coastal walks page says there is a seal colony past the second headland",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1402801548689408033",
+   "ts": "2025-08-06T23:52:32.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>I need you to understand that this changes everything</p>",
+   "text": "I need you to understand that this changes everything",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1402916812357632034",
+   "ts": "2025-08-07T07:30:33.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>I read this at 7am and gasped audibly on the bus</p>",
+   "text": "I read this at 7am and gasped audibly on the bus",
+   "edited": false,
+   "reply": {
+    "author": "Maya",
+    "text": "I need you to understand that this changes everything"
+   },
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1404920016142336035",
+   "ts": "2025-08-12T20:10:34.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>ok packing question</p>",
+   "text": "ok packing question",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1404920271994880036",
+   "ts": "2025-08-12T20:11:35.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>go</p>",
+   "text": "go",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1404920527847424037",
+   "ts": "2025-08-12T20:12:36.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>one book or three</p>",
+   "text": "one book or three",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1404920783699968038",
+   "ts": "2025-08-12T20:13:37.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>three</p>",
+   "text": "three",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1404921039552512039",
+   "ts": "2025-08-12T20:14:38.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>two</p>",
+   "text": "two",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1404921295405056040",
+   "ts": "2025-08-12T20:15:39.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>that is not how questions work</p>",
+   "text": "that is not how questions work",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1404921551257600041",
+   "ts": "2025-08-12T20:16:40.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>it is if you are the one carrying the bag</p>",
+   "text": "it is if you are the one carrying the bag",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1404921807110144042",
+   "ts": "2025-08-12T20:17:41.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>fine. two. but one of them is the bird book</p>",
+   "text": "fine. two. but one of them is the bird book",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1404922062962688043",
+   "ts": "2025-08-12T20:18:42.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>the bird book is non-negotiable</p>",
+   "text": "the bird book is non-negotiable",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1404922318815232044",
+   "ts": "2025-08-12T20:19:43.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>see, we agree on the important things</p>",
+   "text": "see, we agree on the important things",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🐦",
+     "emojiUrl": null,
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1404925342908416045",
+   "ts": "2025-08-12T20:31:44.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>spoiler for your birthday: <span class=\"spoiler\">it is a better kettle</span></p>",
+   "text": "spoiler for your birthday: it is a better kettle",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1404925850419200046",
+   "ts": "2025-08-12T20:33:45.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>you can't spoiler a kettle</p>",
+   "text": "you can't spoiler a kettle",
+   "edited": false,
+   "reply": {
+    "author": "Maya",
+    "text": "spoiler for your birthday: it is a better kettle"
+   },
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1409987960111104047",
+   "ts": "2025-08-26T19:48:46.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>look where we are</p>",
+   "text": "look where we are",
+   "edited": false,
+   "reply": null,
+   "attachments": [
+    {
+     "type": "image",
+     "url": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22900%22%20height%3D%22600%22%20viewBox%3D%220%200%20900%20600%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22s%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%237fa7c9%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e8d7b9%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22900%22%20height%3D%22600%22%20fill%3D%22url(%23s)%22%2F%3E%3Crect%20y%3D%22420%22%20width%3D%22900%22%20height%3D%22180%22%20fill%3D%22%2336556e%22%2F%3E%3Cpath%20d%3D%22M0%20430%20Q200%20410%20420%20432%20T900%20425%20V600%20H0Z%22%20fill%3D%22%232c4a61%22%2F%3E%3Cpolygon%20points%3D%22610%2C180%20650%2C180%20668%2C430%20592%2C430%22%20fill%3D%22%23f4efe6%22%2F%3E%3Crect%20x%3D%22598%22%20y%3D%22250%22%20width%3D%2264%22%20height%3D%2226%22%20fill%3D%22%23b23a2e%22%2F%3E%3Crect%20x%3D%22603%22%20y%3D%22330%22%20width%3D%2256%22%20height%3D%2226%22%20fill%3D%22%23b23a2e%22%2F%3E%3Crect%20x%3D%22605%22%20y%3D%22150%22%20width%3D%2250%22%20height%3D%2234%22%20fill%3D%22%232b2b2b%22%2F%3E%3Cpolygon%20points%3D%22600%2C150%20660%2C150%20630%2C128%22%20fill%3D%22%23b23a2e%22%2F%3E%3Ccircle%20cx%3D%22210%22%20cy%3D%22140%22%20r%3D%2246%22%20fill%3D%22%23fff6dc%22%20opacity%3D%22.9%22%2F%3E%3C%2Fsvg%3E",
+     "name": "lighthouse-at-dusk.svg",
+     "width": 900,
+     "height": 600
+    }
+   ],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "😭",
+     "emojiUrl": null,
+     "count": 1
+    },
+    {
+     "emoji": "🌊",
+     "emojiUrl": null,
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1409988467621888048",
+   "ts": "2025-08-26T19:50:47.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>I am literally standing next to you</p>",
+   "text": "I am literally standing next to you",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1409988471816192049",
+   "ts": "2025-08-26T19:50:48.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>but yes. look where we are</p>",
+   "text": "but yes. look where we are",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1410022449872896050",
+   "ts": "2025-08-26T22:05:49.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>the kettle is exactly as terrible as promised. it sings one note, flat, for a full minute before it does anything</p>",
+   "text": "the kettle is exactly as terrible as promised. it sings one note, flat, for a full minute before it does anything",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1410022705725440051",
+   "ts": "2025-08-26T22:06:50.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>it's doing its best</p>",
+   "text": "it's doing its best",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1410156592103424052",
+   "ts": "2025-08-27T06:58:51.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>seals. SEALS. bring the binoculars</p>",
+   "text": "seals. SEALS. bring the binoculars",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1410156847955968053",
+   "ts": "2025-08-27T06:59:52.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>omw</p>",
+   "text": "omw",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1412543608258560054",
+   "ts": "2025-09-02T21:04:00.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>home. the flat is too quiet and nothing smells of salt</p>",
+   "text": "home. the flat is too quiet and nothing smells of salt",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1412544866549760055",
+   "ts": "2025-09-02T21:09:00.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>I crossed it off for you</p>",
+   "text": "I crossed it off for you",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "❤️",
+     "emojiUrl": null,
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1412544866549760056",
+   "ts": "2025-09-02T21:09:00.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>item four, done. thirty-seven to go</p>",
+   "text": "item four, done. thirty-seven to go",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1412546376499200057",
+   "ts": "2025-09-02T21:15:00.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>thirty-eight. I added \"the lighthouse, again\"</p>",
+   "text": "thirty-eight. I added \"the lighthouse, again\"",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1413244728115200058",
+   "ts": "2025-09-04T19:30:00.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>did you see the light did the thing again</p>",
+   "text": "did you see the light did the thing again",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1413607115980800059",
+   "ts": "2025-09-05T19:30:00.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>the flicker? yes. it is haunted and I love it</p>",
+   "text": "the flicker? yes. it is haunted and I love it",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1413969503846400060",
+   "ts": "2025-09-06T19:30:00.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>I printed the photo, it is on the fridge</p>",
+   "text": "I printed the photo, it is on the fridge",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1414331891712000061",
+   "ts": "2025-09-07T19:30:00.000Z",
+   "author": {
+    "name": "Maya",
+    "id": "200000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%232e5446%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>the one where I am squinting</p>",
+   "text": "the one where I am squinting",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1414694279577600062",
+   "ts": "2025-09-08T19:30:00.000Z",
+   "author": {
+    "name": "Jonah",
+    "id": "200000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/missing-jonah.png"
+   },
+   "html": "<p>the one where you are squinting heroically</p>",
+   "text": "the one where you are squinting heroically",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  }
+ ]
+}

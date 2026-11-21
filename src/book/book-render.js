@@ -1000,14 +1000,11 @@ function dayHeading(ctx, d, sceneNo, firstTs, count) {
 }
 
 function interlude(ctx, ts) {
-  const h = new Date(ts).getHours();
-  const tod = partOfDay(h);
+  const tod = partOfDay(new Date(ts).getHours());
   const p = el('p', 'interlude');
-  if (ctx.theme === 'album') {
-    p.appendChild(el('span', 'int-text', 'Later \u00b7 ' + clockTime(ts)));
-  } else {
-    p.appendChild(el('span', 'int-text', tod === 'small hours' ? 'Later, in the small hours' : 'Later that ' + tod));
-  }
+  const later = tod === 'small hours' ? 'Later, in the small hours' : 'Later that ' + tod;
+  if (ctx.theme === 'playscript') p.textContent = later + '.';
+  else p.appendChild(el('span', 'int-text', later));
   return p;
 }
 
@@ -1048,7 +1045,11 @@ function buildChapterBody(ctx, ch) {
       continue;
     }
     const [head, ...rest] = buildGroup(ctx, g.items, first);
+    // Under a heading, only the speaker line and first message are kept with
+    // it; the rest of the group continues freely so pages fill properly.
+    const tail = holder && holder.childElementCount === 1 ? splitTail(head) : null;
     place(head);
+    if (tail) sec.appendChild(tail);
     for (const node of rest) sec.appendChild(node);
     first = false;
   }
@@ -1071,39 +1072,47 @@ function buildGroup(ctx, msgs, opening) {
   group.style.setProperty('--who', people.color(author));
 
   const speaker = el('div', 'speaker');
+  if (theme === 'album') speaker.appendChild(initialBadge(name, people.color(author), 'who-badge badge'));
   speaker.appendChild(el('span', 'name', name));
   speaker.appendChild(el('span', 'time', clockTime(msgs[0].ts)));
   group.appendChild(speaker);
 
   for (const m of msgs) group.appendChild(buildMessage(ctx, m, name));
+  // The speaker line never ends a page alone: it travels with the first message.
+  // A long first message may break across pages, so only a short one is tied to it.
+  const firstMsg = group.querySelector(':scope > .msg');
+  const lead = el('div', 'lead');
+  group.insertBefore(lead, speaker);
+  lead.appendChild(speaker);
+  if (firstMsg.textContent.length < 260 && !firstMsg.querySelector('pre, figure, .embed')) lead.appendChild(firstMsg);
+  else lead.classList.add('loose');
 
-  if (theme === 'clothbound') {
-    // Run the speaker's name into the first paragraph, like dialogue in a novel.
-    const body = group.querySelector('.msg-body');
-    const p = body && body.firstElementChild;
-    if (p && p.tagName === 'P' && body.firstChild === p) {
-      const lead = el('span', 'runin');
-      const nm = el('span', 'name', name);
-      lead.appendChild(nm);
-      lead.appendChild(el('span', 'time', clockTime(msgs[0].ts)));
-      p.prepend(lead);
-      group.classList.add('has-runin');
-      speaker.remove();
-      if (opening) {
-        p.classList.add('opening');
-        group.classList.add('opening');
-      }
-    }
+  // A chapter's first words get a drop cap, never the speaker's name, and only
+  // when the opening line is long enough to wrap around it.
+  if (opening && theme === 'clothbound') {
+    const p = group.querySelector('.msg-body > p:first-child');
+    const text = p ? p.textContent.trim() : '';
+    if (p && text.length >= 60 && /^[\p{L}]/u.test(text) && p.firstChild?.nodeType === Node.TEXT_NODE) p.classList.add('opening');
   }
   return theme === 'album' ? splitPlates(group) : [group];
+}
+
+function splitTail(group) {
+  const after = [];
+  for (let n = group.querySelector(':scope > .lead')?.nextSibling; n; n = n.nextSibling) after.push(n);
+  if (!after.length) return null;
+  const tail = group.cloneNode(false);
+  tail.classList.add('tail');
+  for (const n of after) tail.appendChild(n);
+  return tail;
 }
 
 /** Album: photographs leave the speaker's column and run the full text width. */
 function splitPlates(group) {
   const parts = [group];
   let cur = group;
-  for (const msg of Array.from(group.children).filter((c) => c.classList.contains('msg'))) {
-    if (msg.parentNode !== cur) cur.appendChild(msg);
+  for (const msg of Array.from(group.querySelectorAll(':scope > .msg, :scope > .lead > .msg'))) {
+    if (cur !== group) cur.appendChild(msg);
     const plates = Array.from(msg.children).filter((c) => c.matches('figure.plate'));
     if (!plates.length) continue;
     parts.push(...plates);
@@ -1147,7 +1156,7 @@ function buildMessage(ctx, m, name) {
 
   if (m.reply) {
     const r = el('p', 'reply');
-    r.appendChild(el('span', 'reply-lead', ctx.theme === 'playscript' ? 'to ' : ctx.theme === 'album' ? '\u21b3 ' : 'in reply to '));
+    r.appendChild(el('span', 'reply-lead', ctx.theme === 'playscript' ? 'to ' : ctx.theme === 'album' ? '\u21b3 ' : 'replying to '));
     r.appendChild(el('span', 'reply-name', m.reply.author || 'someone'));
     if (m.reply.text) {
       const t = m.reply.text.length > 110 ? m.reply.text.slice(0, 108).trim() + '\u2026' : m.reply.text;
@@ -1193,23 +1202,27 @@ function appendAttachments(ctx, wrap, m, name) {
       const label = att.name || 'a video';
       wrap.appendChild(play
         ? direction(ctx, name + ' plays a video: ' + label + '.')
-        : noteLine(ctx, 'att-video', 'Video', label, null));
+        : fileCard('att-video', label, 'Video'));
     } else if (att.type === 'file') {
       const size = fmtSize(att.size);
       const label = att.name || 'a file';
       wrap.appendChild(play
         ? direction(ctx, name + ' hands over a document: ' + label + (size ? ', ' + size : '') + '.')
-        : noteLine(ctx, 'att-file', ctx.theme === 'clothbound' ? 'Enclosure' : 'File', label, size));
+        : fileCard('att-file', label, size));
     }
   }
 }
 
-function noteLine(ctx, cls, label, name, size) {
-  const p = el('p', 'att ' + cls);
-  p.appendChild(el('span', 'att-label', label));
-  p.appendChild(el('span', 'att-name', name));
-  if (size) p.appendChild(el('span', 'att-size', size));
-  return p;
+/** A small card for a file or video: a document glyph, the name, the size. */
+function fileCard(cls, name, detail) {
+  const card = el('div', 'att ' + cls);
+  const ext = (String(name).match(/\.([a-z0-9]{1,5})$/i) || [])[1];
+  card.appendChild(el('span', 'att-icon', cls === 'att-video' ? '\u25b6' : (ext || 'file').slice(0, 4).toUpperCase()));
+  const text = el('span', 'att-text');
+  text.appendChild(el('span', 'att-name', name));
+  if (detail) text.appendChild(el('span', 'att-size', detail));
+  card.appendChild(text);
+  return card;
 }
 
 function figNote(ctx, kind, name) {
@@ -1304,9 +1317,7 @@ function buildSticker(ctx, st, name) {
 
 function appendReactions(ctx, wrap, body, reactions) {
   if (!reactions.length) return;
-  const lastP = ctx.theme !== 'album' && wrap.lastElementChild === body ? body.lastElementChild : null;
-  const inline = lastP && lastP.tagName === 'P';
-  const row = el(inline ? 'span' : 'p', inline ? 'reactions inline' : 'reactions');
+  const row = el('p', 'reactions');
   for (const r of reactions) {
     const span = el('span', 'rxn');
     if (r.emojiUrl) {
@@ -1320,7 +1331,7 @@ function appendReactions(ctx, wrap, body, reactions) {
     span.appendChild(el('span', 'rxn-count', String(r.count ?? 1)));
     row.appendChild(span);
   }
-  (inline ? lastP : wrap).appendChild(row);
+  wrap.appendChild(row);
 }
 
 /* --------------------------------------------------------------- stats */

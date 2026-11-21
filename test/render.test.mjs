@@ -38,6 +38,19 @@ const pairRecord = {
   messages: sample.messages.filter((m) => !m.system).map((m) => (m.author?.name === 'Ben' ? { ...m, author: { ...m.author, id: null } } : m)),
 };
 
+// A conversation written to stress the interior: runs of short lines, long
+// paragraphs, links, mentions, replies, code, reactions, an image and a file.
+const conversation = JSON.parse(await readFile(path.join(ROOT, 'test', 'fixtures', 'conversation-export.json'), 'utf8'));
+const conversationPair = {
+  ...conversation,
+  key: 'ch:900000000000000002:300000000000000009:pair:jonah|maya',
+  mode: 'pair',
+  pair: ['Maya', 'Jonah'],
+  complete: false,
+  filter: { scope: 'conversation', replies: true, backAndForth: true, phrases: ['lighthouse'] },
+  chat: { ...conversation.chat, kind: 'channel', title: '#trips', serverName: 'Saltwater', guildId: '900000000000000002' },
+};
+
 // A channel with a very long name, to check titles never overflow the cover.
 const longRecord = {
   ...sample,
@@ -156,6 +169,21 @@ for (const theme of THEMES) {
   const longPdf = path.join(OUT, 'long-' + theme + '.pdf');
   await renderAndPrint(longRecord, { theme }, longPdf);
   snap(longPdf, 1, theme + '-long-cover');
+
+  const convPdf = path.join(OUT, 'conversation-' + theme + '.pdf');
+  await renderAndPrint(conversation, { theme }, convPdf);
+  const conv = await pdfText(convPdf);
+  const convOpener = find(conv.pages, OPENER[theme], (find(conv.pages, 'Contents') || 1) + 1);
+  if (!convOpener) throw new Error(theme + ': conversation book has no chapter opener');
+  for (let i = 1; i <= 3; i++) snap(convPdf, convOpener + i, theme + '-interior-' + i);
+  snap(convPdf, find(conv.pages, 'lighthouse at dusk', convOpener), theme + '-interior-image');
+
+  const convPairPdf = path.join(OUT, 'conversation-' + theme + '-pair.pdf');
+  await renderAndPrint(conversationPair, { theme }, convPairPdf);
+  const convPair = await pdfText(convPairPdf);
+  const pairOpener = find(convPair.pages, OPENER[theme], (find(convPair.pages, 'Contents') || 1) + 1);
+  snap(convPairPdf, pairOpener + 1, theme + '-interior-pair');
+  console.log(theme + ' conversation: ' + conv.pages.length + ' pages, pair ' + convPair.pages.length);
 }
 
 // Legacy and unknown style names fall back to the first style.

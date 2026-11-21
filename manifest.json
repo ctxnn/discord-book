@@ -1,0 +1,57 @@
+{
+  "manifest_version": 3,
+  "name": "Discord Book: chats to PDF",
+  "short_name": "Discord Book",
+  "version": "1.0.0",
+  "description": "Turn any Discord DM or channel conversation into a beautifully typeset book PDF. Reads only what the page shows.",
+  "minimum_chrome_version": "131",
+  "permissions": [
+    "storage",
+    "unlimitedStorage",
+    "downloads",
+    "debugger",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://discord.com/*",
+    "https://ptb.discord.com/*",
+    "https://canary.discord.com/*",
+    "https://cdn.discordapp.com/*",
+    "https://media.discordapp.net/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "Discord Book",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://discord.com/*",
+        "https://ptb.discord.com/*",
+        "https://canary.discord.com/*"
+      ],
+      "js": [
+        "src/content/scraper.js",
+        "src/content/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+  <script type="module" src="popup.js"></script>
+</head>
+<body>
+  <header>
+    <img src="../../icons/icon48.png" alt="" width="28" height="28">
+    <div><h1>Discord Book</h1><p>Turn a chat into a printed-style book</p></div>
+  </header>
+
+  <section id="no-chat" hidden>
+    <p class="empty">Open a Discord DM or channel in this tab (discord.com in Chrome), then click the extension again.</p>
+  </section>
+
+  <section id="chat" hidden>
+    <div class="chat-card">
+      <div class="chat-title" id="chat-title"></div>
+      <div class="chat-sub" id="chat-sub"></div>
+      <div class="saved" id="saved"></div>
+    </div>
+
+    <div class="seg" role="tablist">
+      <button type="button" data-mode="full" class="on">Whole chat</button>
+      <button type="button" data-mode="pair">Two people only</button>
+    </div>
+
+    <div id="pair" hidden>
+      <label>First person<input id="p1" list="authors" placeholder="name or user ID" autocomplete="off"></label>
+      <label>Second person<input id="p2" list="authors" placeholder="name or user ID" autocomplete="off"></label>
+      <datalist id="authors"></datalist>
+      <p class="hint">Keeps only these two people's messages. Use the names shown in the chat (server nicknames) or user IDs.</p>
+    </div>
+
+    <details>
+      <summary>Options</summary>
+      <label>Start from date <span class="muted">(optional, faster for huge channels)</span><input id="from" type="date"></label>
+      <label class="check"><input id="images" type="checkbox" checked> Include images</label>
+      <label>Style
+        <select id="theme"><option value="classic">Classic (cream paper)</option><option value="midnight">Midnight (dark)</option></select>
+      </label>
+    </details>
+
+    <button id="go" class="primary">Create book</button>
+    <p class="error" id="error" hidden></p>
+  </section>
+
+  <section id="library">
+    <h2>Saved books</h2>
+    <ul id="books"></ul>
+    <p class="muted" id="no-books">Books you make appear here. Making the same chat again replaces its book and PDF.</p>
+  </section>
+</body>
+</html>

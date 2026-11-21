@@ -1,0 +1,777 @@
+/* ==========================================================================
+   Discord Book — print stylesheet
+   A5 book, mirrored margins, named pages for cover / front matter / fin.
+   Running headers and page numbers for chapters are injected per chapter
+   as literal @page rules by book-render.js (Chrome has no string-set).
+   ========================================================================== */
+
+@font-face {
+  font-family: "EB Garamond";
+  src: url("fonts/eb-garamond-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("fonts/eb-garamond-latin-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: block;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("fonts/eb-garamond-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("fonts/cormorant-garamond-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+
+/* ---------------------------------------------------------------- themes */
+
+:root {
+  --paper: #fbf7ef;
+  --ink: #2e2a23;
+  --muted: #8d8271;
+  --faint: #b3a992;
+  --accent: #7d2f2a;
+  --accent-soft: #a2625d;
+  --rule: #d9cdb4;
+  --tint: rgba(125, 47, 42, 0.07);
+  --code-bg: rgba(90, 76, 50, 0.09);
+  --quote-rule: #c9b995;
+  --frame: #b9a77f;
+  background: var(--paper);
+}
+
+:root.theme-midnight {
+  --paper: #141c2f;
+  --ink: #e6dfc9;
+  --muted: #9aa0b4;
+  --faint: #6f7589;
+  --accent: #c9a24b;
+  --accent-soft: #a5854a;
+  --rule: #3a4560;
+  --tint: rgba(201, 162, 75, 0.09);
+  --code-bg: rgba(230, 223, 201, 0.08);
+  --quote-rule: #55607d;
+  --frame: #8a7440;
+}
+
+/* ------------------------------------------------------------ page setup */
+
+@page {
+  size: A5 portrait;
+  margin: 18mm 18mm 20mm 14mm;
+  /* Chrome does not propagate the root background into the page margins
+     when printing, so the paper color is painted by the margin boxes. */
+  @top-left { content: ""; background: var(--paper); margin: -2mm; }
+  @top-center { content: ""; background: var(--paper); margin: -2mm; }
+  @top-right { content: ""; background: var(--paper); margin: -2mm; }
+  @bottom-left { content: ""; background: var(--paper); margin: -2mm; }
+  @bottom-center { content: ""; background: var(--paper); margin: -2mm; }
+  @bottom-right { content: ""; background: var(--paper); margin: -2mm; }
+  @top-left-corner { content: ""; background: var(--paper); margin: -2mm; }
+  @top-right-corner { content: ""; background: var(--paper); margin: -2mm; }
+  @bottom-left-corner { content: ""; background: var(--paper); margin: -2mm; }
+  @bottom-right-corner { content: ""; background: var(--paper); margin: -2mm; }
+  @left-top { content: ""; background: var(--paper); margin: -2mm; }
+  @left-middle { content: ""; background: var(--paper); margin: -2mm; }
+  @left-bottom { content: ""; background: var(--paper); margin: -2mm; }
+  @right-top { content: ""; background: var(--paper); margin: -2mm; }
+  @right-middle { content: ""; background: var(--paper); margin: -2mm; }
+  @right-bottom { content: ""; background: var(--paper); margin: -2mm; }
+}
+@page :left  { margin: 18mm 18mm 20mm 14mm; }
+@page :right { margin: 18mm 14mm 20mm 18mm; }
+
+@page cover { margin: 0; }
+@page fin   { margin: 0; }
+
+/* front matter (colophon + contents): standard margins, no header/number */
+@page front {
+  margin: 18mm 18mm 20mm 14mm;
+}
+@page front:left  { margin: 18mm 18mm 20mm 14mm; }
+@page front:right { margin: 18mm 14mm 20mm 18mm; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--paper);
+  font-family: "EB Garamond", Georgia, "Times New Roman", serif;
+  font-size: 10.5pt;
+  line-height: 1.45;
+  color: var(--ink);
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+}
+
+main#book {
+  display: block;
+}
+
+/* ----------------------------------------------------------------- cover */
+
+.cover {
+  page: cover;
+  width: 146mm;
+  height: 208mm;
+  box-sizing: border-box;
+  padding: 10mm;
+  break-after: page;
+}
+.cover-frame {
+  height: 100%;
+  box-sizing: border-box;
+  border: 0.6mm solid var(--frame);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 9mm 8mm;
+  position: relative;
+}
+.cover-frame::before {
+  content: "";
+  position: absolute;
+  inset: 2.2mm;
+  border: 0.2mm solid var(--frame);
+  pointer-events: none;
+}
+.cover-orn,
+.chapter-orn,
+.fin-orn {
+  font-size: 15pt;
+  color: var(--accent);
+  line-height: 1;
+  font-variant-emoji: text;
+}
+.cover-orn.top {
+  position: absolute;
+  top: 7mm;
+  left: 0;
+  right: 0;
+}
+.cover-orn.bottom {
+  position: absolute;
+  bottom: 7mm;
+  left: 0;
+  right: 0;
+}
+
+.cover-kicker {
+  font-variant: small-caps;
+  letter-spacing: 0.28em;
+  font-size: 8.5pt;
+  color: var(--muted);
+  margin: 0 0 6mm;
+}
+.cover-heading {
+  margin: 0;
+}
+h1.book-title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 700;
+  font-size: 33pt;
+  line-height: 1.12;
+  margin: 0;
+  color: var(--ink);
+  overflow-wrap: break-word;
+}
+p.cover-sub {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 16pt;
+  color: var(--accent-soft);
+  margin: 3mm 0 0;
+}
+p.cover-dates {
+  font-variant: small-caps;
+  letter-spacing: 0.18em;
+  font-size: 10.5pt;
+  color: var(--muted);
+  margin: 7mm 0 0;
+}
+.cover-rule {
+  width: 26mm;
+  border: 0;
+  border-top: 0.35mm solid var(--rule);
+  margin: 7mm auto 6mm;
+}
+.cover-people {
+  display: flex;
+  justify-content: center;
+  gap: 9mm;
+  margin-top: 2mm;
+}
+.cover-person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2mm;
+  min-width: 20mm;
+}
+.cover-avatar {
+  width: 14mm;
+  height: 14mm;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 0.3mm solid var(--frame);
+}
+.cover-initial {
+  width: 14mm;
+  height: 14mm;
+  border-radius: 50%;
+  border: 0.3mm solid var(--frame);
+  color: var(--paper);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 700;
+  font-size: 17pt;
+  line-height: 13.6mm;
+  text-align: center;
+}
+.cover-person-name {
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-size: 8pt;
+  color: var(--muted);
+}
+p.cover-count {
+  font-variant: small-caps;
+  letter-spacing: 0.16em;
+  font-size: 9pt;
+  color: var(--muted);
+  margin: 7mm 0 0;
+}
+
+/* ------------------------------------------------------------ front matter */
+
+.front {
+  page: front;
+  break-before: page;
+  break-after: page;
+}
+h2.front-title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  font-size: 21pt;
+  text-align: center;
+  letter-spacing: 0.04em;
+  margin: 0 0 4mm;
+  color: var(--ink);
+}
+.front-rule {
+  width: 22mm;
+  border: 0;
+  border-top: 0.35mm solid var(--rule);
+  margin: 0 auto 9mm;
+}
+
+/* colophon */
+.colophon-body {
+  max-width: 96mm;
+  margin: 4mm auto 0;
+  font-size: 10pt;
+}
+.colophon-row {
+  display: flex;
+  gap: 4mm;
+  padding: 2.2mm 0;
+  border-bottom: 0.2mm solid var(--rule);
+  break-inside: avoid;
+}
+.colophon-row:last-child {
+  border-bottom: 0;
+}
+.colophon-key {
+  flex: 0 0 30mm;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  font-size: 9pt;
+  padding-top: 0.5mm;
+}
+.colophon-val {
+  flex: 1;
+  overflow-wrap: break-word;
+}
+.colophon-note {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 9.5pt;
+  text-align: center;
+  margin: 9mm auto 0;
+  max-width: 100mm;
+}
+.colophon-made {
+  text-align: center;
+  margin-top: 11mm;
+  font-variant: small-caps;
+  letter-spacing: 0.2em;
+  font-size: 8.5pt;
+  color: var(--muted);
+}
+.colophon-made b {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* contents */
+.toc-list {
+  list-style: none;
+  margin: 4mm 0 0;
+  padding: 0;
+}
+.toc-entry {
+  margin: 0 0 3.4mm;
+}
+.toc-entry a {
+  display: flex;
+  align-items: baseline;
+  gap: 2mm;
+  color: inherit;
+  text-decoration: none;
+}
+.toc-title {
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+  font-size: 11pt;
+  white-space: nowrap;
+}
+.toc-month {
+  font-style: italic;
+  color: var(--muted);
+}
+.toc-dots {
+  flex: 1;
+  min-width: 6mm;
+  border-bottom: 0.35mm dotted var(--faint);
+  transform: translateY(-1.1mm);
+}
+.toc-meta {
+  font-size: 8.5pt;
+  color: var(--muted);
+  font-variant-numeric: oldstyle-nums;
+  white-space: nowrap;
+}
+
+/* -------------------------------------------------------------- chapters */
+
+.chapter {
+  page: chapter-open; /* overridden per chapter by injected rules */
+  break-before: page;
+  break-after: page;
+  text-align: center;
+  padding-top: 52mm;
+}
+.chapter-num {
+  display: block;
+  font-variant: small-caps;
+  letter-spacing: 0.3em;
+  font-size: 12pt;
+  color: var(--accent);
+  margin-bottom: 5mm;
+}
+h2.chapter-title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  font-size: 30pt;
+  line-height: 1.1;
+  margin: 0;
+  color: var(--ink);
+}
+.chapter-orn {
+  margin-top: 6mm;
+  color: var(--accent);
+  font-size: 12pt;
+}
+.chapter-meta {
+  margin-top: 5mm;
+  font-variant: small-caps;
+  letter-spacing: 0.14em;
+  font-size: 9pt;
+  color: var(--muted);
+}
+
+.chapter-body {
+  break-before: page;
+}
+
+/* days */
+h3.day {
+  text-align: center;
+  font-weight: 400;
+  font-variant: small-caps;
+  letter-spacing: 0.14em;
+  font-size: 11.5pt;
+  color: var(--accent);
+  margin: 8mm 0 4.5mm;
+  break-after: avoid;
+  break-before: auto;
+}
+h3.day::after {
+  content: "❦";
+  display: block;
+  font-size: 8.5pt;
+  color: var(--faint);
+  letter-spacing: 0;
+  margin-top: 1.4mm;
+  font-variant-emoji: text;
+}
+h3.day:first-child {
+  margin-top: 0;
+}
+/* keep a day heading attached to the first group that follows it */
+.day-block {
+  break-inside: avoid;
+}
+
+/* message groups */
+.msg-group {
+  margin: 0 0 5mm;
+}
+.msg-head {
+  break-after: avoid;
+  break-inside: avoid;
+  margin-bottom: 1mm;
+}
+span.author {
+  font-variant: small-caps;
+  letter-spacing: 0.07em;
+  font-size: 11pt;
+  font-weight: 600;
+}
+span.time {
+  font-size: 8.5pt;
+  color: var(--muted);
+  font-variant-numeric: oldstyle-nums;
+  letter-spacing: 0.03em;
+  margin-left: 1.2mm;
+}
+
+.msg-group .msg + .msg {
+  margin-top: 1.2mm;
+}
+.msg-body p {
+  margin: 0 0 0.4em;
+  orphans: 2;
+  widows: 2;
+  text-align: justify;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+.msg-body {
+  text-align: justify;
+  hyphens: auto;
+}
+.msg-body p:last-child {
+  margin-bottom: 0;
+}
+.msg-body ul,
+.msg-body ol {
+  margin: 0.2em 0 0.4em;
+  padding-left: 5.5mm;
+  text-align: left;
+}
+.msg-body li {
+  margin: 0 0 0.15em;
+}
+.msg-body h1, .msg-body h2, .msg-body h3 {
+  font-size: 1em;
+  font-weight: 600;
+  margin: 0.4em 0 0.2em;
+}
+
+.reply {
+  font-size: 9pt;
+  font-style: italic;
+  color: var(--muted);
+  margin: 0 0 1mm 6mm;
+  text-align: left;
+  break-after: avoid;
+}
+.reply .reply-name {
+  font-style: normal;
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+}
+
+.edited {
+  font-size: 8pt;
+  font-style: italic;
+  color: var(--faint);
+  margin-left: 1mm;
+}
+
+span.mention {
+  color: var(--accent);
+  background: var(--tint);
+  border-radius: 2px;
+  padding: 0 1.5px;
+  white-space: nowrap;
+}
+span.spoiler {
+  background: var(--tint);
+  border-radius: 2px;
+  padding: 0 1.5px;
+}
+span.timestamp {
+  font-style: italic;
+  color: var(--muted);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: var(--faint);
+  text-decoration-thickness: 0.5px;
+  text-underline-offset: 1.5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  font-family: "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.82em;
+  background: var(--code-bg);
+  border-radius: 2px;
+  padding: 0.5px 2.5px;
+}
+pre {
+  background: var(--code-bg);
+  border: 0.2mm solid var(--rule);
+  border-radius: 2.5px;
+  padding: 3mm 4mm;
+  margin: 1.5mm 0;
+  font-size: 8.3pt;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  break-inside: avoid;
+  text-align: left;
+  hyphens: none;
+}
+pre code {
+  background: none;
+  padding: 0;
+  font-size: 1em;
+}
+
+blockquote {
+  margin: 1.5mm 0 1.5mm 3mm;
+  padding-left: 3.5mm;
+  border-left: 0.6mm solid var(--quote-rule);
+  font-style: italic;
+  color: color-mix(in srgb, var(--ink) 82%, var(--paper));
+}
+blockquote p {
+  text-align: left;
+}
+
+img.emoji {
+  height: 1.15em;
+  width: auto;
+  vertical-align: -0.18em;
+  margin: 0 0.5px;
+}
+
+/* attachments */
+figure.fig {
+  margin: 3mm auto;
+  text-align: center;
+  break-inside: avoid;
+  max-width: 100%;
+}
+figure.fig img {
+  max-width: 88%;
+  max-height: 82mm;
+  border-radius: 2.5mm;
+  border: 0.2mm solid var(--rule);
+  display: block;
+  margin: 0 auto;
+}
+figure.fig figcaption {
+  font-size: 8.3pt;
+  font-style: italic;
+  color: var(--muted);
+  margin-top: 1.4mm;
+}
+.fig-note {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 9.5pt;
+  margin: 2mm 0;
+  text-align: center;
+}
+
+.sticker-img {
+  max-width: 38mm;
+  max-height: 38mm;
+  display: block;
+  margin: 0 auto;
+}
+
+.att-file {
+  font-size: 9.5pt;
+  margin: 1.5mm 0;
+  break-inside: avoid;
+}
+.att-file .file-size {
+  color: var(--muted);
+  font-size: 8.5pt;
+}
+
+/* embeds */
+.embed {
+  border-left: 1mm solid var(--embed-color, var(--accent));
+  background: var(--tint);
+  border-radius: 0 2mm 2mm 0;
+  padding: 2.2mm 3.5mm;
+  margin: 2mm 0;
+  font-size: 9.3pt;
+  break-inside: avoid;
+  text-align: left;
+  hyphens: none;
+}
+.embed-provider {
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  font-size: 8pt;
+  color: var(--muted);
+  margin: 0 0 0.5mm;
+}
+.embed-author {
+  font-weight: 600;
+  font-size: 9pt;
+  margin: 0 0 0.5mm;
+}
+.embed-title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  font-size: 12.5pt;
+  margin: 0 0 1mm;
+}
+.embed-title a {
+  text-decoration: none;
+}
+.embed-desc {
+  margin: 0 0 1mm;
+}
+.embed-img {
+  max-width: 70%;
+  max-height: 50mm;
+  border-radius: 1.5mm;
+  display: block;
+  margin: 1.5mm auto 0;
+  border: 0.2mm solid var(--rule);
+}
+
+/* reactions */
+.reactions {
+  margin-top: 1.5mm;
+  font-size: 9pt;
+  color: var(--muted);
+  break-inside: avoid;
+}
+.reactions .rxn-emoji-img {
+  height: 1.15em;
+  width: auto;
+  vertical-align: -0.2em;
+}
+.reactions .sep {
+  color: var(--faint);
+  margin: 0 1.5mm;
+}
+
+/* system messages */
+.sysmsg {
+  text-align: center;
+  font-style: italic;
+  font-size: 9.3pt;
+  color: var(--muted);
+  margin: 3.5mm 0;
+  break-inside: avoid;
+}
+
+/* drop cap */
+p.dropcap::first-letter {
+  initial-letter: 2.6;
+  -webkit-initial-letter: 2.6;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 700;
+  font-size: 200%;
+  color: var(--accent);
+  margin-right: 1.5mm;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------------- fin */
+
+.fin {
+  page: fin;
+  width: 146mm;
+  height: 208mm;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.fin-orn {
+  font-size: 15pt;
+  color: var(--accent);
+  margin: 0 0 6mm;
+}
+h2.fin-word {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 30pt;
+  margin: 0 0 7mm;
+  color: var(--ink);
+}
+p.fin-date {
+  font-variant: small-caps;
+  letter-spacing: 0.16em;
+  font-size: 9.5pt;
+  color: var(--muted);
+  margin: 0;
+}
+p.fin-note {
+  margin-top: 4mm;
+  font-style: italic;
+  font-size: 9pt;
+  color: var(--faint);
+}
+
+/* broken inline emoji fall back to their alt text in a subtle style */
+.emoji-fallback {
+  color: var(--muted);
+  font-size: 0.92em;
+  letter-spacing: 0.02em;
+}
+
+/* broken images are hidden by the renderer; placeholder note takes over */
+img.img-failed {
+  display: none;
+}

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Discord Book — preview</title>
+  <link rel="stylesheet" href="../src/book/book.css">
+</head>
+<body>
+  <main id="book"></main>
+  <script type="module">
+    import { renderBook } from '../src/book/book-render.js';
+
+    function loadRecord(url) {
+      return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.onload = () => {
+          try { resolve(JSON.parse(xhr.responseText)); }
+          catch (e) { reject(new Error('bad fixture JSON: ' + e.message)); }
+        };
+        xhr.onerror = () => reject(new Error('failed to load ' + url));
+        xhr.send();
+      });
+    }
+
+    window.__render = async (record, opts) => {
+      try {
+        await renderBook(record, document.getElementById('book'), opts);
+        return { ok: true };
+      } catch (e) {
+        return { ok: false, error: String((e && e.stack) || e) };
+      }
+    };
+
+    const params = new URLSearchParams(location.search);
+    if (!params.has('noauto')) {
+      try {
+        const record = await loadRecord('../test/fixtures/sample-export.json');
+        window.__auto = await window.__render(record, { theme: params.get('theme') || 'classic' });
+      } catch (e) {
+        window.__auto = { ok: false, error: String(e) };
+      }
+    }
+  </script>
+</body>
+</html>

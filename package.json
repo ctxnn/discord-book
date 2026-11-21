@@ -1,0 +1,13 @@
+{
+  "name": "discord-book",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node test/scraper.test.mjs && node test/render.test.mjs && node test/e2e.test.mjs"
+  },
+  "devDependencies": {
+    "pdfjs-dist": "^6.5.438",
+    "puppeteer-core": "^25.18.1"
+  }
+}

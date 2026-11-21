@@ -1,0 +1,38 @@
+:root { color-scheme: dark; --bg: #1e1f22; --card: #2b2d31; --line: #3f4147; --text: #f2f3f5; --muted: #949ba4; --gold: #c9a227; --gold-dark: #a8841c; }
+* { box-sizing: border-box; }
+body { width: 360px; margin: 0; padding: 14px; background: var(--bg); color: var(--text); font: 13px/1.45 "gg sans", "Segoe UI", system-ui, sans-serif; }
+header { display: flex; gap: 10px; align-items: center; margin-bottom: 14px; }
+h1 { margin: 0; font: 600 17px/1.1 Georgia, "Times New Roman", serif; letter-spacing: .02em; }
+header p { margin: 2px 0 0; color: var(--muted); font-size: 12px; }
+h2 { margin: 18px 0 8px; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.chat-card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin-bottom: 12px; }
+.chat-title { font-size: 15px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.chat-sub { color: var(--muted); font-size: 12px; }
+.saved { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); font-size: 12px; color: #dbdee1; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.saved:empty { display: none; }
+.saved .grow { flex: 1 1 100%; }
+.seg { display: grid; grid-template-columns: 1fr 1fr; background: var(--card); border-radius: 8px; padding: 3px; margin-bottom: 10px; }
+.seg button { border: 0; background: none; color: var(--muted); font: inherit; font-weight: 600; padding: 6px; border-radius: 6px; cursor: pointer; }
+.seg button.on { background: #404249; color: var(--text); }
+label { display: block; margin: 8px 0; color: #dbdee1; font-size: 12px; font-weight: 600; }
+label input:not([type=checkbox]), label select { display: block; width: 100%; margin-top: 4px; padding: 7px 9px; border-radius: 6px; border: 1px solid var(--line); background: #111214; color: var(--text); font: inherit; font-weight: 400; }
+label.check { display: flex; gap: 8px; align-items: center; }
+details { margin: 6px 0 12px; }
+summary { cursor: pointer; color: var(--muted); font-weight: 600; font-size: 12px; }
+.hint, .muted { color: var(--muted); font-size: 12px; font-weight: 400; }
+.hint { margin: 4px 0 8px; }
+button.primary, .mini { font: inherit; font-weight: 600; border: 0; border-radius: 6px; cursor: pointer; color: var(--text); }
+button.primary { width: 100%; padding: 9px; background: var(--gold-dark); font-size: 14px; }
+button.primary:hover { background: var(--gold); color: #1e1f22; }
+button.primary:disabled { opacity: .5; cursor: default; }
+.mini { padding: 4px 9px; background: #4e5058; font-size: 12px; }
+.mini:hover { background: #6d6f78; }
+.mini.danger:hover { background: #da373c; }
+.error { color: #fa777c; margin: 8px 0 0; }
+.empty { background: var(--card); border-radius: 10px; padding: 14px; color: #dbdee1; margin: 0; }
+#books { list-style: none; margin: 0; padding: 0; max-height: 220px; overflow: auto; }
+#books li { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-top: 1px solid var(--line); }
+#books li:first-child { border-top: 0; }
+#books .info { flex: 1; min-width: 0; }
+#books .t { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#books .m { color: var(--muted); font-size: 11px; }

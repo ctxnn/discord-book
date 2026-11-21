@@ -1,0 +1,4867 @@
+{
+ "key": "dm:284631905742381005",
+ "chat": {
+  "guildId": "@me",
+  "channelId": "284631905742381005",
+  "kind": "dm",
+  "title": "alice",
+  "serverName": null,
+  "url": "https://discord.com/channels/@me/284631905742381005"
+ },
+ "mode": "full",
+ "pair": null,
+ "createdAt": "2026-11-20T18:30:00.000Z",
+ "version": 2,
+ "complete": true,
+ "participants": [
+  {
+   "name": "Alice",
+   "id": "100000000000000001",
+   "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E",
+   "count": 128
+  },
+  {
+   "name": "Ben",
+   "id": "100000000000000002",
+   "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png",
+   "count": 122
+  }
+ ],
+ "messages": [
+  {
+   "id": "1346409836052480001",
+   "ts": "2025-03-04T09:12:00.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>do you ever think about how we've known each other for <strong>three years</strong> and still never ran out of things to say</p>",
+   "text": "do you ever think about how we've known each other for three years and still never ran out of things to say",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1346410456809472002",
+   "ts": "2025-03-04T09:14:28.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>every day actually. mostly when I should be working</p>",
+   "text": "every day actually. mostly when I should be working",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1346411018846208003",
+   "ts": "2025-03-04T09:16:42.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>speaking of which I have a <em>terrible</em> idea</p>",
+   "text": "speaking of which I have a terrible idea",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1346411949981696004",
+   "ts": "2025-03-04T09:20:24.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>oh no</p>",
+   "text": "oh no",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1346412679790592005",
+   "ts": "2025-03-04T09:23:18.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>let's archive every conversation we've ever had and print it as a <strong>book</strong>. like a real one. with a spine.</p>",
+   "text": "let's archive every conversation we've ever had and print it as a book . like a real one. with a spine.",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1346413459931136006",
+   "ts": "2025-03-04T09:26:24.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>that is not terrible that is <em>deranged</em></p>",
+   "text": "that is not terrible that is deranged",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "😂",
+     "count": 1
+    },
+    {
+     "emoji": "👍",
+     "count": 1
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1346414181351424007",
+   "ts": "2025-03-04T09:29:16.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>I'm in obviously</p>",
+   "text": "I'm in obviously",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1346467864248320043",
+   "ts": "2025-03-04T13:02:35.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>ok one more episode and then I sleep</p>",
+   "text": "ok one more episode and then I sleep",
+   "edited": false,
+   "reply": {
+    "author": "Alice",
+    "text": "a margin is where the reader breathes"
+   },
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1346468996710400044",
+   "ts": "2025-03-04T13:07:05.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>that's what you said yesterday. and the day before</p>",
+   "text": "that's what you said yesterday. and the day before",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1346800313171968045",
+   "ts": "2025-03-05T11:03:37.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>brb, kettle</p>",
+   "text": "brb, kettle",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1346801634377728046",
+   "ts": "2025-03-05T11:08:52.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>the eternal english answer to every problem</p>",
+   "text": "the eternal english answer to every problem",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1346802179637248047",
+   "ts": "2025-03-05T11:11:02.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>it fixes more than you'd think</p>",
+   "text": "it fixes more than you'd think",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1347238311755776048",
+   "ts": "2025-03-06T16:04:04.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>did the drop cap render or did it eat the first word</p>",
+   "text": "did the drop cap render or did it eat the first word",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1347239297417216049",
+   "ts": "2025-03-06T16:07:59.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>rendered. elegant. the m is enormous and correct</p>",
+   "text": "rendered. elegant. the m is enormous and correct",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1347631326429184050",
+   "ts": "2025-03-07T18:05:46.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>that's what you said yesterday. and the day before</p>",
+   "text": "that's what you said yesterday. and the day before",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1347632714743808051",
+   "ts": "2025-03-07T18:11:17.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>past alice is a liar, present alice is hopeful</p>",
+   "text": "past alice is a liar, present alice is hopeful",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "😂",
+     "count": 1
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1347633197088768052",
+   "ts": "2025-03-07T18:13:12.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the tabs are multiplying again. I count eleven <code>localhost</code></p>",
+   "text": "the tabs are multiplying again. I count eleven  localhost",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1347634623152128053",
+   "ts": "2025-03-07T18:18:52.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>eleven parallel selves, all mid-thought</p>",
+   "text": "eleven parallel selves, all mid-thought",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1348007702298624054",
+   "ts": "2025-03-08T19:01:21.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>the eternal english answer to every problem</p>",
+   "text": "the eternal english answer to every problem",
+   "edited": false,
+   "reply": {
+    "author": "Alice",
+    "text": "a margin is where the reader breathes"
+   },
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1348009145139200055",
+   "ts": "2025-03-08T19:07:05.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>it fixes more than you'd think</p>",
+   "text": "it fixes more than you'd think",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1348009719758848056",
+   "ts": "2025-03-08T19:09:22.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>found the photo of the penguin mug origin story btw</p>",
+   "text": "found the photo of the penguin mug origin story btw",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1348009870753792057",
+   "ts": "2025-03-08T19:09:58.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the fairground. the rigged ring toss. the <em>carnival</em></p>",
+   "text": "the fairground. the rigged ring toss. the  carnival",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1348010755751936058",
+   "ts": "2025-03-08T19:13:29.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>you won it fair and square by cheating gracefully</p>",
+   "text": "you won it fair and square by cheating gracefully",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🎩",
+     "count": 3
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1348017680547840008",
+   "ts": "2025-03-08T19:41:00.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>ok but look at this photo from the pier on saturday</p>",
+   "text": "ok but look at this photo from the pier on saturday",
+   "edited": false,
+   "reply": null,
+   "attachments": [
+    {
+     "type": "image",
+     "url": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22600%22%20viewBox%3D%220%200%20800%20600%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23f7b267%22%2F%3E%3Cstop%20offset%3D%22.55%22%20stop-color%3D%22%23e07a5f%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%233d405b%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22600%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%22560%22%20cy%3D%22220%22%20r%3D%2270%22%20fill%3D%22%23ffe8c2%22%2F%3E%3Cpath%20d%3D%22M0%20470%20L180%20400%20L360%20470%20L520%20410%20L800%20480%20L800%20600%20L0%20600%20Z%22%20fill%3D%22%232f303d%22%2F%3E%3Cpath%20d%3D%22M0%20510%20L240%20460%20L480%20520%20L700%20470%20L800%20500%20L800%20600%20L0%20600%20Z%22%20fill%3D%22%2323242e%22%2F%3E%3C%2Fsvg%3E",
+     "name": "sunset-at-the-pier.svg",
+     "width": 800,
+     "height": 600
+    }
+   ],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1348018246778880009",
+   "ts": "2025-03-08T19:43:15.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>okay wow. the sky was actually doing that?</p>",
+   "text": "okay wow. the sky was actually doing that?",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1348018469076992010",
+   "ts": "2025-03-08T19:44:08.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>no filter, I promise. the gulls were feral though</p>",
+   "text": "no filter, I promise. the gulls were feral though",
+   "edited": true,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1348021958737920011",
+   "ts": "2025-03-08T19:58:00.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<blockquote><p>no filter, I promise</p></blockquote><p>the gulls acting feral is the real proof</p>",
+   "text": "no filter, I promise the gulls acting feral is the real proof",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1348371331678208059",
+   "ts": "2025-03-09T19:06:17.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>rendered. elegant. the m is enormous and correct</p>",
+   "text": "rendered. elegant. the m is enormous and correct",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1348371830800384060",
+   "ts": "2025-03-09T19:08:16.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>enormous and correct, the review quote</p>",
+   "text": "enormous and correct, the review quote",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1348778699259904061",
+   "ts": "2025-03-10T22:05:01.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>past alice is a liar, present alice is hopeful</p>",
+   "text": "past alice is a liar, present alice is hopeful",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "😂",
+     "count": 1
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1348779731058688062",
+   "ts": "2025-03-10T22:09:07.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the tabs are multiplying again. I count eleven <code>localhost</code></p>",
+   "text": "the tabs are multiplying again. I count eleven  localhost",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1348781110984704063",
+   "ts": "2025-03-10T22:14:36.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>eleven parallel selves, all mid-thought</p>",
+   "text": "eleven parallel selves, all mid-thought",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1348782180532224064",
+   "ts": "2025-03-10T22:18:51.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>found a great line: \"a margin is where the reader breathes\"</p>",
+   "text": "found a great line: \"a margin is where the reader breathes\"",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1349200763682816065",
+   "ts": "2025-03-12T02:02:09.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>it fixes more than you'd think</p>",
+   "text": "it fixes more than you'd think",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1349201011146752066",
+   "ts": "2025-03-12T02:03:08.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>found the photo of the penguin mug origin story btw</p>",
+   "text": "found the photo of the penguin mug origin story btw",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1349623503388672067",
+   "ts": "2025-03-13T06:01:58.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>enormous and correct, the review quote</p>",
+   "text": "enormous and correct, the review quote",
+   "edited": false,
+   "reply": {
+    "author": "Alice",
+    "text": "a margin is where the reader breathes"
+   },
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1349624895897600068",
+   "ts": "2025-03-13T06:07:30.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>printing a test copy tonight. it's real, alice</p>",
+   "text": "printing a test copy tonight. it's real, alice",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🎉",
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1349625365659648069",
+   "ts": "2025-03-13T06:09:22.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>a book of us being idiots, beautifully typeset</p>",
+   "text": "a book of us being idiots, beautifully typeset",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1349626145800192070",
+   "ts": "2025-03-13T06:12:28.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>idiots with <em>mirrored margins</em></p>",
+   "text": "idiots with  mirrored margins",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1349626380681216071",
+   "ts": "2025-03-13T06:13:24.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>ok one more episode and then I sleep</p>",
+   "text": "ok one more episode and then I sleep",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1349940773126144072",
+   "ts": "2025-03-14T03:02:41.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the tabs are multiplying again. I count eleven <code>localhost</code></p>",
+   "text": "the tabs are multiplying again. I count eleven  localhost",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1349941742010368073",
+   "ts": "2025-03-14T03:06:32.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>eleven parallel selves, all mid-thought</p>",
+   "text": "eleven parallel selves, all mid-thought",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1350408895201280074",
+   "ts": "2025-03-15T10:02:50.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>found the photo of the penguin mug origin story btw</p>",
+   "text": "found the photo of the penguin mug origin story btw",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1350409570484224075",
+   "ts": "2025-03-15T10:05:31.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the fairground. the rigged ring toss. the <em>carnival</em></p>",
+   "text": "the fairground. the rigged ring toss. the  carnival",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1350410673586176076",
+   "ts": "2025-03-15T10:09:54.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>you won it fair and square by cheating gracefully</p>",
+   "text": "you won it fair and square by cheating gracefully",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🎩",
+     "count": 3
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1350424036638720012",
+   "ts": "2025-03-15T11:03:00.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>started the <code>bookworm</code> prototype btw</p>\n<pre><code>const book = new Book(export);\nawait book.render({ theme: 'classic' });</code></pre>",
+   "text": "started the bookworm prototype btw const book = new Book(export); await book.render({ theme: 'classic' });",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1350424162467840013",
+   "ts": "2025-03-15T11:03:30.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>oh it's <em>actually</em> happening</p>",
+   "text": "oh it's actually happening",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1350424456069120014",
+   "ts": "2025-03-15T11:04:40.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>reactor to the idea: <img class=\"emoji\" src=\"data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2230%22%20fill%3D%22%23f2cc8f%22%2F%3E%3Ccircle%20cx%3D%2222%22%20cy%3D%2226%22%20r%3D%224%22%20fill%3D%22%233d405b%22%2F%3E%3Ccircle%20cx%3D%2242%22%20cy%3D%2226%22%20r%3D%224%22%20fill%3D%22%233d405b%22%2F%3E%3Cellipse%20cx%3D%2232%22%20cy%3D%2244%22%20rx%3D%228%22%20ry%3D%2210%22%20fill%3D%22%233d405b%22%2F%3E%3C%2Fsvg%3E\" alt=\":panic:\"> <img class=\"emoji\" src=\"https://cdn.discordapp.com/emojis/0.png\" alt=\":pogchamp:\"></p>",
+   "text": "reactor to the idea:",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": null,
+     "emojiUrl": "https://cdn.discordapp.com/emojis/0.png",
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1350424804196352015",
+   "ts": "2025-03-15T11:06:03.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>that emoji is load bearing. also <span class=\"mention\">@Ben</span> your code block rendered perfectly in my head, very cinematic</p>",
+   "text": "that emoji is load bearing. also @Ben your code block rendered perfectly in my head, very cinematic",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1350756770775040077",
+   "ts": "2025-03-16T09:05:10.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>printing a test copy tonight. it's real, alice</p>",
+   "text": "printing a test copy tonight. it's real, alice",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🎉",
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1350757567692800078",
+   "ts": "2025-03-16T09:08:20.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>a book of us being idiots, beautifully typeset</p>",
+   "text": "a book of us being idiots, beautifully typeset",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1351179443372032079",
+   "ts": "2025-03-17T13:04:43.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>eleven parallel selves, all mid-thought</p>",
+   "text": "eleven parallel selves, all mid-thought",
+   "edited": false,
+   "reply": {
+    "author": "Alice",
+    "text": "a margin is where the reader breathes"
+   },
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1351180391284736080",
+   "ts": "2025-03-17T13:08:29.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>found a great line: \"a margin is where the reader breathes\"</p>",
+   "text": "found a great line: \"a margin is where the reader breathes\"",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1351571724042240081",
+   "ts": "2025-03-18T15:03:30.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the fairground. the rigged ring toss. the <em>carnival</em></p>",
+   "text": "the fairground. the rigged ring toss. the  carnival",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1351572495794176082",
+   "ts": "2025-03-18T15:06:34.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>you won it fair and square by cheating gracefully</p>",
+   "text": "you won it fair and square by cheating gracefully",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🎩",
+     "count": 3
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1351572982333440083",
+   "ts": "2025-03-18T15:08:30.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>history will absolve me</p>",
+   "text": "history will absolve me",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1351573124939776084",
+   "ts": "2025-03-18T15:09:04.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>did the drop cap render or did it eat the first word</p>",
+   "text": "did the drop cap render or did it eat the first word",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1351918706229248085",
+   "ts": "2025-03-19T14:02:17.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>a book of us being idiots, beautifully typeset</p>",
+   "text": "a book of us being idiots, beautifully typeset",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1351920367173632086",
+   "ts": "2025-03-19T14:08:53.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>idiots with <em>mirrored margins</em></p>",
+   "text": "idiots with  mirrored margins",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1351921772265472087",
+   "ts": "2025-03-19T14:14:28.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>ok one more episode and then I sleep</p>",
+   "text": "ok one more episode and then I sleep",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1351922825035776088",
+   "ts": "2025-03-19T14:18:39.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>that's what you said yesterday. and the day before</p>",
+   "text": "that's what you said yesterday. and the day before",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1352296654962688089",
+   "ts": "2025-03-20T15:04:07.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>found a great line: \"a margin is where the reader breathes\"</p>",
+   "text": "found a great line: \"a margin is where the reader breathes\"",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1352297703538688090",
+   "ts": "2025-03-20T15:08:17.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>put that in the colophon, I'm serious</p>",
+   "text": "put that in the colophon, I'm serious",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "📝",
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1352298022305792091",
+   "ts": "2025-03-20T15:09:33.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>brb, kettle</p>",
+   "text": "brb, kettle",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1352298294935552092",
+   "ts": "2025-03-20T15:10:38.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>the eternal english answer to every problem</p>",
+   "text": "the eternal english answer to every problem",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1352299712610304093",
+   "ts": "2025-03-20T15:16:16.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>it fixes more than you'd think</p>",
+   "text": "it fixes more than you'd think",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1352749941784576094",
+   "ts": "2025-03-21T21:05:19.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>you won it fair and square by cheating gracefully</p>",
+   "text": "you won it fair and square by cheating gracefully",
+   "edited": false,
+   "reply": {
+    "author": "Alice",
+    "text": "a margin is where the reader breathes"
+   },
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🎩",
+     "count": 3
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1352751065858048095",
+   "ts": "2025-03-21T21:09:47.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>history will absolve me</p>",
+   "text": "history will absolve me",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1352752538058752096",
+   "ts": "2025-03-21T21:15:38.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>did the drop cap render or did it eat the first word</p>",
+   "text": "did the drop cap render or did it eat the first word",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1353111826333696097",
+   "ts": "2025-03-22T21:03:19.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>idiots with <em>mirrored margins</em></p>",
+   "text": "idiots with  mirrored margins",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1353112057020416098",
+   "ts": "2025-03-22T21:04:14.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>ok one more episode and then I sleep</p>",
+   "text": "ok one more episode and then I sleep",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1353550101741568099",
+   "ts": "2025-03-24T02:04:52.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>put that in the colophon, I'm serious</p>",
+   "text": "put that in the colophon, I'm serious",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "📝",
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1353551016099840100",
+   "ts": "2025-03-24T02:08:30.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>brb, kettle</p>",
+   "text": "brb, kettle",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1353551246786560101",
+   "ts": "2025-03-24T02:09:25.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>the eternal english answer to every problem</p>",
+   "text": "the eternal english answer to every problem",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1353866788470784102",
+   "ts": "2025-03-24T23:03:16.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>history will absolve me</p>",
+   "text": "history will absolve me",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1353868390694912103",
+   "ts": "2025-03-24T23:09:38.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>did the drop cap render or did it eat the first word</p>",
+   "text": "did the drop cap render or did it eat the first word",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1353868558467072104",
+   "ts": "2025-03-24T23:10:18.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>rendered. elegant. the m is enormous and correct</p>",
+   "text": "rendered. elegant. the m is enormous and correct",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1353870156496896105",
+   "ts": "2025-03-24T23:16:39.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>enormous and correct, the review quote</p>",
+   "text": "enormous and correct, the review quote",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1354335141232640106",
+   "ts": "2025-03-26T06:04:20.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>ok one more episode and then I sleep</p>",
+   "text": "ok one more episode and then I sleep",
+   "edited": false,
+   "reply": {
+    "author": "Alice",
+    "text": "a margin is where the reader breathes"
+   },
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1354336080756736107",
+   "ts": "2025-03-26T06:08:04.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>that's what you said yesterday. and the day before</p>",
+   "text": "that's what you said yesterday. and the day before",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1354336919617536108",
+   "ts": "2025-03-26T06:11:24.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>past alice is a liar, present alice is hopeful</p>",
+   "text": "past alice is a liar, present alice is hopeful",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "😂",
+     "count": 1
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1354337846558720109",
+   "ts": "2025-03-26T06:15:05.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the tabs are multiplying again. I count eleven <code>localhost</code></p>",
+   "text": "the tabs are multiplying again. I count eleven  localhost",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1354666508025856110",
+   "ts": "2025-03-27T04:01:04.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>brb, kettle</p>",
+   "text": "brb, kettle",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1354667149754368111",
+   "ts": "2025-03-27T04:03:37.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>the eternal english answer to every problem</p>",
+   "text": "the eternal english answer to every problem",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1355119706767360112",
+   "ts": "2025-03-28T10:01:55.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>did the drop cap render or did it eat the first word</p>",
+   "text": "did the drop cap render or did it eat the first word",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1355120923115520113",
+   "ts": "2025-03-28T10:06:45.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>rendered. elegant. the m is enormous and correct</p>",
+   "text": "rendered. elegant. the m is enormous and correct",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1355121493540864114",
+   "ts": "2025-03-28T10:09:01.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>enormous and correct, the review quote</p>",
+   "text": "enormous and correct, the review quote",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1355122718277632115",
+   "ts": "2025-03-28T10:13:53.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>printing a test copy tonight. it's real, alice</p>",
+   "text": "printing a test copy tonight. it's real, alice",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🎉",
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1355512033574912116",
+   "ts": "2025-03-29T12:00:53.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>that's what you said yesterday. and the day before</p>",
+   "text": "that's what you said yesterday. and the day before",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1355513006653440117",
+   "ts": "2025-03-29T12:04:45.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>past alice is a liar, present alice is hopeful</p>",
+   "text": "past alice is a liar, present alice is hopeful",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "😂",
+     "count": 1
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1355514323664896118",
+   "ts": "2025-03-29T12:09:59.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the tabs are multiplying again. I count eleven <code>localhost</code></p>",
+   "text": "the tabs are multiplying again. I count eleven  localhost",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1355875511959552119",
+   "ts": "2025-03-30T12:05:13.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>the eternal english answer to every problem</p>",
+   "text": "the eternal english answer to every problem",
+   "edited": false,
+   "reply": {
+    "author": "Alice",
+    "text": "a margin is where the reader breathes"
+   },
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1355877097406464120",
+   "ts": "2025-03-30T12:11:31.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>it fixes more than you'd think</p>",
+   "text": "it fixes more than you'd think",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1356237090324480121",
+   "ts": "2025-03-31T12:02:00.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>rendered. elegant. the m is enormous and correct</p>",
+   "text": "rendered. elegant. the m is enormous and correct",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1356237492977664122",
+   "ts": "2025-03-31T12:03:36.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>enormous and correct, the review quote</p>",
+   "text": "enormous and correct, the review quote",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1356645594562560123",
+   "ts": "2025-04-01T15:05:15.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>past alice is a liar, present alice is hopeful</p>",
+   "text": "past alice is a liar, present alice is hopeful",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "😂",
+     "count": 1
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1356646127239168124",
+   "ts": "2025-04-01T15:07:22.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the tabs are multiplying again. I count eleven <code>localhost</code></p>",
+   "text": "the tabs are multiplying again. I count eleven  localhost",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1356996594892800016",
+   "ts": "2025-04-02T14:20:00.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>reminder that the reading-list spreadsheet now has a <strong>graphs tab</strong></p>",
+   "text": "reminder that the reading-list spreadsheet now has a graphs tab",
+   "edited": false,
+   "reply": null,
+   "attachments": [
+    {
+     "type": "image",
+     "url": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22600%22%20viewBox%3D%220%200%20800%20600%22%3E%3Crect%20width%3D%22800%22%20height%3D%22600%22%20fill%3D%22%23fdfaf3%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2290%22%20font-family%3D%22Georgia%22%20font-size%3D%2240%22%20fill%3D%22%232e2a23%22%3EReading%20list%2C%20done%3C%2Ftext%3E%3Cg%20fill%3D%22%237d2f2a%22%3E%3Crect%20x%3D%2280%22%20y%3D%22180%22%20width%3D%22120%22%20height%3D%22300%22%2F%3E%3Crect%20x%3D%22260%22%20y%3D%22240%22%20width%3D%22120%22%20height%3D%22240%22%20fill%3D%22%23a2625d%22%2F%3E%3Crect%20x%3D%22440%22%20y%3D%22140%22%20width%3D%22120%22%20height%3D%22340%22%20fill%3D%22%2341547c%22%2F%3E%3Crect%20x%3D%22620%22%20y%3D%22300%22%20width%3D%22120%22%20height%3D%22180%22%20fill%3D%22%238d8271%22%2F%3E%3C%2Fg%3E%3Cline%20x1%3D%2260%22%20y1%3D%22480%22%20x2%3D%22760%22%20y2%3D%22480%22%20stroke%3D%22%232e2a23%22%20stroke-width%3D%223%22%2F%3E%3C%2Fsvg%3E",
+     "name": "reading-stats.svg",
+     "width": 800,
+     "height": 600
+    }
+   ],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1356997601525760017",
+   "ts": "2025-04-02T14:24:00.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>I have read four of those. four!</p>",
+   "text": "I have read four of those. four!",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1356998339723264018",
+   "ts": "2025-04-02T14:26:56.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>and abandoned nine. the chart forgives you</p>",
+   "text": "and abandoned nine. the chart forgives you",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "💀",
+     "count": 3
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1357007315533824125",
+   "ts": "2025-04-02T15:02:36.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>it fixes more than you'd think</p>",
+   "text": "it fixes more than you'd think",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1357007508471808126",
+   "ts": "2025-04-02T15:03:22.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>found the photo of the penguin mug origin story btw</p>",
+   "text": "found the photo of the penguin mug origin story btw",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1357461130838016127",
+   "ts": "2025-04-03T21:05:54.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>enormous and correct, the review quote</p>",
+   "text": "enormous and correct, the review quote",
+   "edited": false,
+   "reply": {
+    "author": "Alice",
+    "text": "a margin is where the reader breathes"
+   },
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1357461365719040128",
+   "ts": "2025-04-03T21:06:50.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>printing a test copy tonight. it's real, alice</p>",
+   "text": "printing a test copy tonight. it's real, alice",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🎉",
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1357853566697472129",
+   "ts": "2025-04-04T23:05:18.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the tabs are multiplying again. I count eleven <code>localhost</code></p>",
+   "text": "the tabs are multiplying again. I count eleven  localhost",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1357854187454464130",
+   "ts": "2025-04-04T23:07:46.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>eleven parallel selves, all mid-thought</p>",
+   "text": "eleven parallel selves, all mid-thought",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1358215409303552131",
+   "ts": "2025-04-05T23:03:08.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>found the photo of the penguin mug origin story btw</p>",
+   "text": "found the photo of the penguin mug origin story btw",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1358216608874496132",
+   "ts": "2025-04-05T23:07:54.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the fairground. the rigged ring toss. the <em>carnival</em></p>",
+   "text": "the fairground. the rigged ring toss. the  carnival",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1358217854582784133",
+   "ts": "2025-04-05T23:12:51.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>you won it fair and square by cheating gracefully</p>",
+   "text": "you won it fair and square by cheating gracefully",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🎩",
+     "count": 3
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1358219020599296134",
+   "ts": "2025-04-05T23:17:29.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>history will absolve me</p>",
+   "text": "history will absolve me",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1358608272982016135",
+   "ts": "2025-04-07T01:04:14.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>printing a test copy tonight. it's real, alice</p>",
+   "text": "printing a test copy tonight. it's real, alice",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🎉",
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1358609627742208136",
+   "ts": "2025-04-07T01:09:37.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>a book of us being idiots, beautifully typeset</p>",
+   "text": "a book of us being idiots, beautifully typeset",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1358611175440384137",
+   "ts": "2025-04-07T01:15:46.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>idiots with <em>mirrored margins</em></p>",
+   "text": "idiots with  mirrored margins",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1359000033558528138",
+   "ts": "2025-04-08T03:00:57.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>eleven parallel selves, all mid-thought</p>",
+   "text": "eleven parallel selves, all mid-thought",
+   "edited": false,
+   "reply": {
+    "author": "Alice",
+    "text": "a margin is where the reader breathes"
+   },
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1359001543507968139",
+   "ts": "2025-04-08T03:06:57.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>found a great line: \"a margin is where the reader breathes\"</p>",
+   "text": "found a great line: \"a margin is where the reader breathes\"",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1359408999170048140",
+   "ts": "2025-04-09T06:06:02.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the fairground. the rigged ring toss. the <em>carnival</em></p>",
+   "text": "the fairground. the rigged ring toss. the  carnival",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1359410404261888141",
+   "ts": "2025-04-09T06:11:37.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>you won it fair and square by cheating gracefully</p>",
+   "text": "you won it fair and square by cheating gracefully",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🎩",
+     "count": 3
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1359411826130944142",
+   "ts": "2025-04-09T06:17:16.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>history will absolve me</p>",
+   "text": "history will absolve me",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1359413298331648143",
+   "ts": "2025-04-09T06:23:07.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>did the drop cap render or did it eat the first word</p>",
+   "text": "did the drop cap render or did it eat the first word",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1359755515789312144",
+   "ts": "2025-04-10T05:02:58.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>a book of us being idiots, beautifully typeset</p>",
+   "text": "a book of us being idiots, beautifully typeset",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1359755696144384145",
+   "ts": "2025-04-10T05:03:41.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>idiots with <em>mirrored margins</em></p>",
+   "text": "idiots with  mirrored margins",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1359756555976704146",
+   "ts": "2025-04-10T05:07:06.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>ok one more episode and then I sleep</p>",
+   "text": "ok one more episode and then I sleep",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1360209188487168147",
+   "ts": "2025-04-11T11:05:42.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>found a great line: \"a margin is where the reader breathes\"</p>",
+   "text": "found a great line: \"a margin is where the reader breathes\"",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1360210362892288148",
+   "ts": "2025-04-11T11:10:22.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>put that in the colophon, I'm serious</p>",
+   "text": "put that in the colophon, I'm serious",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "📝",
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1360211520520192149",
+   "ts": "2025-04-11T11:14:58.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>brb, kettle</p>",
+   "text": "brb, kettle",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1360211679903744150",
+   "ts": "2025-04-11T11:15:36.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>the eternal english answer to every problem</p>",
+   "text": "the eternal english answer to every problem",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1360600944869376151",
+   "ts": "2025-04-12T13:02:24.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>you won it fair and square by cheating gracefully</p>",
+   "text": "you won it fair and square by cheating gracefully",
+   "edited": false,
+   "reply": {
+    "author": "Alice",
+    "text": "a margin is where the reader breathes"
+   },
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🎩",
+     "count": 3
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1360601322356736152",
+   "ts": "2025-04-12T13:03:54.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>history will absolve me</p>",
+   "text": "history will absolve me",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1360601708232704153",
+   "ts": "2025-04-12T13:05:26.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>did the drop cap render or did it eat the first word</p>",
+   "text": "did the drop cap render or did it eat the first word",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1360601859227648154",
+   "ts": "2025-04-12T13:06:02.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>rendered. elegant. the m is enormous and correct</p>",
+   "text": "rendered. elegant. the m is enormous and correct",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1360947872530432155",
+   "ts": "2025-04-13T12:00:58.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>idiots with <em>mirrored margins</em></p>",
+   "text": "idiots with  mirrored margins",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1360948250017792156",
+   "ts": "2025-04-13T12:02:28.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>ok one more episode and then I sleep</p>",
+   "text": "ok one more episode and then I sleep",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1360949441200128157",
+   "ts": "2025-04-13T12:07:12.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>that's what you said yesterday. and the day before</p>",
+   "text": "that's what you said yesterday. and the day before",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1360949768355840158",
+   "ts": "2025-04-13T12:08:30.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>past alice is a liar, present alice is hopeful</p>",
+   "text": "past alice is a liar, present alice is hopeful",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "😂",
+     "count": 1
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1361260943769600019",
+   "ts": "2025-04-14T08:45:00.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>thought of you: <a href=\"https://example.com/atlas-of-quiet-places\">An Atlas of Quiet Places</a> — the review alone is worth it</p>",
+   "text": "thought of you: An Atlas of Quiet Places — the review alone is worth it",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [
+    {
+     "provider": "Longreads",
+     "author": "M. Okafor",
+     "title": "An Atlas of Quiet Places",
+     "description": "On the small, stubborn pleasure of keeping a paper map of everywhere you have been alone.",
+     "url": "https://example.com/atlas-of-quiet-places",
+     "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22600%22%20viewBox%3D%220%200%20800%20600%22%3E%3Crect%20width%3D%22800%22%20height%3D%22600%22%20fill%3D%22%23fdfaf3%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2290%22%20font-family%3D%22Georgia%22%20font-size%3D%2240%22%20fill%3D%22%232e2a23%22%3EReading%20list%2C%20done%3C%2Ftext%3E%3Cg%20fill%3D%22%237d2f2a%22%3E%3Crect%20x%3D%2280%22%20y%3D%22180%22%20width%3D%22120%22%20height%3D%22300%22%2F%3E%3Crect%20x%3D%22260%22%20y%3D%22240%22%20width%3D%22120%22%20height%3D%22240%22%20fill%3D%22%23a2625d%22%2F%3E%3Crect%20x%3D%22440%22%20y%3D%22140%22%20width%3D%22120%22%20height%3D%22340%22%20fill%3D%22%2341547c%22%2F%3E%3Crect%20x%3D%22620%22%20y%3D%22300%22%20width%3D%22120%22%20height%3D%22180%22%20fill%3D%22%238d8271%22%2F%3E%3C%2Fg%3E%3Cline%20x1%3D%2260%22%20y1%3D%22480%22%20x2%3D%22760%22%20y2%3D%22480%22%20stroke%3D%22%232e2a23%22%20stroke-width%3D%223%22%2F%3E%3C%2Fsvg%3E",
+     "color": 4154767
+    }
+   ],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1361261648412672020",
+   "ts": "2025-04-14T08:47:48.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>saving this for the train. also we should <em>go</em> somewhere quiet, I miss the pier</p>",
+   "text": "saving this for the train. also we should go somewhere quiet, I miss the pier",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1361262063648768021",
+   "ts": "2025-04-14T08:49:27.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>booked a cabin for the long weekend. there is allegedly no wifi</p>",
+   "text": "booked a cabin for the long weekend. there is allegedly no wifi",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🎉",
+     "count": 2
+    },
+    {
+     "emoji": "🌲",
+     "count": 4
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1361340568436736159",
+   "ts": "2025-04-14T14:01:24.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>put that in the colophon, I'm serious</p>",
+   "text": "put that in the colophon, I'm serious",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "📝",
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1361342007083008160",
+   "ts": "2025-04-14T14:07:07.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>brb, kettle</p>",
+   "text": "brb, kettle",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1361778818678784161",
+   "ts": "2025-04-15T19:02:51.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>history will absolve me</p>",
+   "text": "history will absolve me",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1361780009861120162",
+   "ts": "2025-04-15T19:07:35.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>did the drop cap render or did it eat the first word</p>",
+   "text": "did the drop cap render or did it eat the first word",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1361780727087104163",
+   "ts": "2025-04-15T19:10:26.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>rendered. elegant. the m is enormous and correct</p>",
+   "text": "rendered. elegant. the m is enormous and correct",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1362156750635008164",
+   "ts": "2025-04-16T20:04:37.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>ok one more episode and then I sleep</p>",
+   "text": "ok one more episode and then I sleep",
+   "edited": false,
+   "reply": {
+    "author": "Alice",
+    "text": "a margin is where the reader breathes"
+   },
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1362157509804032165",
+   "ts": "2025-04-16T20:07:38.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>that's what you said yesterday. and the day before</p>",
+   "text": "that's what you said yesterday. and the day before",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1362157639827456166",
+   "ts": "2025-04-16T20:08:09.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>past alice is a liar, present alice is hopeful</p>",
+   "text": "past alice is a liar, present alice is hopeful",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "😂",
+     "count": 1
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1362157832765440167",
+   "ts": "2025-04-16T20:08:55.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the tabs are multiplying again. I count eleven <code>localhost</code></p>",
+   "text": "the tabs are multiplying again. I count eleven  localhost",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1362158013120512168",
+   "ts": "2025-04-16T20:09:38.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>eleven parallel selves, all mid-thought</p>",
+   "text": "eleven parallel selves, all mid-thought",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1362533478825984169",
+   "ts": "2025-04-17T21:01:36.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>brb, kettle</p>",
+   "text": "brb, kettle",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1362534762283008170",
+   "ts": "2025-04-17T21:06:42.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>the eternal english answer to every problem</p>",
+   "text": "the eternal english answer to every problem",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1362535957659648171",
+   "ts": "2025-04-17T21:11:27.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>it fixes more than you'd think</p>",
+   "text": "it fixes more than you'd think",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1362536687468544172",
+   "ts": "2025-04-17T21:14:21.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>found the photo of the penguin mug origin story btw</p>",
+   "text": "found the photo of the penguin mug origin story btw",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1362896239984640173",
+   "ts": "2025-04-18T21:03:05.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>did the drop cap render or did it eat the first word</p>",
+   "text": "did the drop cap render or did it eat the first word",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1362897485692928174",
+   "ts": "2025-04-18T21:08:02.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>rendered. elegant. the m is enormous and correct</p>",
+   "text": "rendered. elegant. the m is enormous and correct",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1362897863180288175",
+   "ts": "2025-04-18T21:09:32.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>enormous and correct, the review quote</p>",
+   "text": "enormous and correct, the review quote",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1363334158876672176",
+   "ts": "2025-04-20T02:03:13.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>that's what you said yesterday. and the day before</p>",
+   "text": "that's what you said yesterday. and the day before",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1363335652048896177",
+   "ts": "2025-04-20T02:09:09.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>past alice is a liar, present alice is hopeful</p>",
+   "text": "past alice is a liar, present alice is hopeful",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "😂",
+     "count": 1
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1363335970816000178",
+   "ts": "2025-04-20T02:10:25.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the tabs are multiplying again. I count eleven <code>localhost</code></p>",
+   "text": "the tabs are multiplying again. I count eleven  localhost",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1363337182969856179",
+   "ts": "2025-04-20T02:15:14.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>eleven parallel selves, all mid-thought</p>",
+   "text": "eleven parallel selves, all mid-thought",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1363337468182528180",
+   "ts": "2025-04-20T02:16:22.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>found a great line: \"a margin is where the reader breathes\"</p>",
+   "text": "found a great line: \"a margin is where the reader breathes\"",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1363757414481920181",
+   "ts": "2025-04-21T06:05:05.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>the eternal english answer to every problem</p>",
+   "text": "the eternal english answer to every problem",
+   "edited": false,
+   "reply": {
+    "author": "Alice",
+    "text": "a margin is where the reader breathes"
+   },
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1363758010073088182",
+   "ts": "2025-04-21T06:07:27.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>it fixes more than you'd think</p>",
+   "text": "it fixes more than you'd think",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1363759037677568183",
+   "ts": "2025-04-21T06:11:32.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>found the photo of the penguin mug origin story btw</p>",
+   "text": "found the photo of the penguin mug origin story btw",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1363760258220032184",
+   "ts": "2025-04-21T06:16:23.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the fairground. the rigged ring toss. the <em>carnival</em></p>",
+   "text": "the fairground. the rigged ring toss. the  carnival",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1364148948566016185",
+   "ts": "2025-04-22T08:00:54.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>rendered. elegant. the m is enormous and correct</p>",
+   "text": "rendered. elegant. the m is enormous and correct",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1364149900673024186",
+   "ts": "2025-04-22T08:04:41.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>enormous and correct, the review quote</p>",
+   "text": "enormous and correct, the review quote",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1364345518817280022",
+   "ts": "2025-04-22T21:02:00.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>poll: is a hot dog a sandwich. our friendship depends on this</p>",
+   "text": "poll: is a hot dog a sandwich. our friendship depends on this",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1364345837584384023",
+   "ts": "2025-04-22T21:03:16.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>it is a <strong>taco</strong>, alice. we've been over this. nattō style: the starch wraps the filling completely</p>",
+   "text": "it is a taco , alice. we've been over this. nattō style: the starch wraps the filling completely",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1364346017939456024",
+   "ts": "2025-04-22T21:03:59.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>I am revoking your weekend cabin</p>",
+   "text": "I am revoking your weekend cabin",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1364346932297728025",
+   "ts": "2025-04-22T21:07:37.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>you can't, I have the keys</p>",
+   "text": "you can't, I have the keys",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1364347800518656026",
+   "ts": "2025-04-22T21:11:04.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>spoiler: <span class=\"spoiler\">I hid them in the penguin mug</span></p>",
+   "text": "spoiler: I hid them in the penguin mug",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1364481338769408187",
+   "ts": "2025-04-23T06:01:42.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>past alice is a liar, present alice is hopeful</p>",
+   "text": "past alice is a liar, present alice is hopeful",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "😂",
+     "count": 1
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1364482429288448188",
+   "ts": "2025-04-23T06:06:02.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the tabs are multiplying again. I count eleven <code>localhost</code></p>",
+   "text": "the tabs are multiplying again. I count eleven  localhost",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1364482827747328189",
+   "ts": "2025-04-23T06:07:37.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>eleven parallel selves, all mid-thought</p>",
+   "text": "eleven parallel selves, all mid-thought",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1364874282139648190",
+   "ts": "2025-04-24T08:03:07.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>it fixes more than you'd think</p>",
+   "text": "it fixes more than you'd think",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1364874777067520191",
+   "ts": "2025-04-24T08:05:05.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>found the photo of the penguin mug origin story btw</p>",
+   "text": "found the photo of the penguin mug origin story btw",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1364875624316928192",
+   "ts": "2025-04-24T08:08:27.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the fairground. the rigged ring toss. the <em>carnival</em></p>",
+   "text": "the fairground. the rigged ring toss. the  carnival",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1364876458983424193",
+   "ts": "2025-04-24T08:11:46.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>you won it fair and square by cheating gracefully</p>",
+   "text": "you won it fair and square by cheating gracefully",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🎩",
+     "count": 3
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1365252247650304194",
+   "ts": "2025-04-25T09:05:01.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>enormous and correct, the review quote</p>",
+   "text": "enormous and correct, the review quote",
+   "edited": false,
+   "reply": {
+    "author": "Alice",
+    "text": "a margin is where the reader breathes"
+   },
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1365253648547840195",
+   "ts": "2025-04-25T09:10:35.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>printing a test copy tonight. it's real, alice</p>",
+   "text": "printing a test copy tonight. it's real, alice",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🎉",
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1365253849874432196",
+   "ts": "2025-04-25T09:11:23.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>a book of us being idiots, beautifully typeset</p>",
+   "text": "a book of us being idiots, beautifully typeset",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1365255313686528197",
+   "ts": "2025-04-25T09:17:12.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>idiots with <em>mirrored margins</em></p>",
+   "text": "idiots with  mirrored margins",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1365720218730496198",
+   "ts": "2025-04-26T16:04:34.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the tabs are multiplying again. I count eleven <code>localhost</code></p>",
+   "text": "the tabs are multiplying again. I count eleven  localhost",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1365720956928000199",
+   "ts": "2025-04-26T16:07:30.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>eleven parallel selves, all mid-thought</p>",
+   "text": "eleven parallel selves, all mid-thought",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1365721233752064200",
+   "ts": "2025-04-26T16:08:36.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>found a great line: \"a margin is where the reader breathes\"</p>",
+   "text": "found a great line: \"a margin is where the reader breathes\"",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1365722764673024201",
+   "ts": "2025-04-26T16:14:41.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>put that in the colophon, I'm serious</p>",
+   "text": "put that in the colophon, I'm serious",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "📝",
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1366081977450496202",
+   "ts": "2025-04-27T16:02:04.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>found the photo of the penguin mug origin story btw</p>",
+   "text": "found the photo of the penguin mug origin story btw",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1366083130884096203",
+   "ts": "2025-04-27T16:06:39.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the fairground. the rigged ring toss. the <em>carnival</em></p>",
+   "text": "the fairground. the rigged ring toss. the  carnival",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1366083927801856204",
+   "ts": "2025-04-27T16:09:49.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>you won it fair and square by cheating gracefully</p>",
+   "text": "you won it fair and square by cheating gracefully",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🎩",
+     "count": 3
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1366085521637376205",
+   "ts": "2025-04-27T16:16:09.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>history will absolve me</p>",
+   "text": "history will absolve me",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1366086926729216206",
+   "ts": "2025-04-27T16:21:44.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>did the drop cap render or did it eat the first word</p>",
+   "text": "did the drop cap render or did it eat the first word",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1366475164090368207",
+   "ts": "2025-04-28T18:04:27.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>printing a test copy tonight. it's real, alice</p>",
+   "text": "printing a test copy tonight. it's real, alice",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🎉",
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1366476795674624208",
+   "ts": "2025-04-28T18:10:56.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>a book of us being idiots, beautifully typeset</p>",
+   "text": "a book of us being idiots, beautifully typeset",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1366822439878656209",
+   "ts": "2025-04-29T17:04:24.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>eleven parallel selves, all mid-thought</p>",
+   "text": "eleven parallel selves, all mid-thought",
+   "edited": false,
+   "reply": {
+    "author": "Alice",
+    "text": "a margin is where the reader breathes"
+   },
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1366822708314112210",
+   "ts": "2025-04-29T17:05:28.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>found a great line: \"a margin is where the reader breathes\"</p>",
+   "text": "found a great line: \"a margin is where the reader breathes\"",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1367290570342400211",
+   "ts": "2025-05-01T00:04:35.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the fairground. the rigged ring toss. the <em>carnival</em></p>",
+   "text": "the fairground. the rigged ring toss. the  carnival",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1367291522449408212",
+   "ts": "2025-05-01T00:08:22.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>you won it fair and square by cheating gracefully</p>",
+   "text": "you won it fair and square by cheating gracefully",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🎩",
+     "count": 3
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1367292696854528213",
+   "ts": "2025-05-01T00:13:02.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>history will absolve me</p>",
+   "text": "history will absolve me",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1367652224204800214",
+   "ts": "2025-05-02T00:01:40.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>a book of us being idiots, beautifully typeset</p>",
+   "text": "a book of us being idiots, beautifully typeset",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1367653327306752215",
+   "ts": "2025-05-02T00:06:03.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>idiots with <em>mirrored margins</em></p>",
+   "text": "idiots with  mirrored margins",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1368045679280128216",
+   "ts": "2025-05-03T02:05:07.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>found a great line: \"a margin is where the reader breathes\"</p>",
+   "text": "found a great line: \"a margin is where the reader breathes\"",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1368046933377024217",
+   "ts": "2025-05-03T02:10:06.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>put that in the colophon, I'm serious</p>",
+   "text": "put that in the colophon, I'm serious",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "📝",
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1368048476880896218",
+   "ts": "2025-05-03T02:16:14.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>brb, kettle</p>",
+   "text": "brb, kettle",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1368050091687936219",
+   "ts": "2025-05-03T02:22:39.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>the eternal english answer to every problem</p>",
+   "text": "the eternal english answer to every problem",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1368350156390400027",
+   "ts": "2025-05-03T22:15:00.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>okay, big brain dump, feel free to skip:</p><p>The thing about keeping a record of a conversation is that it stops being a transcript the moment you decide how to lay it out. Choose the typeface and you have chosen the tone. Choose the margins and you have chosen how much air the words get to breathe. A chat log says <em>look at all of this, quickly</em>; a book says <em>here, slowly</em>.</p><p>What I want is the second one. I want the Tuesday in March where we argued about hot dogs to sit next to the evening at the pier like they are chapters of the same, small, ridiculous novel.</p><p>Anyway. I pick cream paper and a deep red for the names. You get a vote but I have already decided.</p>",
+   "text": "okay, big brain dump, feel free to skip: The thing about keeping a record of a conversation is that it stops being a transcript the moment you decide how to lay it out. Choose the typeface and you have chosen the tone. Choose the margins and you have chosen how much air the words get to breathe. A chat log says look at all of this, quickly ; a book says here, slowly . What I want is the second one. I want the Tuesday in March where we argued about hot dogs to sit next to the evening at the pier like they are chapters of the same, small, ridiculous novel. Anyway. I pick cream paper and a deep red for the names. You get a vote but I have already decided.",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1368351016222720028",
+   "ts": "2025-05-03T22:18:25.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the fact that you said \"you get a vote but I have already decided\" is the most alice thing ever printed</p>",
+   "text": "the fact that you said \"you get a vote but I have already decided\" is the most alice thing ever printed",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "😂",
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1368353931264000029",
+   "ts": "2025-05-03T22:30:00.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>here's the itinerary draft</p>",
+   "text": "here's the itinerary draft",
+   "edited": false,
+   "reply": null,
+   "attachments": [
+    {
+     "type": "file",
+     "url": "https://cdn.discordapp.com/attachments/42/itinerary.pdf",
+     "name": "cabin-itinerary.pdf",
+     "size": 1245184
+    }
+   ],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1368392082653184220",
+   "ts": "2025-05-04T01:01:36.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>you won it fair and square by cheating gracefully</p>",
+   "text": "you won it fair and square by cheating gracefully",
+   "edited": false,
+   "reply": {
+    "author": "Alice",
+    "text": "a margin is where the reader breathes"
+   },
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🎩",
+     "count": 3
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1368393735208960221",
+   "ts": "2025-05-04T01:08:10.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>history will absolve me</p>",
+   "text": "history will absolve me",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1368394066558976222",
+   "ts": "2025-05-04T01:09:29.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>did the drop cap render or did it eat the first word</p>",
+   "text": "did the drop cap render or did it eat the first word",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1368395521982464223",
+   "ts": "2025-05-04T01:15:16.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>rendered. elegant. the m is enormous and correct</p>",
+   "text": "rendered. elegant. the m is enormous and correct",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1368396260179968224",
+   "ts": "2025-05-04T01:18:12.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>enormous and correct, the review quote</p>",
+   "text": "enormous and correct, the review quote",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1368799957745664225",
+   "ts": "2025-05-05T04:02:21.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>idiots with <em>mirrored margins</em></p>",
+   "text": "idiots with  mirrored margins",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1368800922435584226",
+   "ts": "2025-05-05T04:06:11.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>ok one more episode and then I sleep</p>",
+   "text": "ok one more episode and then I sleep",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1368890466631680030",
+   "ts": "2025-05-05T10:02:00.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>downloading. also your call rang through twice last night?</p>",
+   "text": "downloading. also your call rang through twice last night?",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1368890965753856031",
+   "ts": "2025-05-05T10:03:59.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "",
+   "text": "Alice started a call that lasted 42 minutes.",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": true
+  },
+  {
+   "id": "1368891976581120032",
+   "ts": "2025-05-05T10:08:00.000Z",
+   "author": null,
+   "html": "",
+   "text": "Alice pinned a message to this conversation.",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": true
+  },
+  {
+   "id": "1369253013880832227",
+   "ts": "2025-05-06T10:02:38.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>put that in the colophon, I'm serious</p>",
+   "text": "put that in the colophon, I'm serious",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "📝",
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1369253622054912228",
+   "ts": "2025-05-06T10:05:03.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>brb, kettle</p>",
+   "text": "brb, kettle",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1369254389612544229",
+   "ts": "2025-05-06T10:08:06.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>the eternal english answer to every problem</p>",
+   "text": "the eternal english answer to every problem",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1369585299226624230",
+   "ts": "2025-05-07T08:03:01.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>history will absolve me</p>",
+   "text": "history will absolve me",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1369585827708928231",
+   "ts": "2025-05-07T08:05:07.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>did the drop cap render or did it eat the first word</p>",
+   "text": "did the drop cap render or did it eat the first word",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1370023956316160232",
+   "ts": "2025-05-08T13:06:05.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>ok one more episode and then I sleep</p>",
+   "text": "ok one more episode and then I sleep",
+   "edited": false,
+   "reply": {
+    "author": "Alice",
+    "text": "a margin is where the reader breathes"
+   },
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1370024388329472233",
+   "ts": "2025-05-08T13:07:48.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>that's what you said yesterday. and the day before</p>",
+   "text": "that's what you said yesterday. and the day before",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1370024975532032234",
+   "ts": "2025-05-08T13:10:08.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>past alice is a liar, present alice is hopeful</p>",
+   "text": "past alice is a liar, present alice is hopeful",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "😂",
+     "count": 1
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1370025533374464235",
+   "ts": "2025-05-08T13:12:21.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the tabs are multiplying again. I count eleven <code>localhost</code></p>",
+   "text": "the tabs are multiplying again. I count eleven  localhost",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1370026045079552236",
+   "ts": "2025-05-08T13:14:23.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>eleven parallel selves, all mid-thought</p>",
+   "text": "eleven parallel selves, all mid-thought",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1370430627643392237",
+   "ts": "2025-05-09T16:02:03.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>brb, kettle</p>",
+   "text": "brb, kettle",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1370432255033344238",
+   "ts": "2025-05-09T16:08:31.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>the eternal english answer to every problem</p>",
+   "text": "the eternal english answer to every problem",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1370763768627200239",
+   "ts": "2025-05-10T14:05:50.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>did the drop cap render or did it eat the first word</p>",
+   "text": "did the drop cap render or did it eat the first word",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1370764871729152240",
+   "ts": "2025-05-10T14:10:13.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>rendered. elegant. the m is enormous and correct</p>",
+   "text": "rendered. elegant. the m is enormous and correct",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1370765563789312241",
+   "ts": "2025-05-10T14:12:58.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>enormous and correct, the review quote</p>",
+   "text": "enormous and correct, the review quote",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1371185589780480242",
+   "ts": "2025-05-11T18:02:00.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>that's what you said yesterday. and the day before</p>",
+   "text": "that's what you said yesterday. and the day before",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1371186759991296243",
+   "ts": "2025-05-11T18:06:39.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>past alice is a liar, present alice is hopeful</p>",
+   "text": "past alice is a liar, present alice is hopeful",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "😂",
+     "count": 1
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1371187087147008244",
+   "ts": "2025-05-11T18:07:57.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the tabs are multiplying again. I count eleven <code>localhost</code></p>",
+   "text": "the tabs are multiplying again. I count eleven  localhost",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1371188404158464245",
+   "ts": "2025-05-11T18:13:11.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>eleven parallel selves, all mid-thought</p>",
+   "text": "eleven parallel selves, all mid-thought",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1371189423374336246",
+   "ts": "2025-05-11T18:17:14.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>found a great line: \"a margin is where the reader breathes\"</p>",
+   "text": "found a great line: \"a margin is where the reader breathes\"",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1371532672630784247",
+   "ts": "2025-05-12T17:01:11.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>the eternal english answer to every problem</p>",
+   "text": "the eternal english answer to every problem",
+   "edited": false,
+   "reply": {
+    "author": "Alice",
+    "text": "a margin is where the reader breathes"
+   },
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1371533075283968248",
+   "ts": "2025-05-12T17:02:47.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>it fixes more than you'd think</p>",
+   "text": "it fixes more than you'd think",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1371534476181504249",
+   "ts": "2025-05-12T17:08:21.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>found the photo of the penguin mug origin story btw</p>",
+   "text": "found the photo of the penguin mug origin story btw",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1371535965159424250",
+   "ts": "2025-05-12T17:14:16.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the fairground. the rigged ring toss. the <em>carnival</em></p>",
+   "text": "the fairground. the rigged ring toss. the  carnival",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1371536237789184251",
+   "ts": "2025-05-12T17:15:21.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>you won it fair and square by cheating gracefully</p>",
+   "text": "you won it fair and square by cheating gracefully",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "🎩",
+     "count": 3
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1380895319654400033",
+   "ts": "2025-06-07T13:05:00.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>what was that café called again? the one with the terrible chairs</p>",
+   "text": "what was that café called again? the one with the terrible chairs",
+   "edited": false,
+   "reply": {
+    "author": "Alice",
+    "text": "The thing about keeping a record…"
+   },
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1380895663587328034",
+   "ts": "2025-06-07T13:06:22.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>Café Loewen. the chairs are a hate crime but the coffee is honest. we were there at <span class=\"timestamp\">Saturday, 12 April 2025 10:30</span></p>",
+   "text": "Café Loewen. the chairs are a hate crime but the coffee is honest. we were there at Saturday, 12 April 2025 10:30",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1380899094528000035",
+   "ts": "2025-06-07T13:20:00.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>honest coffee and hostile chairs. put it on the cover</p>",
+   "text": "honest coffee and hostile chairs. put it on the cover",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1385314186690560036",
+   "ts": "2025-06-19T17:44:00.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p><span class=\"mention\">@Ben</span> cabin is confirmed. packing list in the doc, and yes the mug is coming</p>",
+   "text": "@Ben cabin is confirmed. packing list in the doc, and yes the mug is coming",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "👍",
+     "count": 1
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1385315046522880037",
+   "ts": "2025-06-19T17:47:25.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>the penguin mug is non-negotiable cargo at this point</p>",
+   "text": "the penguin mug is non-negotiable cargo at this point",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1385315172352000038",
+   "ts": "2025-06-19T17:47:55.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>also re-reading march. we said <em>spine</em> out loud before we even had a title</p>",
+   "text": "also re-reading march. we said spine out loud before we even had a title",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1391149386301440039",
+   "ts": "2025-07-05T20:11:00.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>first proper draft of the cover ornament. be nice</p>",
+   "text": "first proper draft of the cover ornament. be nice",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [
+    {
+     "name": "bookworm smile",
+     "url": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22320%22%20height%3D%22320%22%20viewBox%3D%220%200%20320%20320%22%3E%3Ccircle%20cx%3D%22160%22%20cy%3D%22160%22%20r%3D%22150%22%20fill%3D%22%23f2cc8f%22%2F%3E%3Ccircle%20cx%3D%22110%22%20cy%3D%22130%22%20r%3D%2218%22%20fill%3D%22%233d405b%22%2F%3E%3Ccircle%20cx%3D%22210%22%20cy%3D%22130%22%20r%3D%2218%22%20fill%3D%22%233d405b%22%2F%3E%3Cpath%20d%3D%22M100%20190%20Q160%20240%20220%20190%22%20stroke%3D%22%233d405b%22%20stroke-width%3D%2212%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E"
+    }
+   ],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1391150179024896040",
+   "ts": "2025-07-05T20:14:09.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>it's smiling. I'm crying. ship it</p>",
+   "text": "it's smiling. I'm crying. ship it",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [
+    {
+     "emoji": "❤️",
+     "count": 2
+    }
+   ],
+   "system": false
+  },
+  {
+   "id": "1391154167808000041",
+   "ts": "2025-07-05T20:30:00.000Z",
+   "author": {
+    "name": "Ben",
+    "id": "100000000000000002",
+    "avatar": "https://cdn.discordapp.com/avatars/0/deadbeef.png"
+   },
+   "html": "<p>see you at the pier in august. bring the mug</p>",
+   "text": "see you at the pier in august. bring the mug",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  },
+  {
+   "id": "1391155140886528042",
+   "ts": "2025-07-05T20:33:52.000Z",
+   "author": {
+    "name": "Alice",
+    "id": "100000000000000001",
+    "avatar": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%2240%22%20fill%3D%22%237d2f2a%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2253%22%20font-family%3D%22Georgia%22%20font-size%3D%2238%22%20fill%3D%22%23fbf7ef%22%20text-anchor%3D%22middle%22%3EA%3C%2Ftext%3E%3C%2Fsvg%3E"
+   },
+   "html": "<p>it's a date. finish your four books</p>",
+   "text": "it's a date. finish your four books",
+   "edited": false,
+   "reply": null,
+   "attachments": [],
+   "embeds": [],
+   "stickers": [],
+   "reactions": [],
+   "system": false
+  }
+ ]
+}

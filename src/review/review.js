@@ -33,6 +33,7 @@ function textOf(m) {
 
 function metaOf(m) {
   const bits = [];
+  if (m.trimmed) bits.push('only the matching sentence is kept');
   if (m.reply) bits.push(`↩ replying to ${m.reply.author || 'someone'}`);
   const images = (m.attachments || []).filter((a) => a.type === 'image').length;
   const files = (m.attachments || []).length - images;

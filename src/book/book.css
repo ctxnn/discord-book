@@ -1161,3 +1161,19 @@ mark.said {
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }
+
+/* faces of the people, wherever they appear */
+.colophon-people .person { display: inline-flex; align-items: center; gap: 1.2mm; }
+.colophon-people .person-face { width: 3.8mm; height: 3.8mm; border-radius: 50%; object-fit: cover; flex: none; font-size: 5.6pt; }
+
+.theme-clothbound .speaker { align-items: center; }
+.theme-clothbound .speaker .who-face { width: 4.4mm; height: 4.4mm; border-radius: 50%; object-fit: cover; flex: none; font-size: 6.6pt; }
+.theme-album .speaker .who-badge { border-radius: 50%; object-fit: cover; flex: none; }
+
+.theme-clothbound .tp-faces { display: flex; justify-content: center; gap: 3mm; margin-top: 5mm; }
+.theme-clothbound .tp-face { width: 11mm; height: 11mm; border-radius: 50%; object-fit: cover; font-size: 9pt; }
+.theme-playscript .bill-faces { display: flex; justify-content: center; gap: 3mm; margin: 3.4mm 0 1mm; }
+.theme-playscript .bill-face { width: 10mm; height: 10mm; border-radius: 50%; object-fit: cover; font-size: 8.5pt; }
+.theme-playscript .cast-list li { align-items: center; }
+.theme-playscript .cast-face { width: 6.4mm; height: 6.4mm; border-radius: 50%; object-fit: cover; flex: none; font-size: 7.4pt; }
+

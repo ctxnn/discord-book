@@ -108,6 +108,25 @@
     return [...doc.querySelectorAll('span.mention')].map((s) => s.textContent.replace(/^@/, ''));
   }
 
+
+  const SENTENCE = /(?<=[.!?\u2026]["'\u201d\u2019)\]]?)\s+|\n+/;
+
+  function trimToSaid(m, says) {
+    if (m.system || !m.text) return m;
+    const sentences = String(m.text).split(SENTENCE).map((s) => s.trim()).filter(Boolean);
+    const kept = sentences.filter((s) => says({ text: s }));
+    if (!kept.length || kept.length === sentences.length) return m;
+    const text = kept.join(' ');
+    return {
+      ...m,
+      text,
+      html: text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'),
+      fullText: m.text,
+      fullHtml: m.html,
+      trimmed: true
+    };
+  }
+
   function conversationBetween(messages, pair, filter) {
     const says = phraseMatcher(filter.phrases);
     const whoOf = (m) => (m.system ? -1 : pair.findIndex((name) => matchesPerson(m.author, name)));
@@ -177,6 +196,10 @@
       messages = filter.scope === 'conversation'
         ? conversationBetween(messages, pair, filter)
         : messages.filter((m) => !m.system && pair.some((name) => matchesPerson(m.author, name)));
+      if (filter.phrases.length && filter.scope === 'conversation') {
+        const says = phraseMatcher(filter.phrases);
+        messages = messages.map((m) => trimToSaid(m, says));
+      }
       if (!messages.length) throw new Error(`Nothing matched: ${pair.join(' and ')} never reply to, mention, or quickly answer each other here${filter.phrases.length ? ', or say ' + filter.phrases.map((p) => `"${p}"`).join(', ') : ''}.`);
     }
     if (!messages.length) throw new Error('No messages found in this chat.');

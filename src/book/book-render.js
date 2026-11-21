@@ -625,6 +625,9 @@ function buildCover(ctx) {
       el('div', 'bill-rule thin'));
     const cast = el('div', 'bill-cast');
     cast.appendChild(el('p', 'bill-with', 'with'));
+    const faces = el('div', 'bill-faces');
+    for (const p of record.participants.slice(0, 4)) faces.appendChild(avatar(ctx, p, 'bill-face'));
+    if (record.participants.length) cast.appendChild(faces);
     const names = el('p', 'bill-names');
     meta.people.slice(0, 6).forEach((n, i) => {
       if (i) names.appendChild(el('span', 'bill-dot', '\u2022'));
@@ -722,7 +725,11 @@ function buildTitlePage(ctx) {
     titled('p', 'tp-title', meta.title),
     meta.subtitle ? el('p', 'tp-sub', meta.subtitle) : null,
     el('div', 'tp-orn', '\u2767'),
-    el('p', 'tp-by', 'A conversation between'),
+    el('p', 'tp-by', 'A conversation between'));
+  const tpFaces = el('div', 'tp-faces');
+  for (const p of record.participants.slice(0, 4)) tpFaces.appendChild(avatar(ctx, p, 'tp-face'));
+  if (record.participants.length) top.appendChild(tpFaces);
+  append(top,
     el('p', 'tp-names', meta.people.length > 6
       ? meta.people.slice(0, 5).join(', ') + ' and ' + words(meta.people.length - 5) + ' others'
       : joinNames(meta.people)));
@@ -774,6 +781,7 @@ function buildColophon(ctx) {
   const parts = el('span', 'colophon-people');
   record.participants.forEach((p, i) => {
     const s = el('span', 'person');
+    s.appendChild(avatar(ctx, p, 'person-face'));
     s.appendChild(el('span', 'person-name', p.name));
     const n = p.count ?? 0;
     s.appendChild(el('span', 'person-count', ' (' + fmtNum(n) + (i ? ')' : n === 1 ? ' message)' : ' messages)')));
@@ -791,7 +799,7 @@ function buildColophon(ctx) {
       : 'Two people only: the conversation between ' + joinNames((record.pair || []).map(cap)) + ', taken from a busier channel. Kept: ' + [
         record.filter.replies && 'their replies to and @mentions of each other',
         record.filter.backAndForth && 'quick answers to each other within three minutes',
-        record.filter.phrases?.length && 'every message where either says ' + record.filter.phrases.map((p) => '\u201c' + p + '\u201d').join(', ') + ' (highlighted)'
+        record.filter.phrases?.length && 'the sentences where either says ' + record.filter.phrases.map((p) => '\u201c' + p + '\u201d').join(', ') + ' (highlighted; the rest of such messages is left out)'
       ].filter(Boolean).join('; ') + '.');
   inner.appendChild(list);
 
@@ -819,6 +827,7 @@ function buildCast(ctx) {
   const shown = record.participants.slice(0, 14);
   for (const p of shown) {
     const li = el('li');
+    li.appendChild(avatar(ctx, p, 'cast-face'));
     li.appendChild(el('span', 'cast-name', p.name));
     li.appendChild(el('span', 'cast-lead'));
     const n = p.count ?? 0;
@@ -1072,7 +1081,7 @@ function buildGroup(ctx, msgs, opening) {
   group.style.setProperty('--who', people.color(author));
 
   const speaker = el('div', 'speaker');
-  if (theme === 'album') speaker.appendChild(initialBadge(name, people.color(author), 'who-badge badge'));
+  if (theme !== 'playscript') speaker.appendChild(avatar(ctx, author, theme === 'album' ? 'who-badge' : 'who-face'));
   speaker.appendChild(el('span', 'name', name));
   speaker.appendChild(el('span', 'time', clockTime(msgs[0].ts)));
   group.appendChild(speaker);

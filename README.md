@@ -40,10 +40,12 @@ nicknames; the boxes suggest names visible on screen) or user IDs (both are fill
 - **Only their conversation**: any mix of
   - replies to each other and @mentions of each other,
   - quick answers to each other (one writes within 3 minutes of the other, with fewer than 5 other messages between),
-  - every message where either of them says a word or phrase you type (comma-separated, whole words, any case).
-    These words are highlighted in the PDF.
+  - the sentences where either of them says a word or phrase you type (comma-separated, whole words, any case).
+    Only the matching sentences are kept, and the words are highlighted in the PDF. The rest of each such message is
+    left out; the review page can still add the full message back.
 
-The rules used are printed on the book's "About this book" page. Changing the rules for the same two people replaces
+The rules used are printed on the book's "About this book" page. Every style shows both people's profile photos: beside
+their names in the conversation, on the front pages, and on the "About this book" page. Changing the rules for the same two people replaces
 that book with a new edition.
 
 **Review before the PDF** (on by default): the picked messages open in a review page. Click a message to drop it from the

@@ -141,8 +141,10 @@ const lc = (s) => (s || '').toLowerCase();
 const isA = (m) => !m.system && lc(m.author?.name) === lc(pick[0]);
 const isB = (m) => !m.system && lc(m.author?.name) === lc(pick[1]);
 const mentionsOf = (m) => [...(m.html || '').matchAll(/<span class="mention">@?([^<]*)<\/span>/g)].map((x) => lc(x[1]));
-const seed = everything.find((m) => isA(m) && !m.reply && !mentionsOf(m).length && /[a-z]{5,}/i.test(m.text));
-const phrase = seed.text.match(/[A-Za-z]{5,}/g).sort((a, b) => b.length - a.length)[0];
+const splitSent = (t) => t.split(/(?<=[.!?…])\s+|\n+/).map((s) => s.trim()).filter(Boolean);
+const seed = everything.find((m) => isA(m) && !m.reply && !mentionsOf(m).length
+  && splitSent(m.text).length >= 3 && /[A-Za-z]{5,}/.test(splitSent(m.text).at(-1)));
+const phrase = splitSent(seed.text).at(-1).match(/[A-Za-z]{5,}/g).sort((a, b) => b.length - a.length)[0];
 const wordRe = new RegExp(`(?<![\\p{L}\\p{N}])${phrase}(?![\\p{L}\\p{N}])`, 'iu');
 const expectedIds = new Set();
 let prev = null;
@@ -169,6 +171,22 @@ check(record.version === 2, `same pair with a new filter replaces the pair book 
 const marks = await book.$$eval('mark.said', (els) => els.length);
 const colophon = await book.$eval('#colophon', (e) => e.textContent).catch(() => '');
 check(marks > 0 && colophon.includes(phrase), `phrase highlighted ${marks}x and listed on the About page`);
+
+const trimmed = record.messages.filter((m) => m.trimmed);
+const wordRe2 = new RegExp(`(?<![\\p{L}\\p{N}])${phrase}(?![\\p{L}\\p{N}])`, 'iu');
+const sentOk = trimmed.every((m) => m.text.split(/(?<=[.!?…])\s+/).filter(Boolean).every((s) => wordRe2.test(s)));
+check(trimmed.length > 0, `sentence trim: ${trimmed.length} messages cut down to the matching sentences`);
+check(sentOk, 'sentence trim: every kept sentence contains the typed word');
+check(trimmed.every((m) => m.fullText && m.fullText.length >= m.text.length && m.fullText.includes(m.text)), 'sentence trim: the full message is kept for re-adding');
+const faces = await book.evaluate(() => ({
+  colophon: document.querySelectorAll('.colophon-people .person-face').length,
+  speakers: document.querySelectorAll('.speaker .who-face, .speaker .who-badge').length,
+  title: document.querySelectorAll('.tp-faces .tp-face, .bill-faces .bill-face, .cover-faces .face').length,
+  cast: document.querySelectorAll('.cast-face').length
+}));
+check(faces.colophon === 2, `faces: both people on the About page (${faces.colophon})`);
+check(faces.title >= 2 || faces.cast >= 2, `faces: both people on the front pages (${faces.title} title, ${faces.cast} cast)`);
+check(faces.speakers > 0, `faces: avatars beside speaker names (${faces.speakers})`);
 await book.close();
 
 {

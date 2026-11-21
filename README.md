@@ -1,14 +1,13 @@
 # Discord Book
 
-A Chrome extension that turns a Discord DM, group DM, or server channel into a clean PDF of the conversation, with
+A Chrome extension that turns a Discord DM, group DM, or server channel into a printed book of the conversation, with
 the option to review and prune messages before the PDF is made. The main flow is the chat between two people, whether
 that chat lives in a DM or in a busy server channel.
 
-Styles:
+Three styles:
 
-- **Clean** (default): a normal, tidy chat document on A4. A header block with the people and the date range, then the
-  chat day by day with names, times, replies, reactions, images and files. No book dress-up.
-- **Clothbound**: a literary hardcover. Cloth cover with gold foil, endpapers, dialogue set as prose in Garamond.
+- **Clothbound** (default): a literary hardcover. Cloth cover with gold foil, endpapers, chapter openers, and the chat
+  set as readable prose with a clear header for each speaker.
 - **Playscript**: a printed play. Playbill cover, Dramatis Personae, months as acts, days as scenes, stage directions.
 - **Album**: a modern photobook. Bold cover with the chat's photos, calendar chapter openers, full-width plates.
 

@@ -333,11 +333,11 @@
 
     // Reply
     var reply = null;
-    var replyCtx = li.querySelector('div[id^="message-reply-context-"]');
+    var replyCtx = li.querySelector('div[id^="message-reply-context-"], [class*="repliedMessage_"]');
     if (replyCtx) {
       var replyAuthor = replyCtx.querySelector('[class*="username_"]');
-      var replyText = replyCtx.querySelector('[class*="repliedTextContent_"]');
-      var replyAuthorName = replyAuthor ? (replyAuthor.getAttribute('data-text') || replyAuthor.textContent || '').trim() : '';
+      var replyText = replyCtx.querySelector('[class*="repliedTextContent_"], [class*="repliedTextPreview_"]');
+      var replyAuthorName = replyAuthor ? (replyAuthor.getAttribute('data-text') || replyAuthor.textContent || '').trim().replace(/^@/, '') : '';
       var replySnippet = replyText ? (replyText.textContent || '').trim() : '';
       reply = { author: replyAuthorName, text: replySnippet };
     }
@@ -516,7 +516,7 @@
       channelId = pathMatch[2];
     } else {
       // Not a Discord URL (e.g. file:// for testing). Derive from the DOM.
-      var ol = document.querySelector('ol[data-list-id="chat-messages"]');
+      var ol = document.querySelector('[data-list-id^="chat-messages"]');
       if (!ol) return null;
       var firstLi = ol.querySelector('li[id^="chat-messages-"]');
       if (firstLi) {
@@ -626,7 +626,7 @@
       throw new DOMException('Aborted', 'AbortError');
     }
 
-    var ol = document.querySelector('ol[data-list-id="chat-messages"]');
+    var ol = document.querySelector('[data-list-id^="chat-messages"]');
     if (!ol) {
       return { messages: [], complete: false, participants: [] };
     }
@@ -655,11 +655,17 @@
       var candidates = scroller.querySelectorAll('[class*="emptyChannel"]');
       for (var ci = 0; ci < candidates.length; ci++) {
         var el = candidates[ci];
-        var hText = (el.textContent || '').toLowerCase();
+        var hText = '';
+        for (var up = el, depth = 0; up && up !== scroller && depth < 4; up = up.parentElement, depth++) {
+          hText = (up.textContent || '').toLowerCase();
+          if (hText.length > 20) break;
+        }
         if (
+          /emptychannelicon/i.test(el.className || '') ||
           hText.indexOf('beginning of your direct message history') !== -1 ||
-          hText.indexOf('this is the start of the') !== -1 ||
-          hText.indexOf('welcome to #') !== -1 ||
+          hText.indexOf('beginning of the') !== -1 ||
+          hText.indexOf('start of the') !== -1 ||
+          hText.indexOf('welcome to') !== -1 ||
           hText.indexOf('this is the beginning') !== -1
         ) {
           var firstMsg = ol.querySelector('li[id^="chat-messages-"]');

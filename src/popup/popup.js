@@ -101,7 +101,8 @@ async function init() {
   const { lastOptions } = await chrome.storage.local.get('lastOptions');
   if (lastOptions) {
     $('images').checked = lastOptions.includeImages !== false;
-    $('theme').value = lastOptions.theme || 'classic';
+    $('theme').value = lastOptions.theme || '';
+    if ($('theme').selectedIndex < 0) $('theme').selectedIndex = 0;
   }
   refreshLibrary();
   const pinned = Number(new URLSearchParams(location.search).get('tab'));

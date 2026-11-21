@@ -36,7 +36,7 @@
     if (!params.has('noauto')) {
       try {
         const record = await loadRecord('../test/fixtures/sample-export.json');
-        window.__auto = await window.__render(record, { theme: params.get('theme') || 'classic' });
+        window.__auto = await window.__render(record, { theme: params.get('theme') || 'clothbound' });
       } catch (e) {
         window.__auto = { ok: false, error: String(e) };
       }

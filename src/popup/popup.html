@@ -6,17 +6,24 @@
   <script type="module" src="popup.js"></script>
 </head>
 <body>
-  <header>
-    <img src="../../icons/icon48.png" alt="" width="28" height="28">
-    <div><h1>Discord Book</h1><p>Turn a chat into a printed-style book</p></div>
+  <header class="brand">
+    <span class="mark" aria-hidden="true"><i></i></span>
+    <div>
+      <h1>Discord Book</h1>
+      <p>Bind a conversation into a book</p>
+    </div>
   </header>
 
   <section id="no-chat" hidden>
-    <p class="empty">Open a Discord DM or channel in this tab (discord.com in Chrome), then click the extension again.</p>
+    <div class="empty">
+      <span class="empty-book" aria-hidden="true"></span>
+      <p><strong>Open a chat to begin.</strong> Go to a Discord DM or channel in this tab (discord.com in Chrome), then click the extension again.</p>
+    </div>
   </section>
 
   <section id="chat" hidden>
     <div class="chat-card">
+      <p class="eyebrow">This chat</p>
       <div class="chat-title" id="chat-title"></div>
       <div class="chat-sub" id="chat-sub"></div>
       <div class="saved" id="saved"></div>
@@ -28,19 +35,35 @@
     </div>
 
     <div id="pair" hidden>
-      <label>First person<input id="p1" list="authors" placeholder="name or user ID" autocomplete="off"></label>
-      <label>Second person<input id="p2" list="authors" placeholder="name or user ID" autocomplete="off"></label>
+      <div class="pair-fields">
+        <label>First person<input id="p1" list="authors" placeholder="Name or user ID" autocomplete="off"></label>
+        <span class="amp" aria-hidden="true">&amp;</span>
+        <label>Second person<input id="p2" list="authors" placeholder="Name or user ID" autocomplete="off"></label>
+      </div>
       <datalist id="authors"></datalist>
       <p class="hint">Keeps only these two people's messages. Use the names shown in the chat (server nicknames) or user IDs.</p>
     </div>
 
+    <label class="style-field">Style
+      <select id="theme">
+        <option value="clothbound">Clothbound · literary hardcover</option>
+        <option value="playscript">Playscript · printed play</option>
+        <option value="album">Album · modern memoir</option>
+      </select>
+      <span class="style-preview" aria-hidden="true">
+        <span class="swatch s-clothbound"><b>Aa</b></span>
+        <span class="swatch s-playscript"><b>Aa</b></span>
+        <span class="swatch s-album"><b>Aa</b></span>
+        <span class="style-note n-clothbound">Cloth cover, gold foil, dialogue set as prose in Garamond.</span>
+        <span class="style-note n-playscript">A playbill cover; months become acts and days become scenes.</span>
+        <span class="style-note n-album">Bold colour, full-width photographs, two voices side by side.</span>
+      </span>
+    </label>
+
     <details>
-      <summary>Options</summary>
+      <summary>More options</summary>
       <label>Start from date <span class="muted">(optional, faster for huge channels)</span><input id="from" type="date"></label>
-      <label class="check"><input id="images" type="checkbox" checked> Include images</label>
-      <label>Style
-        <select id="theme"><option value="classic">Classic (cream paper)</option><option value="midnight">Midnight (dark)</option></select>
-      </label>
+      <label class="check"><input id="images" type="checkbox" checked><span>Include images</span></label>
     </details>
 
     <button id="go" class="primary">Create book</button>

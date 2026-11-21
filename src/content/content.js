@@ -15,24 +15,37 @@
     shadow.innerHTML = `
       <style>
         :host { all: initial; }
-        .card { position: fixed; right: 20px; bottom: 84px; z-index: 2147483647; width: 300px; box-sizing: border-box;
-          font: 13px/1.45 "gg sans", "Segoe UI", system-ui, sans-serif; color: #f2f3f5; background: #1e1f22;
-          border: 1px solid #3f4147; border-radius: 12px; padding: 14px 16px; box-shadow: 0 12px 32px rgba(0,0,0,.45); }
-        .head { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; }
-        .head svg { flex: none; }
-        .status { margin: 8px 0 10px; color: #dbdee1; white-space: pre-line; }
-        .bar { height: 4px; border-radius: 2px; background: #313338; overflow: hidden; }
-        .bar i { display: block; height: 100%; width: 30%; background: #c9a227; border-radius: 2px; animation: slide 1.2s ease-in-out infinite; }
-        .done .bar i { animation: none; width: 100%; }
-        .error .bar i { animation: none; width: 100%; background: #f23f43; }
-        @keyframes slide { 0% { transform: translateX(-100%); } 100% { transform: translateX(340%); } }
+        .card { position: fixed; right: 20px; bottom: 84px; z-index: 2147483647; width: 312px; box-sizing: border-box;
+          font: 13px/1.45 "gg sans", "Segoe UI", system-ui, sans-serif; color: #f1ebdd;
+          background: radial-gradient(120% 70% at 0% 0%, rgba(214,180,108,.10), transparent 60%), #16130f;
+          border: 1px solid #3a3329; border-radius: 14px; padding: 14px 16px 13px;
+          box-shadow: 0 18px 44px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.04); }
+        .head { display: flex; align-items: center; gap: 10px; }
+        .mark { position: relative; flex: none; width: 20px; height: 26px; border-radius: 2px 3px 3px 2px;
+          background: linear-gradient(90deg, rgba(0,0,0,.35) 0 2px, transparent 2px), #6b2328;
+          box-shadow: inset 0 0 0 1px rgba(214,180,108,.4), 0 3px 8px rgba(0,0,0,.45); }
+        .mark::before { content: ""; position: absolute; left: 6px; right: 4px; top: 6px; height: 6px;
+          border-top: 1px solid #d6b46c; border-bottom: 1px solid #d6b46c; }
+        .title { font: italic 600 17px/1 Georgia, "Times New Roman", serif; letter-spacing: .01em; }
+        .kicker { display: block; font-size: 9.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #d6b46c; margin-bottom: 3px; }
+        .status { margin: 11px 0 10px; color: #d8cfbd; white-space: pre-line; font-variant-numeric: tabular-nums; }
+        .status::first-line { color: #f1ebdd; font-weight: 600; }
+        .bar { position: relative; height: 3px; border-radius: 3px; background: #2a251e; overflow: hidden; }
+        .bar i { position: absolute; top: 0; bottom: 0; left: 0; width: 34%; border-radius: 3px;
+          background: linear-gradient(90deg, transparent, #d6b46c 40%, #f0d9a2 60%, transparent);
+          animation: slide 1.4s ease-in-out infinite; }
+        .done .bar i { animation: none; width: 100%; background: linear-gradient(90deg, #b8914a, #d6b46c); }
+        .error .bar i { animation: none; width: 100%; background: #e0645f; }
+        .error .kicker { color: #e0645f; }
+        @keyframes slide { 0% { transform: translateX(-100%); } 100% { transform: translateX(300%); } }
+        .hint { color: #9a907e; font-size: 11.5px; margin-top: 9px; }
         .row { display: flex; justify-content: flex-end; margin-top: 12px; gap: 8px; }
-        button { font: inherit; font-weight: 600; color: #f2f3f5; background: #4e5058; border: 0; border-radius: 6px; padding: 6px 12px; cursor: pointer; }
-        button:hover { background: #6d6f78; }
-        .hint { color: #949ba4; font-size: 12px; margin-top: 8px; }
+        button { font: inherit; font-weight: 600; font-size: 12px; color: #f1ebdd; background: #28231c; border: 0; border-radius: 8px;
+          padding: 6px 13px; cursor: pointer; box-shadow: inset 0 0 0 1px #3a3329; }
+        button:hover { background: #352e25; }
       </style>
       <div class="card">
-        <div class="head"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>Discord Book</div>
+        <div class="head"><span class="mark"></span><div><span class="kicker">Making your book</span><span class="title">Discord Book</span></div></div>
         <div class="status"></div>
         <div class="bar"><i></i></div>
         <div class="hint">Keep this tab open and in front until reading finishes.</div>

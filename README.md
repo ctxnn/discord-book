@@ -1,8 +1,12 @@
 # Discord Book
 
-A Chrome extension that turns a Discord DM, group DM, or server channel into a typeset, book-style PDF:
-a cover page, an "About this book" page, a table of contents, one chapter per month, day headings, drop caps,
-running headers, page numbers, and PDF bookmarks. Classic (cream paper) and Midnight (dark) styles.
+A Chrome extension that turns a Discord DM, group DM, or server channel into a typeset, book-style PDF with a cover,
+an "About this book" page, contents, one chapter per month, a "By the numbers" page, running headers, page numbers,
+and PDF bookmarks. Three styles:
+
+- **Clothbound**: a literary hardcover. Cloth cover with gold foil, endpapers, half-title, dialogue set as prose in Garamond.
+- **Playscript**: a printed play. Playbill cover, Dramatis Personae, months as acts, days as scenes, stage directions.
+- **Album**: a modern photobook. Bold cover with the chat's photos, calendar chapter openers, full-width photo plates.
 
 It reads only what Discord web already shows you. It scrolls the open chat and copies messages from the page.
 It never calls Discord's API, reads your token, or touches Discord's internal code, so nothing is sent anywhere.
@@ -31,7 +35,7 @@ nicknames; the boxes suggest names visible on screen) or user IDs. The book keep
 in order, and their replies to each other keep their "replying to" lines.
 
 **Options:** *Start from date* stops scrolling at that date, which helps in huge channels. You can also turn images off
-and pick a style. *Open* in the saved-books list re-renders a saved book, with buttons to save the PDF again or print it.
+(the style picker is always visible). *Open* in the saved-books list re-renders a saved book, with buttons to save the PDF again or print it.
 
 ## Limits
 
@@ -57,4 +61,5 @@ No build step. `npm install` installs the test tools, then:
 
 Layout: `src/content/` (scraper and progress panel), `src/background.js` (storage and tabs), `src/book/` (renderer,
 fonts, PDF saving), `src/popup/`, `src/lib/` (IndexedDB and naming). The data format is in `SPEC.md`.
-Fonts are EB Garamond and Cormorant Garamond under the SIL Open Font License (see `src/book/fonts/`).
+Fonts (EB Garamond, Cormorant Garamond, Libre Caslon, Courier Prime, Fraunces, DM Sans, DM Mono) are bundled under
+the SIL Open Font License; see `src/book/fonts/`. Times in the book are shown in your computer's time zone.

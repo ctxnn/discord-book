@@ -645,8 +645,12 @@
       // Real Discord has [class*="header_"] elements in sidebars, popouts,
       // and server welcome screens that would false-positive.
       //
-      // Look for the empty-channel welcome marker inside the scroller
-      // and verify it sits before the oldest visible message in DOM order.
+      // Additionally, the marker must be near the visible viewport top —
+      // if the user is scrolled to the bottom the marker may exist in the
+      // DOM but is not actually reached yet.
+
+      // We must be near the top of the scroller for the marker to count.
+      if (scroller.scrollTop > 200) return false;
 
       var candidates = scroller.querySelectorAll('[class*="emptyChannel"]');
       for (var ci = 0; ci < candidates.length; ci++) {
@@ -658,22 +662,14 @@
           hText.indexOf('welcome to #') !== -1 ||
           hText.indexOf('this is the beginning') !== -1
         ) {
-          // Confirm the marker is above the first message li in DOM order.
-          // If there are no messages at all the channel is empty → complete.
           var firstMsg = ol.querySelector('li[id^="chat-messages-"]');
           if (!firstMsg) return true;
-          // el is before firstMsg when firstMsg follows el
           if (el.compareDocumentPosition(firstMsg) & Node.DOCUMENT_POSITION_FOLLOWING) {
             return true;
           }
-          // Otherwise the marker is somewhere else in the scroller
-          // (e.g. after messages) — not the real beginning.
         }
       }
 
-      // Fallback: check for header elements whose text matches, but only
-      // those that are direct ancestors/descendants of the scroller AND
-      // appear before the first message li.
       var headerCandidates = scroller.querySelectorAll('[class*="header_"]');
       for (var hi = 0; hi < headerCandidates.length; hi++) {
         var hEl = headerCandidates[hi];
@@ -887,17 +883,62 @@
     var NO_NEW_MSG_LIMIT = 10;
     var MAX_SCROLL_ATTEMPTS = 300;
 
-    // Phase 0: scroll to the bottom first so we capture any messages
-    // below the current viewport (the user may have scrolled up).
-    // Loop until the DOM stabilises — the virtualizer may need several
-    // round-trips to reload every trimmed newest message.
-    for (var bottomPass = 0; bottomPass < 8; bottomPass++) {
+    // Phase 0: reach the present (newest messages) first.
+    // The user may have scrolled up, and Discord shows a "Jump to Present"
+    // bar when newer messages have left the viewport.  Click it, or keep
+    // scrolling to the bottom until no newer messages appear.
+    var MAX_BOTTOM_PASSES = 30;
+    for (var bottomPass = 0; bottomPass < MAX_BOTTOM_PASSES; bottomPass++) {
+      if (signal && signal.aborted) {
+        throw new DOMException('Aborted', 'AbortError');
+      }
+
+      // Check for the "Jump to Present" bar or button
+      var jumpBar = document.querySelector('[class*="jumpToPresentBar"]');
+      var jumpBtn = jumpBar ? jumpBar.querySelector('button') : null;
+      if (!jumpBtn) {
+        // Loose text match fallback
+        var allBtns = document.querySelectorAll('button');
+        for (var bi = 0; bi < allBtns.length; bi++) {
+          var txt = (allBtns[bi].textContent || '').toLowerCase();
+          if (txt.indexOf('jump to present') !== -1) {
+            jumpBtn = allBtns[bi];
+            break;
+          }
+        }
+      }
+
+      if (jumpBtn) {
+        // Click the button and wait for messages to load.
+        // Poll frequently — the virtualizer may load several batches
+        // quickly and we must harvest each batch before it's trimmed.
+        jumpBtn.click();
+        var jumpStart = Date.now();
+        while (Date.now() - jumpStart < 15000) {
+          if (signal && signal.aborted) {
+            throw new DOMException('Aborted', 'AbortError');
+          }
+          await sleep(150);
+          harvestMessages();
+          // Stop when the bar disappears (loading finished)
+          if (!document.querySelector('[class*="jumpToPresentBar"]')) {
+            // Give one final moment for the last batch to settle
+            await sleep(200);
+            harvestMessages();
+            break;
+          }
+        }
+        break;
+      }
+
+      // No jump bar — scroll to the bottom and wait for lazy loads
       var beforeBottom = collected.size;
       scroller.scrollTop = scroller.scrollHeight;
-      await sleep(500);
+      await sleep(600);
       harvestMessages();
-      // Repeat while new messages are still appearing
-      if (collected.size === beforeBottom && bottomPass >= 2) break;
+
+      // If no new messages appeared and we've done a few passes, we're at the present
+      if (collected.size === beforeBottom && bottomPass >= 3) break;
     }
 
     onProgress({ collected: collected.size, oldestTs: oldestTs, phase: 'scrolling' });

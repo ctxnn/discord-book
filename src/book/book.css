@@ -1191,3 +1191,12 @@ html.theme-album {
   main#book > .chapter-body { min-height: 0; }
   main#book > .front.blank { display: none; }
 }
+
+mark.said {
+  color: inherit;
+  background: none;
+  padding: 0 0.04em;
+  box-shadow: inset 0 -0.38em 0 color-mix(in srgb, var(--accent) 22%, transparent);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}

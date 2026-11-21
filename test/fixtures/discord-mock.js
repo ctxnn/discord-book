@@ -621,8 +621,6 @@
     document.title = 'Discord | @alice';
   }
 
-  var renderedCount = 0;
-  var allLoaded = false;
   var isLoading = false;
 
   function makeMessageDOM(msg, isGrouped) {
@@ -903,156 +901,150 @@
     }
   }
 
-  function renderInitial() {
+  var lo = 0;
+  var hi = -1;
+  var generation = 0;
+  window.__mockLog = [];
+  function logOp(op) { window.__mockLog.push({ t: Math.round(performance.now()), op: op, lo: lo, hi: hi, top: Math.round(scroller.scrollTop) }); }
+
+  function randomDelay() {
+    return LOAD_DELAY_MIN + Math.floor(Math.random() * (LOAD_DELAY_MAX - LOAD_DELAY_MIN));
+  }
+
+  function renderWindow(start, end) {
     clearList();
-    var start = Math.max(0, ALL_MESSAGES.length - PAGE_SIZE);
-    var fragment = renderRange(start, ALL_MESSAGES.length - 1);
-    ol.appendChild(fragment);
-    renderedCount = ALL_MESSAGES.length - start;
-    // Scroll to bottom
+    lo = start;
+    hi = end;
+    ol.appendChild(renderRange(lo, hi));
+    syncMarkers();
+  }
+
+  function renderInitial() {
+    renderWindow(Math.max(0, ALL_MESSAGES.length - PAGE_SIZE), ALL_MESSAGES.length - 1);
     scroller.scrollTop = scroller.scrollHeight;
   }
 
-  function loadOlder() {
-    if (isLoading || allLoaded) return;
-    isLoading = true;
-
-    var remaining = ALL_MESSAGES.length - renderedCount;
-    if (remaining <= 0) {
-      allLoaded = true;
-      showBeginningMarker();
-      isLoading = false;
-      return;
+  function removeFirst(n) {
+    for (var i = 0; i < n; i++) {
+      var li = ol.querySelector('li[id^="chat-messages-"]');
+      if (li) li.parentNode.removeChild(li);
     }
-
-    var delay = LOAD_DELAY_MIN + Math.floor(Math.random() * (LOAD_DELAY_MAX - LOAD_DELAY_MIN));
-
-    setTimeout(function () {
-      var toLoad = Math.min(PAGE_SIZE, remaining);
-      var newStart = Math.max(0, ALL_MESSAGES.length - renderedCount - toLoad);
-      var newEnd = ALL_MESSAGES.length - renderedCount - 1;
-
-      // Remember current scroll position relative to bottom
-      var prevScrollHeight = scroller.scrollHeight;
-      var prevScrollTop = scroller.scrollTop;
-
-      // Prepend new messages
-      var fragment = renderRange(newStart, newEnd);
-      ol.insertBefore(fragment, ol.firstChild);
-
-      renderedCount += toLoad;
-
-      // Restore scroll position
-      var newScrollHeight = scroller.scrollHeight;
-      scroller.scrollTop = prevScrollTop + (newScrollHeight - prevScrollHeight);
-
-      // Remove excess items from bottom to keep DOM lean
-      trimBottom();
-
-      // Check if we've loaded everything
-      if (renderedCount >= ALL_MESSAGES.length) {
-        allLoaded = true;
-        showBeginningMarker();
-      }
-
-      isLoading = false;
-    }, delay);
   }
 
-  function trimBottom() {
-    // Remove newest messages from the bottom of the list to keep the DOM
-    // lean while scrolling upward.  The newest messages were already
-    // harvested by the scraper on its initial bottom pass.
-    var lis = ol.querySelectorAll('li[id^="chat-messages-"]');
-    while (lis.length > MAX_DOM_ITEMS) {
-      var lastLi = lis[lis.length - 1];
-      lastLi.parentNode.removeChild(lastLi);
-      lis = ol.querySelectorAll('li[id^="chat-messages-"]');
+  function removeLast(n) {
+    for (var i = 0; i < n; i++) {
+      var lis = ol.querySelectorAll('li[id^="chat-messages-"]');
+      if (lis.length) lis[lis.length - 1].parentNode.removeChild(lis[lis.length - 1]);
     }
+  }
+
+  function syncMarkers() {
+    var marker = ol.querySelector('.emptyChannel_c19a55');
+    if (lo === 0 && !marker) showBeginningMarker();
+    if (lo > 0 && marker) marker.parentNode.parentNode.removeChild(marker.parentNode);
+    if (hi < ALL_MESSAGES.length - 1) showJumpToPresentBar();
+    else hideJumpToPresentBar();
+  }
+
+  function loadOlder() {
+    if (isLoading || lo === 0) return;
+    isLoading = true;
+    var g = generation;
+    setTimeout(function () {
+      if (g !== generation) return;
+      var start = Math.max(0, lo - PAGE_SIZE);
+      var prevScrollHeight = scroller.scrollHeight;
+      var prevScrollTop = scroller.scrollTop;
+      var first = ol.querySelector('li[id^="chat-messages-"]');
+      ol.insertBefore(renderRange(start, lo - 1), first);
+      lo = start;
+      scroller.scrollTop = prevScrollTop + (scroller.scrollHeight - prevScrollHeight);
+      var excess = hi - lo + 1 - MAX_DOM_ITEMS;
+      if (excess > 0) {
+        removeLast(excess);
+        hi -= excess;
+      }
+      syncMarkers();
+      logOp('older');
+      isLoading = false;
+    }, randomDelay());
+  }
+
+  function loadNewer() {
+    if (isLoading || hi >= ALL_MESSAGES.length - 1) return;
+    isLoading = true;
+    var g = generation;
+    setTimeout(function () {
+      if (g !== generation) return;
+      var end = Math.min(ALL_MESSAGES.length - 1, hi + PAGE_SIZE);
+      ol.appendChild(renderRange(hi + 1, end));
+      hi = end;
+      var excess = hi - lo + 1 - MAX_DOM_ITEMS;
+      if (excess > 0) {
+        var prevScrollHeight = scroller.scrollHeight;
+        var prevScrollTop = scroller.scrollTop;
+        removeFirst(excess);
+        lo += excess;
+        scroller.scrollTop = prevScrollTop - (prevScrollHeight - scroller.scrollHeight);
+      }
+      syncMarkers();
+      logOp('newer');
+      isLoading = false;
+    }, randomDelay());
   }
 
   function showBeginningMarker() {
-    // Remove existing marker if any
-    var existing = ol.querySelector('.emptyChannel_c19a55');
-    if (existing) existing.parentNode.removeChild(existing);
-
     var marker = document.createElement('li');
     marker.className = 'message_d5deea';
     var emptyDiv = document.createElement('div');
     emptyDiv.className = 'emptyChannel_c19a55';
-
     if (MOCK_KIND === 'channel') {
       emptyDiv.innerHTML = '<h2>Welcome to <strong>#general</strong>!</h2><p>This is the start of the #general channel.</p>';
     } else {
       emptyDiv.innerHTML = '<h2>This is the beginning of your direct message history with <strong>@alice</strong>.</h2><p>Messages sent here are only visible to you and alice.</p>';
     }
-
     marker.appendChild(emptyDiv);
     ol.insertBefore(marker, ol.firstChild);
   }
 
-  // -----------------------------------------------------------------------
-  // Scroll handler — bidirectional loading
-  // -----------------------------------------------------------------------
-  scroller.addEventListener('scroll', function () {
-    if (scroller.scrollTop < 200) {
-      loadOlder();
-    }
-    // Near the bottom: reload newest messages if they were trimmed
-    var distFromBottom = scroller.scrollHeight - scroller.scrollTop - scroller.clientHeight;
-    if (distFromBottom < 200) {
-      loadNewer();
-    }
-  });
-
-  // Reload the newest messages when the user scrolls to the bottom.
-  // Keeps calling itself until all trimmed newest messages are back.
-  function loadNewer() {
-    if (isLoading) return;
-    isLoading = true;
-
-    function loadOneBatch() {
-      var lis = ol.querySelectorAll('li[id^="chat-messages-"]');
-      if (lis.length === 0) { isLoading = false; return; }
-      var lastLi = lis[lis.length - 1];
-      var idMatch = lastLi.id.match(/^chat-messages-\d+-(\d+)$/);
-      if (!idMatch) { isLoading = false; return; }
-      var newestDomId = idMatch[1];
-      var newestDomIdx = -1;
-      for (var i = ALL_MESSAGES.length - 1; i >= 0; i--) {
-        if (ALL_MESSAGES[i].id === newestDomId) { newestDomIdx = i; break; }
-      }
-      if (newestDomIdx < 0 || newestDomIdx >= ALL_MESSAGES.length - 1) {
-        isLoading = false;
-        return;
-      }
-
-      var toLoad = Math.min(PAGE_SIZE, ALL_MESSAGES.length - 1 - newestDomIdx);
-      var startIdx = newestDomIdx + 1;
-      var endIdx = Math.min(ALL_MESSAGES.length - 1, newestDomIdx + toLoad);
-
-      var prevScrollHeight = scroller.scrollHeight;
-
-      var fragment = renderRange(startIdx, endIdx);
-      ol.appendChild(fragment);
-
-      var allLis = ol.querySelectorAll('li[id^="chat-messages-"]');
-      while (allLis.length > MAX_DOM_ITEMS) {
-        allLis[0].parentNode.removeChild(allLis[0]);
-        allLis = ol.querySelectorAll('li[id^="chat-messages-"]');
-      }
-
-      // If there are still more to load, keep going after a brief pause
-      if (endIdx < ALL_MESSAGES.length - 1) {
-        setTimeout(loadOneBatch, LOAD_DELAY_MIN);
-      } else {
-        isLoading = false;
-      }
-    }
-
-    var delay = LOAD_DELAY_MIN + Math.floor(Math.random() * (LOAD_DELAY_MAX - LOAD_DELAY_MIN));
-    setTimeout(loadOneBatch, delay);
+  function showJumpToPresentBar() {
+    if (document.querySelector('.jumpToPresentBar_c19a55')) return;
+    var bar = document.createElement('div');
+    bar.className = 'jumpToPresentBar_c19a55';
+    var label = document.createElement('span');
+    label.textContent = "You're viewing older messages";
+    var btn = document.createElement('button');
+    btn.textContent = 'Jump To Present';
+    btn.addEventListener('click', jumpToPresent);
+    bar.appendChild(label);
+    bar.appendChild(btn);
+    scroller.parentNode.appendChild(bar);
   }
+
+  function hideJumpToPresentBar() {
+    var bar = document.querySelector('.jumpToPresentBar_c19a55');
+    if (bar) bar.parentNode.removeChild(bar);
+  }
+
+  function jumpToPresent() {
+    var g = ++generation;
+    isLoading = true;
+    setTimeout(function () {
+      if (g !== generation) return;
+      renderInitial();
+      logOp('jump');
+      isLoading = false;
+    }, randomDelay());
+  }
+
+  function checkEdges() {
+    if (scroller.scrollTop < 200) loadOlder();
+    if (scroller.scrollHeight - scroller.scrollTop - scroller.clientHeight < 200) loadNewer();
+  }
+  scroller.addEventListener('scroll', checkEdges);
+  window.__mockState = function () { return { lo: lo, hi: hi, isLoading: isLoading, top: scroller.scrollTop }; };
+  setInterval(checkEdges, 300);
+
 
   // -----------------------------------------------------------------------
   // Init

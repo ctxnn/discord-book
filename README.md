@@ -31,8 +31,17 @@ and an edition number. Making a book from the same chat again (or the same two p
 saved record and overwrites the same PDF file, and the old entry is removed from Chrome's download list.
 
 **Two people only** works in server channels and group DMs. Type two names as they appear in the chat (server
-nicknames; the boxes suggest names visible on screen) or user IDs. The book keeps only those two people's messages,
-in order, and their replies to each other keep their "replying to" lines.
+nicknames; the boxes suggest names visible on screen) or user IDs, then choose what to keep:
+
+- **Everything they wrote**: every message from either person.
+- **Only their conversation**: any mix of
+  - replies to each other and @mentions of each other,
+  - quick answers to each other (one writes within 3 minutes of the other, with fewer than 5 other messages between),
+  - every message where either of them says a word or phrase you type (comma-separated, whole words, any case).
+    These words are highlighted in the PDF.
+
+The rules used are printed on the book's "About this book" page. Changing the rules for the same two people replaces
+that book with a new edition.
 
 **Options:** *Start from date* stops scrolling at that date, which helps in huge channels. You can also turn images off
 (the style picker is always visible). *Open* in the saved-books list re-renders a saved book, with buttons to save the PDF again or print it.

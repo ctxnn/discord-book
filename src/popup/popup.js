@@ -9,6 +9,7 @@ const titleOf = (s) => (s.mode === 'pair' ? `${s.pair[0]} & ${s.pair[1]} · ${s.
 let tab = null;
 let chat = null;
 let mode = 'full';
+let scope = 'all';
 
 function button(label, onClick, cls = '') {
   const b = document.createElement('button');
@@ -76,10 +77,18 @@ async function ensureContentScript() {
 
 function setMode(next) {
   mode = next;
-  document.querySelectorAll('.seg button').forEach((b) => b.classList.toggle('on', b.dataset.mode === mode));
+  document.querySelectorAll('.seg [data-mode]').forEach((b) => b.classList.toggle('on', b.dataset.mode === mode));
   $('pair').hidden = mode !== 'pair';
   refreshSaved();
 }
+
+function setScope(next) {
+  scope = next;
+  document.querySelectorAll('.seg [data-scope]').forEach((b) => b.classList.toggle('on', b.dataset.scope === scope));
+  $('conversation').hidden = scope !== 'conversation';
+}
+
+const phrasesOf = (text) => text.split(',').map((p) => p.trim().replace(/^["'“”‘’]+|["'“”‘’]+$/g, '').trim()).filter(Boolean);
 
 async function start() {
   showError('');
@@ -88,9 +97,11 @@ async function start() {
     pair: mode === 'pair' ? [$('p1').value.trim(), $('p2').value.trim()] : null,
     fromDate: $('from').value || null,
     includeImages: $('images').checked,
-    theme: $('theme').value
+    theme: $('theme').value,
+    filter: { scope, replies: $('f-replies').checked, backAndForth: $('f-quick').checked, phrases: phrasesOf($('f-says').value) }
   };
   if (mode === 'pair' && !options.pair.every(Boolean)) return showError('Enter both names.');
+  if (mode === 'pair' && scope === 'conversation' && !options.filter.replies && !options.filter.backAndForth && !options.filter.phrases.length) return showError('Tick at least one option or type words to look for.');
   await chrome.storage.local.set({ lastOptions: { includeImages: options.includeImages, theme: options.theme } });
   const r = await chrome.tabs.sendMessage(tab.id, { type: 'start', options });
   if (!r?.ok) return showError(r?.error || 'Could not start.');
@@ -127,7 +138,8 @@ async function init() {
     $('go').disabled = true;
     $('go').textContent = 'Export running in this tab…';
   }
-  document.querySelectorAll('.seg button').forEach((b) => b.addEventListener('click', () => setMode(b.dataset.mode)));
+  document.querySelectorAll('.seg [data-mode]').forEach((b) => b.addEventListener('click', () => setMode(b.dataset.mode)));
+  document.querySelectorAll('.seg [data-scope]').forEach((b) => b.addEventListener('click', () => setScope(b.dataset.scope)));
   $('p1').addEventListener('input', refreshSaved);
   $('p2').addEventListener('input', refreshSaved);
   $('go').addEventListener('click', () => start().catch((e) => showError(String(e.message || e))));

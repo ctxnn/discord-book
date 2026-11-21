@@ -55,6 +55,8 @@ async function runTests() {
     await testChannelExact(browser);
     await testScrolledUpPartway(browser);
     await testNonFastTiming(browser);
+    await testDoubleScrape(browser);
+    await testManualScrollToTop(browser);
     await testFromDate(browser);
     await testMaxMessages(browser);
     await testAbort(browser);
@@ -99,6 +101,7 @@ function checkExactMatch(result, truth, label) {
 
   var missing = truth.filter(function (t) { return !collectedIds.has(t.id); });
   var extra = result.messages.filter(function (m) { return !truthIds.has(m.id); });
+  missing.slice(0, 5).forEach(function (t) { console.log('    missing ' + label + ': ' + JSON.stringify(t).slice(0, 200)); });
 
   assertEq(missing.length, 0, label + ': no truth messages missing (got ' + missing.length + ')');
   assertEq(extra.length, 0, label + ': no extra messages beyond truth (got ' + extra.length + ')');
@@ -255,6 +258,79 @@ async function testNonFastTiming(browser) {
 
   // Non-fast should take noticeably longer due to 300-1200ms load delays
   assert(elapsed > 3000, 'Non-fast: took more than 3s (actual ' + elapsed + 'ms)');
+
+  await page.close();
+}
+
+// -----------------------------------------------------------------------
+// Test: Double scrape (same page, twice in a row)
+// -----------------------------------------------------------------------
+async function testDoubleScrape(browser) {
+  console.log('\n--- Test: Double scrape ---');
+  var page = await openMockPage(browser, 'dm', true);
+
+  // First scrape — scrolls to top, loads everything
+  var r1 = await page.evaluate(async function () {
+    var res = await window.DiscordBookScraper.scrape({});
+    return { messages: res.messages, complete: res.complete };
+  });
+  var truth = await page.evaluate(function () { return window.__mockTruth; });
+
+  assert(r1.complete === true, 'Double-1: first scrape complete');
+  checkExactMatch(r1, truth, 'Double-1');
+
+  // Second scrape — must also get all messages even though the DOM
+  // is now at the oldest messages and newest are trimmed
+  var r2 = await page.evaluate(async function () {
+    var res = await window.DiscordBookScraper.scrape({});
+    return { messages: res.messages, complete: res.complete };
+  });
+
+  assert(r2.complete === true, 'Double-2: second scrape complete');
+  checkExactMatch(r2, truth, 'Double-2');
+
+  await page.close();
+}
+
+// -----------------------------------------------------------------------
+// Test: Manual scroll to top, then scrape
+// -----------------------------------------------------------------------
+async function testManualScrollToTop(browser) {
+  console.log('\n--- Test: Manual scroll to top, then scrape ---');
+  var page = await browser.newPage();
+  var fileUrl = 'file://' + MOCK_HTML_PATH + '?fast&kind=dm';
+  await page.goto(fileUrl, { waitUntil: 'domcontentloaded' });
+  await page.waitForFunction(function () {
+    return window.__mockTruth && window.__mockTruth.length > 0;
+  }, { timeout: 15000 });
+
+  // Manually scroll all the way to the top (oldest messages)
+  // Keep scrolling until the beginning marker appears
+  await page.evaluate(async function () {
+    var scroller = document.querySelector('.scroller_ef3116');
+    for (var i = 0; i < 30; i++) {
+      scroller.scrollTop = 0;
+      await new Promise(function (r) { setTimeout(r, 400); });
+      // Check if beginning marker is visible
+      if (document.querySelector('[class*="emptyChannel"]')) break;
+    }
+  });
+
+  // Now inject the scraper and run
+  await page.addScriptTag({ path: SCRAPER_PATH });
+  await page.waitForFunction(function () {
+    return window.DiscordBookScraper &&
+           typeof window.DiscordBookScraper.scrape === 'function';
+  }, { timeout: 5000 });
+
+  var result = await page.evaluate(async function () {
+    var res = await window.DiscordBookScraper.scrape({});
+    return { messages: res.messages, complete: res.complete };
+  });
+  var truth = await page.evaluate(function () { return window.__mockTruth; });
+
+  assert(result.complete === true, 'ManualTop: complete === true');
+  checkExactMatch(result, truth, 'ManualTop');
 
   await page.close();
 }

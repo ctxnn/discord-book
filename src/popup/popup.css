@@ -145,3 +145,8 @@ button.primary:disabled { opacity: .45; cursor: default; filter: grayscale(.4); 
 #books .t { font: 600 15px/1.2 "Cormorant Garamond", Georgia, serif; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 #books .m { color: var(--muted); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 #no-books { margin: 0; }
+
+.seg.scope { margin: 2px 0 8px; }
+.seg.scope button { font-size: 11.5px; padding: 6px 4px; }
+#conversation { margin-bottom: 10px; }
+#conversation label.check { margin: 6px 0; }

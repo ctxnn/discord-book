@@ -45,7 +45,7 @@ async function openDiscord(path) {
 function sendToTab(page, message) {
   return sw.evaluate(async (url, message) => {
     const tabs = await chrome.tabs.query({});
-    const tab = tabs.find((t) => t.url === url);
+    const tab = tabs.find((t) => t.url === url && t.active) || tabs.filter((t) => t.url === url).pop();
     return chrome.tabs.sendMessage(tab.id, message);
   }, page.url(), message);
 }
@@ -132,6 +132,45 @@ files = await pdfFiles();
 check(files.length === 2, `pair book saved as its own PDF (${files.join(', ')})`);
 await book.close();
 
+await channel.close();
+const channelFull = await openDiscord('/channels/987654321098765432/123456789012345678?kind=channel&fast');
+book = await exportFrom(channelFull, { mode: 'full', includeImages: false, theme: 'album' });
+const everything = (await book.evaluate(async () => (await import('../lib/db.js')).getExport(new URLSearchParams(location.search).get('key')))).messages;
+await book.close();
+const lc = (s) => (s || '').toLowerCase();
+const isA = (m) => !m.system && lc(m.author?.name) === lc(pick[0]);
+const isB = (m) => !m.system && lc(m.author?.name) === lc(pick[1]);
+const mentionsOf = (m) => [...(m.html || '').matchAll(/<span class="mention">@?([^<]*)<\/span>/g)].map((x) => lc(x[1]));
+const seed = everything.find((m) => isA(m) && !m.reply && !mentionsOf(m).length && /[a-z]{5,}/i.test(m.text));
+const phrase = seed.text.match(/[A-Za-z]{5,}/g).sort((a, b) => b.length - a.length)[0];
+const wordRe = new RegExp(`(?<![\\p{L}\\p{N}])${phrase}(?![\\p{L}\\p{N}])`, 'iu');
+const expectedIds = new Set();
+let prev = null;
+let others = 0;
+for (const m of everything) {
+  const who = isA(m) ? 0 : isB(m) ? 1 : -1;
+  if (who < 0) { others++; continue; }
+  const other = lc(pick[1 - who]);
+  if ((m.reply && lc(m.reply.author) === other) || mentionsOf(m).includes(other) || wordRe.test(m.text)) expectedIds.add(m.id);
+  if (prev && prev.who !== who && Date.parse(m.ts) - Date.parse(prev.m.ts) <= 180000 && others < 5) { expectedIds.add(m.id); expectedIds.add(prev.m.id); }
+  prev = { m, who };
+  others = 0;
+}
+book = await exportFrom(channelFull, { mode: 'pair', pair: [pick[0], pick[1]], includeImages: true, theme: 'clothbound', filter: { scope: 'conversation', replies: true, backAndForth: true, phrases: [phrase] } });
+record = await book.evaluate(async () => (await import('../lib/db.js')).getExport(new URLSearchParams(location.search).get('key')));
+const gotIds = record.messages.map((m) => m.id);
+await writeFile(join(out, 'conv-debug.json'), JSON.stringify({ pick, phrase, everything, record }));
+for (const id of [...expectedIds].filter((id) => !gotIds.includes(id)).slice(0, 6)) { const m = everything.find((x) => x.id === id); console.log('      missing:', JSON.stringify({ a: m.author?.name, text: m.text, html: m.html, reply: m.reply, ts: m.ts })); }
+for (const id of gotIds.filter((id) => !expectedIds.has(id)).slice(0, 3)) console.log('      extra:', id);
+check(gotIds.length === expectedIds.size && gotIds.every((id) => expectedIds.has(id)), `conversation filter keeps exactly the ${expectedIds.size} expected messages of ${everything.length} (got ${gotIds.length}, phrase "${phrase}")`);
+check(gotIds.length < record.messages.length + everything.filter((m) => isA(m) || isB(m)).length - gotIds.length, 'conversation filter is narrower than everything they wrote');
+check(record.filter?.scope === 'conversation' && record.filter.phrases[0] === phrase, 'filter saved on the record');
+check(record.version === 2, `same pair with a new filter replaces the pair book (edition ${record.version})`);
+const marks = await book.$$eval('mark.said', (els) => els.length);
+const colophon = await book.$eval('#colophon', (e) => e.textContent).catch(() => '');
+check(marks > 0 && colophon.includes(phrase), `phrase highlighted ${marks}x and listed on the About page`);
+await book.close();
+
 const popup = await browser.newPage();
 await popup.setViewport({ width: 360, height: 600 });
 const tabId = await sw.evaluate(async () => (await chrome.tabs.query({ url: 'https://discord.com/channels/987654321098765432/*' }))[0].id);
@@ -139,9 +178,11 @@ await popup.goto(`chrome-extension://${extId}/src/popup/popup.html?tab=${tabId}`
 await popup.waitForSelector('#chat:not([hidden])');
 await popup.type('#p1', pair[0]);
 await popup.type('#p2', pair[1]);
-await popup.waitForFunction(() => document.getElementById('go').textContent.includes('edition 2'));
+await popup.click('.seg [data-scope="conversation"]');
+await popup.type('#f-says', 'x, see you');
+await popup.waitForFunction(() => document.getElementById('go').textContent.includes('edition 3'), { timeout: 10000 }).catch(async (e) => { console.log('      popup go:', await popup.$eval('#go', (b) => b.textContent), await popup.$eval('#saved', (b) => b.textContent)); throw e; });
 await popup.screenshot({ path: join(out, 'popup.png'), fullPage: true });
-check(true, 'popup shows the saved pair book and offers edition 2');
+check(true, 'popup shows the saved pair book and offers edition 3 with the conversation filter UI');
 
 await browser.close();
 for (const f of await pdfFiles()) await copyFile(join(downloads, 'Discord Books', f), join(out, f));

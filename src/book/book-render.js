@@ -784,9 +784,15 @@ function buildColophon(ctx) {
   row('History', record.complete
     ? 'Complete: this book begins with the very first message.'
     : 'Partial: the conversation began before the first page; earlier messages were not collected.');
-  row('Mode', record.mode === 'pair'
-    ? 'Two people only: the exchanges between ' + joinNames((record.pair || []).map(cap)) + ', taken from a busier conversation.'
-    : 'Whole chat: every message in the conversation.');
+  row('Mode', record.mode !== 'pair'
+    ? 'Whole chat: every message in the conversation.'
+    : record.filter?.scope !== 'conversation'
+      ? 'Two people only: everything ' + joinNames((record.pair || []).map(cap)) + ' wrote, taken from a busier conversation.'
+      : 'Two people only: the conversation between ' + joinNames((record.pair || []).map(cap)) + ', taken from a busier channel. Kept: ' + [
+        record.filter.replies && 'their replies to and @mentions of each other',
+        record.filter.backAndForth && 'quick answers to each other within three minutes',
+        record.filter.phrases?.length && 'every message where either says ' + record.filter.phrases.map((p) => '\u201c' + p + '\u201d').join(', ') + ' (highlighted)'
+      ].filter(Boolean).join('; ') + '.');
   inner.appendChild(list);
 
   inner.appendChild(el('p', 'colophon-fonts', THEME[theme].fonts));
@@ -1154,6 +1160,7 @@ function buildMessage(ctx, m, name) {
   body.appendChild(sanitizeHtml(m.html));
   normalizeBody(body);
   smartenTree(body);
+  if (saidPattern) markSaid(body);
 
   for (const e of Array.from(body.querySelectorAll('img.emoji'))) {
     setImage(e, e.getAttribute('src'), () => failEmoji(e));
@@ -1491,6 +1498,36 @@ function buildBoard(ctx) {
 /* ------------------------------------------------- injected page rules */
 
 let injectedStyle = null;
+let saidPattern = null;
+
+function phrasePattern(phrases) {
+  const list = (phrases || []).map((p) => String(p).trim()).filter(Boolean);
+  if (!list.length) return null;
+  const body = list.map((p) => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/['\u2019]/g, "['\u2019]").replace(/["\u201c\u201d]/g, '["\u201c\u201d]')).join('|');
+  return new RegExp(`(?<![\\p{L}\\p{N}])(?:${body})(?![\\p{L}\\p{N}])`, 'giu');
+}
+
+function markSaid(root) {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode: (n) => (n.parentElement.closest('code, pre, mark') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT)
+  });
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  for (const node of nodes) {
+    const text = node.nodeValue;
+    const matches = [...text.matchAll(saidPattern)];
+    if (!matches.length) continue;
+    const frag = document.createDocumentFragment();
+    let at = 0;
+    for (const match of matches) {
+      frag.appendChild(document.createTextNode(text.slice(at, match.index)));
+      frag.appendChild(el('mark', 'said', match[0]));
+      at = match.index + match[0].length;
+    }
+    frag.appendChild(document.createTextNode(text.slice(at)));
+    node.replaceWith(frag);
+  }
+}
 
 function injectPageRules(ctx) {
   const { theme, chapters, meta } = ctx;
@@ -1575,6 +1612,7 @@ export async function renderBook(record, root, { includeImages = true, theme } =
   };
 
   watchedImages.clear();
+  saidPattern = record.mode === 'pair' ? phrasePattern(record.filter?.phrases) : null;
   document.documentElement.lang = 'en';
   for (const node of [document.documentElement, document.body]) {
     for (const t of THEMES) node.classList.toggle('theme-' + t, t === theme);

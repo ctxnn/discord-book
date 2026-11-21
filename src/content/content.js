@@ -94,12 +94,65 @@
     return normalize(author.name) === w || (author.id && author.id === w);
   }
 
+  const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+  function phraseMatcher(phrases) {
+    if (!phrases.length) return () => false;
+    const pattern = new RegExp(`(?<![\\p{L}\\p{N}])(?:${phrases.map(escapeRegExp).join('|')})(?![\\p{L}\\p{N}])`, 'iu');
+    return (m) => pattern.test(m.text || '');
+  }
+
+  function mentionedNames(m) {
+    if (!m.html || !m.html.includes('mention')) return [];
+    const doc = new DOMParser().parseFromString(m.html, 'text/html');
+    return [...doc.querySelectorAll('span.mention')].map((s) => s.textContent.replace(/^@/, ''));
+  }
+
+  function conversationBetween(messages, pair, filter) {
+    const says = phraseMatcher(filter.phrases);
+    const whoOf = (m) => (m.system ? -1 : pair.findIndex((name) => matchesPerson(m.author, name)));
+    const keep = new Set();
+    let last = null;
+    let othersSince = 0;
+    for (const m of messages) {
+      const who = whoOf(m);
+      if (who < 0) {
+        othersSince += 1;
+        continue;
+      }
+      const other = pair[1 - who];
+      const addressesOther = filter.replies && (
+        (m.reply && matchesPerson({ name: m.reply.author }, other)) ||
+        mentionedNames(m).some((n) => normalize(n) === normalize(other))
+      );
+      const quickAnswer = filter.backAndForth && last && last.who !== who &&
+        Date.parse(m.ts) - Date.parse(last.m.ts) <= 3 * 60 * 1000 && othersSince < 5;
+      if (addressesOther || says(m)) keep.add(m);
+      if (quickAnswer) {
+        keep.add(m);
+        keep.add(last.m);
+      }
+      last = { m, who };
+      othersSince = 0;
+    }
+    return messages.filter((m) => keep.has(m));
+  }
+
   async function run(options) {
     const scraper = window.DiscordBookScraper;
     const chat = scraper.getChatInfo();
     if (!chat) throw new Error('Open a DM or channel first.');
     let pair = options.mode === 'pair' ? options.pair.map((s) => s.trim()).filter(Boolean) : null;
     if (pair && pair.length !== 2) throw new Error('Enter two names for the two-person mode.');
+    const filter = pair ? {
+      scope: options.filter?.scope === 'conversation' ? 'conversation' : 'all',
+      replies: options.filter?.replies !== false,
+      backAndForth: options.filter?.backAndForth !== false,
+      phrases: (options.filter?.phrases || []).map((p) => p.trim()).filter(Boolean)
+    } : null;
+    if (filter?.scope === 'conversation' && !filter.replies && !filter.backAndForth && !filter.phrases.length) {
+      throw new Error('Pick at least one thing to keep, or type words to look for.');
+    }
 
     const controller = new AbortController();
     job = { controller, chat };
@@ -118,8 +171,11 @@
         const seen = participantsOf(messages).slice(0, 12).map((p) => p.name).join(', ');
         throw new Error(`No messages from ${missing.join(' and ')} here. Names found: ${seen || 'none'}.`);
       }
-      messages = messages.filter((m) => !m.system && pair.some((name) => matchesPerson(m.author, name)));
       pair = pair.map((name) => messages.find((m) => matchesPerson(m.author, name)).author.name);
+      messages = filter.scope === 'conversation'
+        ? conversationBetween(messages, pair, filter)
+        : messages.filter((m) => !m.system && pair.some((name) => matchesPerson(m.author, name)));
+      if (!messages.length) throw new Error(`Nothing matched: ${pair.join(' and ')} never reply to, mention, or quickly answer each other here${filter.phrases.length ? ', or say ' + filter.phrases.map((p) => `"${p}"`).join(', ') : ''}.`);
     }
     if (!messages.length) throw new Error('No messages found in this chat.');
 
@@ -128,6 +184,7 @@
       chat,
       mode: pair ? 'pair' : 'full',
       pair,
+      filter,
       complete: result.complete && !options.fromDate,
       participants: participantsOf(messages),
       messages

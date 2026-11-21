@@ -41,7 +41,16 @@
         <label>Second person<input id="p2" list="authors" placeholder="Name or user ID" autocomplete="off"></label>
       </div>
       <datalist id="authors"></datalist>
-      <p class="hint">Keeps only these two people's messages. Use the names shown in the chat (server nicknames) or user IDs.</p>
+      <p class="hint">Use the names shown in the chat (server nicknames) or user IDs.</p>
+      <div class="seg scope" role="tablist">
+        <button type="button" data-scope="all" class="on">Everything they wrote</button>
+        <button type="button" data-scope="conversation">Only their conversation</button>
+      </div>
+      <div id="conversation" hidden>
+        <label class="check"><input id="f-replies" type="checkbox" checked><span>Replies and @mentions between them</span></label>
+        <label class="check"><input id="f-quick" type="checkbox" checked><span>Quick answers to each other (within 3 min)</span></label>
+        <label>Also when either of them says <span class="muted">(comma-separated)</span><input id="f-says" placeholder="e.g. x, see you, good night" autocomplete="off"></label>
+      </div>
     </div>
 
     <label class="style-field">Style

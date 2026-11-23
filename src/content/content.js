@@ -4,6 +4,13 @@
 
   let job = null;
   let panel = null;
+  let lastDiagnostics = null;
+
+  const STOPPED = {
+    stalled: 'Discord stopped loading older messages, even after waiting and retrying.',
+    'list-missing': 'The message list disappeared. Was the chat switched or closed?',
+    'too-long': 'The chat was too long to finish in one go.'
+  };
 
   const normalize = (s) => String(s || '').trim().replace(/^@/, '').toLowerCase();
 
@@ -49,23 +56,37 @@
         <div class="status"></div>
         <div class="bar"><i></i></div>
         <div class="hint">Keep this tab open and in front until reading finishes.</div>
-        <div class="row"><button class="cancel">Cancel</button></div>
+        <div class="row"><button class="copy" hidden>Copy details</button><button class="cancel">Cancel</button></div>
       </div>`;
     shadow.querySelector('.cancel').addEventListener('click', () => {
       if (job) job.controller.abort();
       else hide();
     });
+    shadow.querySelector('.copy').addEventListener('click', async (event) => {
+      const report = JSON.stringify({ page: location.pathname, agent: navigator.userAgent, ...lastDiagnostics }, null, 1);
+      const copied = await navigator.clipboard.writeText(report).then(() => true, () => false);
+      if (!copied) {
+        const area = Object.assign(document.createElement('textarea'), { value: report });
+        shadow.append(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+      }
+      event.target.textContent = 'Copied. Paste it to the developer';
+    });
     document.documentElement.appendChild(host);
-    panel = { host, card: shadow.querySelector('.card'), status: shadow.querySelector('.status'), button: shadow.querySelector('.cancel'), hint: shadow.querySelector('.hint') };
+    panel = { host, card: shadow.querySelector('.card'), status: shadow.querySelector('.status'), button: shadow.querySelector('.cancel'), copy: shadow.querySelector('.copy'), hint: shadow.querySelector('.hint') };
     return panel;
   }
 
-  function show(text, state = 'working') {
+  function show(text, state = 'working', details = false) {
     const p = ui();
     p.status.textContent = text;
     p.card.className = `card ${state === 'working' ? '' : state}`;
     p.button.textContent = state === 'working' ? 'Cancel' : 'Close';
     p.hint.hidden = state !== 'working';
+    p.copy.hidden = !(details && lastDiagnostics);
+    p.copy.textContent = 'Copy details';
   }
 
   function hide() {
@@ -88,10 +109,10 @@
     return [...byName.values()].sort((a, b) => b.count - a.count);
   }
 
-  function matchesPerson(author, wanted) {
+  function matchesPerson(author, wanted, id = null) {
     if (!author) return false;
     const w = normalize(wanted);
-    return normalize(author.name) === w || (author.id && author.id === w);
+    return normalize(author.name) === w || (!!author.id && (author.id === w || author.id === id));
   }
 
   const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -177,22 +198,26 @@
     const controller = new AbortController();
     job = { controller, chat };
     show(`Reading ${chat.title}…`);
+    lastDiagnostics = null;
     const result = await scraper.scrape({
       fromDate: options.fromDate ? new Date(options.fromDate) : null,
       maxMessages: options.maxMessages || Infinity,
       signal: controller.signal,
-      onProgress: (p) => show(`Reading ${chat.title}…\n${p.collected.toLocaleString()} messages${p.oldestTs ? ` · back to ${monthYear(p.oldestTs)}` : ''}`)
+      onProgress: (p) => show(`Reading ${chat.title}…\n${p.collected.toLocaleString()} messages${p.oldestTs ? ` · back to ${monthYear(p.oldestTs)}` : ''}${p.note ? `\n${p.note}` : ''}`)
     });
+    lastDiagnostics = { ...result.diagnostics, collected: result.messages.length, complete: result.complete };
 
     const pool = result.messages;
     let messages = pool;
     if (pair) {
-      const missing = pair.filter((name) => !messages.some((m) => matchesPerson(m.author, name)));
+      const ids = Array.isArray(options.pairIds) ? options.pairIds : [];
+      const found = pair.map((name, i) => messages.find((m) => !m.system && matchesPerson(m.author, name, ids[i] || null)));
+      const missing = pair.filter((_, i) => !found[i]);
       if (missing.length) {
         const seen = participantsOf(messages).slice(0, 12).map((p) => p.name).join(', ');
         throw new Error(`No messages from ${missing.join(' and ')} here. Names found: ${seen || 'none'}.`);
       }
-      pair = pair.map((name) => messages.find((m) => matchesPerson(m.author, name)).author.name);
+      pair = found.map((m) => m.author.name);
       messages = filter.scope === 'conversation'
         ? conversationBetween(messages, pair, filter)
         : messages.filter((m) => !m.system && pair.some((name) => matchesPerson(m.author, name)));
@@ -216,9 +241,9 @@
       pool,
       autoIds: messages.map((m) => m.id)
     };
-    const reply = await chrome.runtime.sendMessage({ type: 'export:save', data, options: { includeImages: options.includeImages !== false, theme: options.theme, review: options.review === true } });
+    const reply = await chrome.runtime.sendMessage({ type: 'export:save', data, options: { includeImages: options.includeImages !== false, theme: options.theme, review: options.review === true, into: options.into || null } });
     if (!reply?.ok) throw new Error(reply?.error || 'Could not save the export.');
-    return { count: messages.length, version: reply.version, complete: data.complete, review: options.review === true };
+    return { count: messages.length, version: reply.version, complete: data.complete, review: options.review === true, combined: reply.sources > 1, stop: result.diagnostics?.stopReason, from: pool[0]?.ts, dated: !!options.fromDate };
   }
 
   chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
@@ -235,10 +260,12 @@
       sendResponse({ ok: true });
       run(message.options).then(
         (r) => {
-          show(`Done: ${r.count.toLocaleString()} messages picked, edition ${r.version}.${r.complete ? '' : '\nThe chat history starts partway through.'}\n${r.review ? 'Check the messages in the new tab, then make the PDF.' : 'Your PDF is being made in the new tab.'}`, 'done');
-          setTimeout(hide, 8000);
+          const partial = !r.complete && !r.dated;
+          const why = partial ? `\n${STOPPED[r.stop] || 'The chat history could not be read to the very beginning.'} The book starts at ${r.from ? new Date(r.from).toLocaleDateString() : 'the oldest message reached'}.` : '';
+          show(`Done: ${r.count.toLocaleString()} messages picked, edition ${r.version}${r.combined ? ' of the combined book' : ''}.${why}\n${r.review ? 'Check the messages in the new tab, then make the PDF.' : 'Your PDF is being made in the new tab.'}`, 'done', partial);
+          if (!partial) setTimeout(hide, 8000);
         },
-        (e) => show(e?.name === 'AbortError' ? 'Cancelled.' : String(e?.message || e), e?.name === 'AbortError' ? 'done' : 'error')
+        (e) => show(e?.name === 'AbortError' ? 'Cancelled.' : String(e?.message || e), e?.name === 'AbortError' ? 'done' : 'error', true)
       ).finally(() => { job = null; });
     }
   });

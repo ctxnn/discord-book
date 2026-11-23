@@ -53,6 +53,12 @@ PDF, shift-click for a range, switch to **Whole chat** to add any other message 
 **Add day** / **Remove day**. **Make PDF** then saves the edition and downloads it. **Edit messages** in the PDF tab
 reopens the same page later.
 
+**One book from a DM and a server:** make the DM book first. Then open a server channel where the same two people
+talk, choose **Two people**, and pick the DM book under **Add to a saved book**. The two names fill in by themselves
+(matched by Discord user id, so different server nicknames are fine). Their channel messages join the DM book in time
+order, the book marks each switch with a line such as "In #general, on My Server", and the PDF and saved entry are
+replaced by the next edition. Reading either chat again later replaces only that chat's part of the book.
+
 **Options:** *Start from date* stops scrolling at that date, which helps in huge channels. You can also turn images off
 (the style picker is always visible). *Open* in the saved-books list re-renders a saved chat, with buttons to save the PDF
 again, edit messages, or print it.
@@ -61,6 +67,9 @@ again, edit messages, or print it.
 
 - Discord loads older messages about 50 at a time, so very long chats take a while (roughly a minute per few thousand
   messages). Keep the tab in front, because Chrome slows down background tabs.
+- When Discord skips a load (it does when asked quickly), the reader scrolls away and back with longer and longer waits,
+  up to about a minute and a half for one spot. If Discord still sends nothing, the book starts where it stopped, the
+  panel says why, and **Copy details** copies a short log of the scroll positions to send to the developer.
 - Names are the display names Discord shows (server nicknames in servers), since usernames are not on the page.
 - Images are embedded from Discord's CDN at the time you make the book. Signed attachment links expire after a
   while, so re-opening an old saved book later may show image placeholders. Make a new export to refresh them.

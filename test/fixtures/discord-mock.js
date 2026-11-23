@@ -904,11 +904,56 @@
   var lo = 0;
   var hi = -1;
   var generation = 0;
+  var fetches = 0;
+  var armedTop = true;
+  var armedBottom = true;
+  var PLACEHOLDER_ROWS = 6;
+  var PLACEHOLDER_HEIGHT = 96;
   window.__mockLog = [];
   function logOp(op) { window.__mockLog.push({ t: Math.round(performance.now()), op: op, lo: lo, hi: hi, top: Math.round(scroller.scrollTop) }); }
 
   function randomDelay() {
     return LOAD_DELAY_MIN + Math.floor(Math.random() * (LOAD_DELAY_MAX - LOAD_DELAY_MIN));
+  }
+
+  function rows() {
+    return ol.querySelectorAll('li[id^="chat-messages-"]');
+  }
+
+  // Real Discord keeps the same message under the viewport when it adds or
+  // trims rows: measure a row that survives the change and put it back.
+  function keepAnchor(anchor, mutate) {
+    var before = anchor ? anchor.getBoundingClientRect().top : 0;
+    mutate();
+    if (anchor && anchor.isConnected) scroller.scrollTop += anchor.getBoundingClientRect().top - before;
+  }
+
+  // Grey skeleton messages that Discord draws past the last loaded message
+  // while more history exists in that direction.
+  function makePlaceholders(edge) {
+    var box = document.createElement('div');
+    box.className = 'placeholderGroup_ph ' + edge;
+    for (var i = 0; i < PLACEHOLDER_ROWS; i++) {
+      var ph = document.createElement('div');
+      ph.className = 'wrapper_c19a55 cozy_c19a55';
+      ph.style.height = PLACEHOLDER_HEIGHT + 'px';
+      box.appendChild(ph);
+    }
+    return box;
+  }
+
+  // The channel welcome is a row whose id repeats the channel id. Channels
+  // draw an icon inside it; DMs only say who the conversation is with.
+  function makeWelcome() {
+    var box = document.createElement('div');
+    box.id = 'chat-messages-' + CHANNEL_ID + '-' + CHANNEL_ID;
+    box.className = 'container_c19a55';
+    if (MOCK_KIND === 'channel') {
+      box.innerHTML = '<div class="emptyChannelIcon_c19a55"></div><h3 class="header_c19a55">Welcome to #general!</h3><div class="description_c19a55">This is the start of the #general channel.</div>';
+    } else {
+      box.innerHTML = '<h3 class="header_c19a55">alice</h3><div class="description_c19a55">This is the beginning of your direct message history with <strong>@alice</strong>.</div>';
+    }
+    return box;
   }
 
   function renderWindow(start, end) {
@@ -933,87 +978,96 @@
 
   function removeLast(n) {
     for (var i = 0; i < n; i++) {
-      var lis = ol.querySelectorAll('li[id^="chat-messages-"]');
+      var lis = rows();
       if (lis.length) lis[lis.length - 1].parentNode.removeChild(lis[lis.length - 1]);
     }
   }
 
   function syncMarkers() {
-    var marker = ol.querySelector('.emptyChannel_c19a55');
-    if (lo === 0 && !marker) showBeginningMarker();
-    if (lo > 0 && marker) marker.parentNode.parentNode.removeChild(marker.parentNode);
-    if (hi < ALL_MESSAGES.length - 1) showJumpToPresentBar();
-    else hideJumpToPresentBar();
+    var top = ol.querySelector(':scope > .placeholderGroup_ph.top');
+    var bottom = ol.querySelector(':scope > .placeholderGroup_ph.bottom');
+    var welcome = document.getElementById('chat-messages-' + CHANNEL_ID + '-' + CHANNEL_ID);
+    if (lo > 0) {
+      if (welcome) welcome.parentNode.removeChild(welcome);
+      if (!top) ol.insertBefore(makePlaceholders('top'), ol.firstChild);
+    } else {
+      if (top) top.parentNode.removeChild(top);
+      if (!welcome) ol.insertBefore(makeWelcome(), ol.firstChild);
+    }
+    if (hi < ALL_MESSAGES.length - 1) {
+      if (!bottom) ol.appendChild(makePlaceholders('bottom'));
+      showJumpToPresentBar();
+    } else {
+      if (bottom) bottom.parentNode.removeChild(bottom);
+      hideJumpToPresentBar();
+    }
+  }
+
+  // Discord quietly skips some history requests when they come quickly, so
+  // every fourth fetch here returns nothing and the page stays as it was.
+  function fetchPage(apply) {
+    isLoading = true;
+    var g = generation;
+    var dropped = ++fetches % 4 === 0;
+    setTimeout(function () {
+      if (g !== generation) return;
+      isLoading = false;
+      if (dropped) {
+        logOp('dropped');
+        return;
+      }
+      apply();
+    }, randomDelay());
   }
 
   function loadOlder() {
     if (isLoading || lo === 0) return;
-    isLoading = true;
-    var g = generation;
-    setTimeout(function () {
-      if (g !== generation) return;
-      var start = Math.max(0, lo - PAGE_SIZE);
-      var prevScrollHeight = scroller.scrollHeight;
-      var prevScrollTop = scroller.scrollTop;
-      var first = ol.querySelector('li[id^="chat-messages-"]');
-      ol.insertBefore(renderRange(start, lo - 1), first);
-      lo = start;
-      scroller.scrollTop = prevScrollTop + (scroller.scrollHeight - prevScrollHeight);
-      var excess = hi - lo + 1 - MAX_DOM_ITEMS;
-      if (excess > 0) {
-        removeLast(excess);
-        hi -= excess;
-      }
-      syncMarkers();
+    fetchPage(function () {
+      var first = rows()[0];
+      keepAnchor(first, function () {
+        var start = Math.max(0, lo - PAGE_SIZE);
+        ol.insertBefore(renderRange(start, lo - 1), first);
+        lo = start;
+        var excess = hi - lo + 1 - MAX_DOM_ITEMS;
+        if (excess > 0) {
+          removeLast(excess);
+          hi -= excess;
+        }
+        syncMarkers();
+      });
       logOp('older');
-      isLoading = false;
-    }, randomDelay());
+    });
   }
 
   function loadNewer() {
     if (isLoading || hi >= ALL_MESSAGES.length - 1) return;
-    isLoading = true;
-    var g = generation;
-    setTimeout(function () {
-      if (g !== generation) return;
-      var end = Math.min(ALL_MESSAGES.length - 1, hi + PAGE_SIZE);
-      ol.appendChild(renderRange(hi + 1, end));
-      hi = end;
-      var excess = hi - lo + 1 - MAX_DOM_ITEMS;
-      if (excess > 0) {
-        var prevScrollHeight = scroller.scrollHeight;
-        var prevScrollTop = scroller.scrollTop;
-        removeFirst(excess);
-        lo += excess;
-        scroller.scrollTop = prevScrollTop - (prevScrollHeight - scroller.scrollHeight);
-      }
-      syncMarkers();
+    fetchPage(function () {
+      var all = rows();
+      var last = all[all.length - 1];
+      keepAnchor(last, function () {
+        var end = Math.min(ALL_MESSAGES.length - 1, hi + PAGE_SIZE);
+        ol.insertBefore(renderRange(hi + 1, end), last.nextSibling);
+        hi = end;
+        var excess = hi - lo + 1 - MAX_DOM_ITEMS;
+        if (excess > 0) {
+          removeFirst(excess);
+          lo += excess;
+        }
+        syncMarkers();
+      });
       logOp('newer');
-      isLoading = false;
-    }, randomDelay());
-  }
-
-  function showBeginningMarker() {
-    var marker = document.createElement('li');
-    marker.className = 'message_d5deea';
-    var emptyDiv = document.createElement('div');
-    emptyDiv.className = 'emptyChannel_c19a55';
-    if (MOCK_KIND === 'channel') {
-      emptyDiv.innerHTML = '<h2>Welcome to <strong>#general</strong>!</h2><p>This is the start of the #general channel.</p>';
-    } else {
-      emptyDiv.innerHTML = '<h2>This is the beginning of your direct message history with <strong>@alice</strong>.</h2><p>Messages sent here are only visible to you and alice.</p>';
-    }
-    marker.appendChild(emptyDiv);
-    ol.insertBefore(marker, ol.firstChild);
+    });
   }
 
   function showJumpToPresentBar() {
     if (document.querySelector('.jumpToPresentBar_c19a55')) return;
     var bar = document.createElement('div');
     bar.className = 'jumpToPresentBar_c19a55';
-    var label = document.createElement('span');
-    label.textContent = "You're viewing older messages";
+    var label = document.createElement('button');
+    label.className = 'barButtonMain_c19a55';
+    label.textContent = "You're Viewing Older Messages";
     var btn = document.createElement('button');
+    btn.className = 'barButtonAlt_c19a55';
     btn.textContent = 'Jump To Present';
     btn.addEventListener('click', jumpToPresent);
     bar.appendChild(label);
@@ -1026,24 +1080,52 @@
     if (bar) bar.parentNode.removeChild(bar);
   }
 
+  // Jumping rebuilds the message list from scratch: the old scroller and
+  // list leave the page, and the newest page arrives a moment later.
   function jumpToPresent() {
     var g = ++generation;
     isLoading = true;
+    var freshScroller = scroller.cloneNode(false);
+    var freshOl = ol.cloneNode(false);
+    freshScroller.appendChild(freshOl);
+    scroller.removeEventListener('scroll', onScroll);
+    scroller.parentNode.replaceChild(freshScroller, scroller);
+    scroller = freshScroller;
+    ol = freshOl;
+    scroller.addEventListener('scroll', onScroll);
+    armedTop = true;
+    armedBottom = true;
     setTimeout(function () {
       if (g !== generation) return;
       renderInitial();
       logOp('jump');
       isLoading = false;
-    }, randomDelay());
+    }, randomDelay() + 200);
   }
 
-  function checkEdges() {
-    if (scroller.scrollTop < 200) loadOlder();
-    if (scroller.scrollHeight - scroller.scrollTop - scroller.clientHeight < 200) loadNewer();
+  function zone(edge) {
+    var ph = ol.querySelector(':scope > .placeholderGroup_ph.' + edge);
+    return (ph ? ph.offsetHeight : 0) + 300;
   }
-  scroller.addEventListener('scroll', checkEdges);
-  window.__mockState = function () { return { lo: lo, hi: hi, isLoading: isLoading, top: scroller.scrollTop }; };
-  setInterval(checkEdges, 300);
+
+  // A fetch starts only on a scroll event that brings the viewport into the
+  // zone near an edge, and the next one only after the viewport has left it.
+  function onScroll() {
+    var top = scroller.scrollTop;
+    var fromBottom = scroller.scrollHeight - top - scroller.clientHeight;
+    if (top >= zone('top')) armedTop = true;
+    else if (armedTop && !isLoading && lo > 0) {
+      armedTop = false;
+      loadOlder();
+    }
+    if (fromBottom >= zone('bottom')) armedBottom = true;
+    else if (armedBottom && !isLoading && hi < ALL_MESSAGES.length - 1) {
+      armedBottom = false;
+      loadNewer();
+    }
+  }
+  scroller.addEventListener('scroll', onScroll);
+  window.__mockState = function () { return { lo: lo, hi: hi, isLoading: isLoading, top: scroller.scrollTop, fetches: fetches }; };
 
 
   // -----------------------------------------------------------------------

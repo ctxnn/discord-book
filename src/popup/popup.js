@@ -1,15 +1,20 @@
-import { listSummaries, getSummary, deleteExport } from '../lib/db.js';
+import { listSummaries, getSummary, getExport, deleteExport } from '../lib/db.js';
 import { exportKey } from '../lib/keys.js';
 
 const $ = (id) => document.getElementById(id);
 const DISCORD = /^https:\/\/(?:ptb\.|canary\.)?discord\.com\//;
 const fmtDate = (iso) => new Date(iso).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
 const titleOf = (s) => (s.mode === 'pair' ? `${s.pair[0]} & ${s.pair[1]} · ${s.chat.title}` : s.chat.title);
+const placesOf = (s) => (s.sources?.length > 1 ? s.sources.map((x) => (x.kind === 'channel' ? x.title : 'DMs')).join(' + ') : s.chat.serverName || '');
+const bare = (s) => String(s || '').trim().replace(/^@/, '').toLowerCase();
 
 let tab = null;
 let chat = null;
 let mode = 'pair';
 let scope = 'all';
+let books = [];
+let authors = [];
+let intoIds = null;
 
 function button(label, onClick, cls = '') {
   const b = document.createElement('button');
@@ -38,7 +43,8 @@ async function refreshSaved() {
   const summary = key ? await getSummary(key) : null;
   const saved = $('saved');
   saved.replaceChildren();
-  $('go').textContent = summary ? `Replace book (edition ${summary.version + 1})` : 'Create book';
+  const into = books.find((s) => s.key === $('into').value);
+  $('go').textContent = into ? `Add to that book (edition ${into.version + 1})` : summary ? `Replace book (edition ${summary.version + 1})` : 'Create book';
   if (!summary) return;
   const line = document.createElement('span');
   line.className = 'grow';
@@ -47,8 +53,34 @@ async function refreshSaved() {
   if (summary.download?.id != null) saved.append(button('Show PDF', () => chrome.downloads.show(summary.download.id)));
 }
 
+function fillInto() {
+  const own = currentKey();
+  const choices = books.filter((s) => s.key !== own || s.key === $('into').value);
+  const keep = $('into').value;
+  $('into').replaceChildren(new Option('No, make a separate book', ''), ...choices.map((s) => new Option(`${titleOf(s)}${placesOf(s) ? ' · ' + placesOf(s) : ''}`, s.key)));
+  $('into').value = choices.some((s) => s.key === keep) ? keep : '';
+  $('into-field').hidden = mode !== 'pair' || !choices.length;
+}
+
+// Fill in the two people from the chosen book, using the names they have in
+// this chat when Discord shows the same user ids here.
+async function chooseBook() {
+  intoIds = null;
+  const key = $('into').value;
+  if (key) {
+    const book = await getExport(key);
+    const pair = book.pair || book.participants.slice(0, 2).map((p) => p.name);
+    intoIds = pair.map((name) => book.participants.find((p) => bare(p.name) === bare(name))?.id || null);
+    const here = intoIds.map((id, i) => authors.find((a) => id && a.id === id)?.name || pair[i]);
+    $('p1').value = here[0];
+    $('p2').value = here[1];
+  }
+  refreshSaved();
+}
+
 async function refreshLibrary() {
-  const books = await listSummaries();
+  books = await listSummaries();
+  if (chat) fillInto();
   $('no-books').hidden = books.length > 0;
   $('books').replaceChildren(...books.map((s) => {
     const li = document.createElement('li');
@@ -56,7 +88,7 @@ async function refreshLibrary() {
     info.className = 'info';
     info.innerHTML = '<div class="t"></div><div class="m"></div>';
     info.querySelector('.t').textContent = titleOf(s);
-    info.querySelector('.m').textContent = `${s.chat.serverName ? s.chat.serverName + ' · ' : ''}ed. ${s.version} · ${s.messageCount.toLocaleString()} msgs · ${fmtDate(s.createdAt)}`;
+    info.querySelector('.m').textContent = `${placesOf(s) ? placesOf(s) + ' · ' : ''}ed. ${s.version} · ${s.messageCount.toLocaleString()} msgs · ${fmtDate(s.createdAt)}`;
     li.append(info, button('Open', () => openBook(s.key)), button('✕', async () => {
       if (!confirm(`Delete the saved book "${titleOf(s)}"? The PDF file stays in your Downloads.`)) return;
       await deleteExport(s.key);
@@ -79,6 +111,11 @@ function setMode(next) {
   mode = next;
   document.querySelectorAll('.seg [data-mode]').forEach((b) => b.classList.toggle('on', b.dataset.mode === mode));
   $('pair').hidden = mode !== 'pair';
+  if (mode !== 'pair') {
+    $('into').value = '';
+    intoIds = null;
+  }
+  fillInto();
   refreshSaved();
 }
 
@@ -99,6 +136,8 @@ async function start() {
     includeImages: $('images').checked,
     theme: $('theme').value,
     review: $('review').checked,
+    into: mode === 'pair' ? $('into').value || null : null,
+    pairIds: mode === 'pair' && $('into').value ? intoIds : null,
     filter: { scope, replies: $('f-replies').checked, backAndForth: $('f-quick').checked, phrases: phrasesOf($('f-says').value), saidBy: $('f-who').value === 'either' ? 'either' : Number($('f-who').value) }
   };
   if (mode === 'pair' && !options.pair.every(Boolean)) return showError('Enter both names.');
@@ -117,20 +156,21 @@ async function init() {
     $('theme').value = lastOptions.theme || '';
     if ($('theme').selectedIndex < 0) $('theme').selectedIndex = 0;
   }
-  refreshLibrary();
   const pinned = Number(new URLSearchParams(location.search).get('tab'));
   [tab] = pinned ? [await chrome.tabs.get(pinned)] : await chrome.tabs.query({ active: true, currentWindow: true });
   if (!tab?.url || !DISCORD.test(tab.url)) {
     $('no-chat').hidden = false;
-    return;
+    return refreshLibrary();
   }
   await ensureContentScript();
   const info = await chrome.tabs.sendMessage(tab.id, { type: 'info' });
   chat = info?.chat;
   if (!chat) {
     $('no-chat').hidden = false;
-    return;
+    return refreshLibrary();
   }
+  authors = info.authors;
+  await refreshLibrary();
   $('chat').hidden = false;
   $('chat-title').textContent = chat.title;
   $('chat-sub').textContent = chat.kind === 'channel' ? `Channel in ${chat.serverName || 'a server'}` : chat.kind === 'group' ? 'Group DM' : 'Direct message';
@@ -149,6 +189,7 @@ async function init() {
   }
   document.querySelectorAll('.seg [data-mode]').forEach((b) => b.addEventListener('click', () => setMode(b.dataset.mode)));
   document.querySelectorAll('.seg [data-scope]').forEach((b) => b.addEventListener('click', () => setScope(b.dataset.scope)));
+  $('into').addEventListener('change', () => chooseBook().catch((e) => showError(String(e.message || e))));
   $('p1').addEventListener('input', refreshSaved);
   $('p2').addEventListener('input', refreshSaved);
   $('go').addEventListener('click', () => start().catch((e) => showError(String(e.message || e))));

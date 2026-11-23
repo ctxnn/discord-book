@@ -36,19 +36,29 @@
 
   /** Find the scrollable ancestor of the message list. */
   function findScroller(ol) {
-    let el = ol.parentElement;
-    while (el) {
-      const style = getComputedStyle(el);
-      const overflowY = style.overflowY;
-      if (
-        (overflowY === 'auto' || overflowY === 'scroll') &&
-        el.scrollHeight > el.clientHeight
-      ) {
-        return el;
-      }
-      el = el.parentElement;
+    let fallback = null;
+    for (let el = ol.parentElement; el && el !== document.body; el = el.parentElement) {
+      if (!/(auto|scroll|overlay)/.test(getComputedStyle(el).overflowY)) continue;
+      fallback = fallback || el;
+      if (el.scrollHeight > el.clientHeight + 4) return el;
+    }
+    return fallback;
+  }
+
+  /** The author's picture: Discord puts it beside the name, not inside it. */
+  function rowAvatar(row) {
+    var imgs = row.querySelectorAll('img[class*="avatar_"]');
+    for (var i = 0; i < imgs.length; i++) {
+      if (imgs[i].closest('[id^="message-reply-context-"], [class*="repliedMessage"], [id^="message-accessories-"], [id^="message-reactions-"]')) continue;
+      return imgs[i];
     }
     return null;
+  }
+
+  /** User id from /avatars/<id>/… or a server avatar's /users/<id>/avatars/…. */
+  function userIdFromAvatar(url) {
+    var m = String(url || '').match(/\/(?:users\/(\d+)\/avatars|avatars\/(\d+))\//);
+    return m ? (m[1] || m[2]) : null;
   }
 
   /** Minimal sleep. */
@@ -209,18 +219,11 @@
     var headerEl = li.querySelector('h3');
     if (headerEl) {
       var usernameSpan = headerEl.querySelector('span[id^="message-username-"] span[class*="username_"]');
-      var avatarImg = headerEl.querySelector('img[class*="avatar_"]');
+      var avatarImg = rowAvatar(li);
       if (usernameSpan) {
         var name = (usernameSpan.getAttribute('data-text') || usernameSpan.textContent || '').trim();
-        var avatarUrl = null;
-        var userId = null;
-        if (avatarImg) {
-          avatarUrl = avatarImg.src || null;
-          // Extract user id from avatar URL: /avatars/<userId>/...
-          var avMatch = avatarUrl.match(/\/avatars\/(\d+)\//);
-          if (avMatch) userId = avMatch[1];
-        }
-        author = { name: name, id: userId, avatar: avatarUrl };
+        var avatarUrl = avatarImg ? (avatarImg.src || null) : null;
+        author = { name: name, id: userIdFromAvatar(avatarUrl), avatar: avatarUrl };
       }
     }
 
@@ -344,6 +347,7 @@
 
     // Attachments
     var attachments = [];
+    var stickers = [];
     var accessoriesDiv = li.querySelector('div[id^="message-accessories-"]');
     if (accessoriesDiv) {
       // Image attachments
@@ -408,7 +412,6 @@
       }
 
       // Stickers
-      var stickers = [];
       var stickerEls = accessoriesDiv.querySelectorAll('img[class*="sticker"], [class*="stickerAsset_"] img');
       for (var sti = 0; sti < stickerEls.length; sti++) {
         var st = stickerEls[sti];
@@ -597,12 +600,8 @@
       var usernameSpan = header.querySelector('span[id^="message-username-"] span[class*="username_"]');
       if (!usernameSpan) continue;
       var name = (usernameSpan.getAttribute('data-text') || usernameSpan.textContent || '').trim();
-      var avatarImg = header.querySelector('img[class*="avatar_"]');
-      var id = null;
-      if (avatarImg) {
-        var avMatch = (avatarImg.src || '').match(/\/avatars\/(\d+)\//);
-        if (avMatch) id = avMatch[1];
-      }
+      var avatarImg = rowAvatar(lis[i]);
+      var id = avatarImg ? userIdFromAvatar(avatarImg.src) : null;
       if (name && !seen[name]) {
         seen[name] = true;
         authors.push({ name: name, id: id });
@@ -615,405 +614,383 @@
   // Scrape
   // -----------------------------------------------------------------------
 
+  var LIST_SELECTOR = '[data-list-id^="chat-messages"]';
+  var ROW_ID = /^chat-messages-(\d+)-(\d+)$/;
+  var STEP_MS = 250;
+  var BEGINNING_TEXT = /beginning of your direct message history|this is the beginning of|this is the start of the|welcome to #|welcome to the beginning/;
+
+  // When Discord does not load the next page, each retry scrolls away from
+  // the edge (dwell), comes back to a different depth and waits longer
+  // (settle). Working Discord exporters page through history the same way.
+  var PAGINATION_ATTEMPTS = [
+    { depth: 0.65, dwell: 800, settle: 800 },
+    { depth: 0.32, dwell: 1200, settle: 1600 },
+    { depth: 0.8, dwell: 2000, settle: 3200 },
+    { depth: 0.9, dwell: 3200, settle: 6400 },
+    { depth: 0.96, dwell: 4800, settle: 12000 },
+    { depth: 0.5, dwell: 12000, settle: 12000 },
+    { depth: 0.65, dwell: 24000, settle: 12000 }
+  ];
+
+  function readView() {
+    var root = document.querySelector(LIST_SELECTOR);
+    var view = { root: root, scroller: null, rows: [], welcome: null };
+    if (!root) return view;
+    view.scroller = findScroller(root);
+    var els = root.querySelectorAll('[id^="chat-messages-"]');
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      var m = el.id.match(ROW_ID);
+      if (!m || (el.parentElement && el.parentElement.closest('[id^="chat-messages-"]'))) continue;
+      if (m[1] === m[2]) view.welcome = el;
+      else if (el.getAttribute('role') !== 'separator') view.rows.push(el);
+    }
+    return view;
+  }
+
+  // Discord draws grey skeleton messages past the last loaded message while
+  // more history exists in that direction.
+  function isPlaceholder(node) {
+    return node.matches('[role="progressbar"], [aria-busy="true"], [class*="spinner"]') ||
+      !!node.querySelector(':scope > [class*="wrapper_"][class*="cozy_"], :scope > [class*="wrapper_"][class*="compact_"]');
+  }
+
+  function placeholdersPast(view, edgeRow, direction) {
+    var node = direction < 0 ? view.root.firstElementChild : view.root.lastElementChild;
+    while (node && node !== edgeRow && !node.contains(edgeRow)) {
+      if (isPlaceholder(node)) return true;
+      node = direction < 0 ? node.nextElementSibling : node.previousElementSibling;
+    }
+    return false;
+  }
+
+  function hasBeginning(view) {
+    if (view.welcome) return true;
+    try {
+      if (view.root.querySelector(':scope > div:has(> [class*="emptyChannelIcon"]), :scope > [class*="channelBeginning"], :scope > [class*="channelStart"]')) return true;
+    } catch (e) { /* :has unsupported */ }
+    var first = view.rows[0];
+    var candidates = view.scroller.querySelectorAll('[class*="emptyChannel"], [class*="header_"]');
+    for (var i = 0; i < candidates.length; i++) {
+      var el = candidates[i];
+      if (el.closest('[id^="chat-messages-"]')) continue;
+      if (!(el.compareDocumentPosition(first) & Node.DOCUMENT_POSITION_FOLLOWING)) continue;
+      if (/emptyChannelIcon/.test(el.getAttribute('class') || '') || BEGINNING_TEXT.test((el.textContent || '').toLowerCase())) return true;
+    }
+    return false;
+  }
+
+  function jumpBar() {
+    return document.querySelector('[class*="jumpToPresentBar"]');
+  }
+
+  function jumpButton(bar) {
+    var buttons = bar.querySelectorAll('button, [role="button"]');
+    for (var i = 0; i < buttons.length; i++) {
+      if (/jump to present/i.test(buttons[i].textContent || '')) return buttons[i];
+    }
+    return buttons.length ? buttons[buttons.length - 1] : null;
+  }
+
+  function waitingForLatest(view) {
+    return view.root.getAttribute('aria-busy') === 'true' ||
+      view.scroller.getAttribute('aria-busy') === 'true' ||
+      !!jumpBar();
+  }
+
+  function edgeOffset(scroller, row, direction) {
+    var rect = row.getBoundingClientRect();
+    return (direction < 0 ? rect.top : rect.bottom) - scroller.getBoundingClientRect().top + scroller.scrollTop;
+  }
+
+  // One step of asking Discord for the next page past `row`. Discord only
+  // fetches when the viewport enters the zone near the loaded edge, so a
+  // retry first moves away (re-arming it) and then comes back.
+  // Returns false once every attempt has been used for this edge.
+  function paginate(scroller, row, direction, st, now, maxAttempts) {
+    if (now < st.waitUntil) return true;
+    var older = direction < 0;
+    var viewport = scroller.clientHeight;
+    var edge = edgeOffset(scroller, row, direction);
+    var maxTop = Math.max(0, scroller.scrollHeight - viewport);
+    if (!st.reenter) {
+      if (st.attempts >= maxAttempts) return false;
+      var firstAttempt = st.attempts++ === 0;
+      var outside = older ? scroller.scrollTop >= edge : scroller.scrollTop + viewport <= edge;
+      if (!firstAttempt || !outside) {
+        var pivot = older ? Math.min(edge + viewport, maxTop) : Math.max(0, edge - 2 * viewport);
+        if (older ? pivot > edge : pivot + viewport < edge) {
+          scroller.scrollTop = pivot;
+          st.reenter = true;
+          st.waitUntil = now + PAGINATION_ATTEMPTS[st.attempts - 1].dwell;
+          return true;
+        }
+      }
+    }
+    var attempt = PAGINATION_ATTEMPTS[st.attempts - 1];
+    var offset = viewport * (older ? attempt.depth : 1 - attempt.depth);
+    scroller.scrollTop = Math.max(0, Math.min(edge - offset, maxTop));
+    st.reenter = false;
+    st.waitUntil = now + attempt.settle;
+    return true;
+  }
+
+  function resolveAuthors(messages) {
+    // For grouped follow-ups with null author, inherit from the
+    // immediately previous message.  System messages (joins, pins,
+    // calls) carry no author and break the visual grouping chain —
+    // a message after a system message always has its own header
+    // in real Discord, so we never inherit across one.
+    for (var i = 0; i < messages.length; i++) {
+      if (messages[i].system) continue;
+      if (messages[i].author === null && i > 0) {
+        var prev = messages[i - 1];
+        if (!prev.system && prev.author) {
+          messages[i].author = {
+            name: prev.author.name,
+            id: prev.author.id,
+            avatar: prev.author.avatar
+          };
+        }
+      }
+    }
+  }
+
+  function computeParticipants(messages) {
+    var counts = {};
+    var details = {};
+    for (var i = 0; i < messages.length; i++) {
+      var author = messages[i].author;
+      if (!author || !author.name) continue;
+      var key = author.id || author.name;
+      if (!counts[key]) {
+        counts[key] = 0;
+        details[key] = { name: author.name, id: author.id, avatar: author.avatar };
+      }
+      counts[key]++;
+    }
+    var participants = Object.keys(counts).map(function (k) {
+      return {
+        name: details[k].name,
+        id: details[k].id,
+        avatar: details[k].avatar,
+        count: counts[k]
+      };
+    });
+    participants.sort(function (a, b) { return b.count - a.count; });
+    return participants;
+  }
+
   async function scrape(opts) {
     opts = opts || {};
-    var fromDate = opts.fromDate || null;
+    var fromMs = opts.fromDate ? opts.fromDate.getTime() : null;
     var maxMessages = opts.maxMessages || Infinity;
     var onProgress = opts.onProgress || function () {};
     var signal = opts.signal || null;
 
-    if (signal && signal.aborted) {
-      throw new DOMException('Aborted', 'AbortError');
-    }
-
-    var ol = document.querySelector('[data-list-id^="chat-messages"]');
-    if (!ol) {
-      return { messages: [], complete: false, participants: [] };
-    }
-
-    var scroller = findScroller(ol);
-    if (!scroller) {
-      return { messages: [], complete: false, participants: [] };
-    }
-
     var collected = new Map();
-    var complete = false;
-    var oldestTs = null;
+    var oldestMs = null;
+    var started = Date.now();
+    var trail = [];
 
-    function checkComplete() {
-      // Only search within the scroller, not the entire document.
-      // Real Discord has [class*="header_"] elements in sidebars, popouts,
-      // and server welcome screens that would false-positive.
-      //
-      // Additionally, the marker must be near the visible viewport top —
-      // if the user is scrolled to the bottom the marker may exist in the
-      // DOM but is not actually reached yet.
-
-      // We must be near the top of the scroller for the marker to count.
-      if (scroller.scrollTop > 200) return false;
-
-      var candidates = scroller.querySelectorAll('[class*="emptyChannel"]');
-      for (var ci = 0; ci < candidates.length; ci++) {
-        var el = candidates[ci];
-        var hText = '';
-        for (var up = el, depth = 0; up && up !== scroller && depth < 4; up = up.parentElement, depth++) {
-          hText = (up.textContent || '').toLowerCase();
-          if (hText.length > 20) break;
-        }
-        if (
-          /emptychannelicon/i.test(el.className || '') ||
-          hText.indexOf('beginning of your direct message history') !== -1 ||
-          hText.indexOf('beginning of the') !== -1 ||
-          hText.indexOf('start of the') !== -1 ||
-          hText.indexOf('welcome to') !== -1 ||
-          hText.indexOf('this is the beginning') !== -1
-        ) {
-          var firstMsg = ol.querySelector('li[id^="chat-messages-"]');
-          if (!firstMsg) return true;
-          if (el.compareDocumentPosition(firstMsg) & Node.DOCUMENT_POSITION_FOLLOWING) {
-            return true;
-          }
-        }
-      }
-
-      var headerCandidates = scroller.querySelectorAll('[class*="header_"]');
-      for (var hi = 0; hi < headerCandidates.length; hi++) {
-        var hEl = headerCandidates[hi];
-        var ht = (hEl.textContent || '').toLowerCase();
-        if (
-          ht.indexOf('beginning of your direct message history') !== -1 ||
-          ht.indexOf('this is the start of the') !== -1 ||
-          ht.indexOf('welcome to #') !== -1
-        ) {
-          var firstMsg2 = ol.querySelector('li[id^="chat-messages-"]');
-          if (!firstMsg2) return true;
-          if (hEl.compareDocumentPosition(firstMsg2) & Node.DOCUMENT_POSITION_FOLLOWING) {
-            return true;
-          }
-        }
-      }
-
-      return false;
+    function checkAbort() {
+      if (signal && signal.aborted) throw new DOMException('Aborted', 'AbortError');
     }
 
-    function harvestMessages() {
-      var lis = ol.querySelectorAll('li[id^="chat-messages-"]');
-      for (var i = 0; i < lis.length; i++) {
-        var li = lis[i];
-        if (li.getAttribute('role') === 'separator') continue;
-        if (li.id && li.id.indexOf('---new-messages-bar') !== -1) continue;
+    checkAbort();
+    if (!readView().root) {
+      return { messages: [], complete: false, participants: [], diagnostics: { stopReason: 'no-list', trail: [] } };
+    }
 
-        var msg = extractMessage(li);
+    function harvest(view) {
+      for (var i = 0; i < view.rows.length; i++) {
+        var id = view.rows[i].id.match(ROW_ID)[2];
+        if (collected.has(id)) continue;
+        var msg = extractMessage(view.rows[i]);
         if (!msg) continue;
-
-        if (!collected.has(msg.id)) {
-          collected.set(msg.id, msg);
-        }
-      }
-
-      if (collected.size > 0) {
-        var oldest = null;
-        collected.forEach(function (m) {
-          var ms = snowflakeToMs(m.id);
-          if (oldest === null || ms < oldest) oldest = ms;
-        });
-        if (oldest !== null) {
-          oldestTs = new Date(oldest).toISOString();
-        }
+        collected.set(id, msg);
+        var ms = snowflakeToMs(id);
+        if (oldestMs === null || ms < oldestMs) oldestMs = ms;
       }
     }
 
-    function sortMessages() {
-      var msgs = Array.from(collected.values());
-      msgs.sort(function (a, b) {
-        if (a.id < b.id) return -1;
-        if (a.id > b.id) return 1;
-        return 0;
+    function record(direction, action, view) {
+      var sc = view && view.scroller;
+      trail.push({
+        t: Math.round((Date.now() - started) / 100) / 10,
+        dir: direction,
+        act: action,
+        got: collected.size,
+        rows: view ? view.rows.length : 0,
+        top: sc ? Math.round(sc.scrollTop) : null,
+        height: sc ? sc.scrollHeight : null,
+        viewport: sc ? sc.clientHeight : null,
+        bar: !!jumpBar()
       });
-      return msgs;
+      if (trail.length > 200) trail.shift();
     }
 
-    function resolveAuthors(messages) {
-      // For grouped follow-ups with null author, inherit from the
-      // immediately previous message.  System messages (joins, pins,
-      // calls) carry no author and break the visual grouping chain —
-      // a message after a system message always has its own header
-      // in real Discord, so we never inherit across one.
-      for (var i = 0; i < messages.length; i++) {
-        if (messages[i].system) continue;
-        if (messages[i].author === null && i > 0) {
-          var prev = messages[i - 1];
-          if (!prev.system && prev.author) {
-            messages[i].author = {
-              name: prev.author.name,
-              id: prev.author.id,
-              avatar: prev.author.avatar
-            };
-          }
-        }
-      }
-    }
-
-    function computeParticipants(messages) {
-      var counts = {};
-      var details = {};
-      for (var i = 0; i < messages.length; i++) {
-        var author = messages[i].author;
-        if (!author || !author.name) continue;
-        var key = author.id || author.name;
-        if (!counts[key]) {
-          counts[key] = 0;
-          details[key] = { name: author.name, id: author.id, avatar: author.avatar };
-        }
-        counts[key]++;
-      }
-      var participants = Object.keys(counts).map(function (k) {
-        return {
-          name: details[k].name,
-          id: details[k].id,
-          avatar: details[k].avatar,
-          count: counts[k]
-        };
-      });
-      participants.sort(function (a, b) { return b.count - a.count; });
-      return participants;
-    }
-
-    function finish() {
-      var messages = sortMessages();
-      resolveAuthors(messages);
-
-      if (fromDate) {
-        var fromMs = fromDate.getTime();
-        messages = messages.filter(function (m) {
-          return snowflakeToMs(m.id) >= fromMs;
-        });
-      }
-
-      if (messages.length > maxMessages) {
-        messages = messages.slice(messages.length - maxMessages);
-      }
-
-      var participants = computeParticipants(messages);
-
+    function progress(phase, note) {
       onProgress({
-        collected: messages.length,
-        oldestTs: messages.length > 0 ? messages[0].ts : null,
-        phase: 'finishing'
-      });
-
-      return {
-        messages: messages,
-        complete: complete,
-        participants: participants
-      };
-    }
-
-    function shouldStop() {
-      if (signal && signal.aborted) return true;
-      if (collected.size >= maxMessages * 2) return true;
-      if (fromDate) {
-        var fromMs = fromDate.getTime();
-        var allOlder = true;
-        collected.forEach(function (m) {
-          if (snowflakeToMs(m.id) >= fromMs) allOlder = false;
-        });
-        if (allOlder && collected.size > 0) return true;
-      }
-      return false;
-    }
-
-    // Wait for new messages to appear in the DOM after scrolling
-    function waitForNewMessages(prevCount, timeoutMs) {
-      return new Promise(function (res) {
-        var start = Date.now();
-        var observer = null;
-        var pollId = null;
-        var done = false;
-
-        function resolveWait() {
-          if (done) return;
-          done = true;
-          if (observer) observer.disconnect();
-          if (pollId) clearTimeout(pollId);
-          res();
-        }
-
-        function poll() {
-          if (done) return;
-          harvestMessages();
-          if (collected.size > prevCount) {
-            // New messages found — but wait a beat for the page to settle
-            // before the next scroll, so the virtualizer's isLoading gate opens.
-            if (pollId) clearTimeout(pollId);
-            pollId = setTimeout(resolveWait, 400);
-            return;
-          }
-          if (Date.now() - start >= timeoutMs) {
-            resolveWait();
-            return;
-          }
-          pollId = setTimeout(poll, 350);
-        }
-
-        try {
-          observer = new MutationObserver(function (mutations) {
-            for (var mi = 0; mi < mutations.length; mi++) {
-              var mut = mutations[mi];
-              if (mut.type === 'childList' && mut.addedNodes.length > 0) {
-                for (var ni = 0; ni < mut.addedNodes.length; ni++) {
-                  var node = mut.addedNodes[ni];
-                  if (node.nodeType === Node.ELEMENT_NODE) {
-                    if (node.matches && node.matches('li[id^="chat-messages-"]')) {
-                      // DOM changed — let polling pick up the new count after settle
-                      return;
-                    }
-                    if (node.querySelectorAll) {
-                      var innerLis = node.querySelectorAll('li[id^="chat-messages-"]');
-                      if (innerLis.length > 0) return;
-                    }
-                  }
-                }
-              }
-            }
-          });
-          observer.observe(ol, { childList: true, subtree: true });
-        } catch (e) { /* ignore */ }
-
-        poll();
+        collected: collected.size,
+        oldestTs: oldestMs === null ? null : new Date(oldestMs).toISOString(),
+        phase: phase,
+        note: note || ''
       });
     }
 
-    // Main scroll loop
-    var noNewCount = 0;
-    var NO_NEW_MSG_LIMIT = 10;
-    var MAX_SCROLL_ATTEMPTS = 300;
-
-    // Phase 0: reach the present (newest messages) first.
-    // The user may have scrolled up, and Discord shows a "Jump to Present"
-    // bar when newer messages have left the viewport.  Click it, or keep
-    // scrolling to the bottom until no newer messages appear.
-    var MAX_BOTTOM_PASSES = 30;
-    for (var bottomPass = 0; bottomPass < MAX_BOTTOM_PASSES; bottomPass++) {
-      if (signal && signal.aborted) {
-        throw new DOMException('Aborted', 'AbortError');
-      }
-
-      // Check for the "Jump to Present" bar or button
-      var jumpBar = document.querySelector('[class*="jumpToPresentBar"]');
-      var jumpBtn = jumpBar ? jumpBar.querySelector('button') : null;
-      if (!jumpBtn) {
-        // Loose text match fallback
-        var allBtns = document.querySelectorAll('button');
-        for (var bi = 0; bi < allBtns.length; bi++) {
-          var txt = (allBtns[bi].textContent || '').toLowerCase();
-          if (txt.indexOf('jump to present') !== -1) {
-            jumpBtn = allBtns[bi];
-            break;
-          }
-        }
-      }
-
-      if (jumpBtn) {
-        // Click the button and wait for messages to load.
-        // Poll frequently — the virtualizer may load several batches
-        // quickly and we must harvest each batch before it's trimmed.
-        jumpBtn.click();
-        var jumpStart = Date.now();
-        while (Date.now() - jumpStart < 15000) {
-          if (signal && signal.aborted) {
-            throw new DOMException('Aborted', 'AbortError');
-          }
-          await sleep(150);
-          harvestMessages();
-          // Stop when the bar disappears (loading finished)
-          if (!document.querySelector('[class*="jumpToPresentBar"]')) {
-            // Give one final moment for the last batch to settle
-            await sleep(200);
-            harvestMessages();
-            break;
-          }
-        }
-        break;
-      }
-
-      // No jump bar — scroll to the bottom and wait for lazy loads
-      var beforeBottom = collected.size;
-      scroller.scrollTop = scroller.scrollHeight;
-      await sleep(600);
-      harvestMessages();
-
-      // If no new messages appeared and we've done a few passes, we're at the present
-      if (collected.size === beforeBottom && bottomPass >= 3) break;
+    function reachedLimit() {
+      if (fromMs !== null && oldestMs !== null && oldestMs < fromMs) return true;
+      return collected.size >= maxMessages;
     }
 
-    onProgress({ collected: collected.size, oldestTs: oldestTs, phase: 'scrolling' });
-
-    for (var attempt = 0; attempt < MAX_SCROLL_ATTEMPTS; attempt++) {
-      if (signal && signal.aborted) {
-        throw new DOMException('Aborted', 'AbortError');
-      }
-
-      var prevCount = collected.size;
-
-      // Check completion conditions
-      if (checkComplete()) {
-        complete = true;
-        return finish();
-      }
-
-      if (shouldStop()) {
-        if (!(fromDate || collected.size >= maxMessages)) {
-          complete = checkComplete();
+    // Walk the list in one direction until Discord has nothing more to load.
+    // The list and its scroller are looked up again on every step, because
+    // Discord rebuilds them (for example after Jump to Present).
+    async function collect(direction) {
+      var states = new Map();
+      var signature = '';
+      var lastChange = Date.now();
+      var settleSince = null;
+      var hiddenSince = null;
+      var missingSince = null;
+      var phase = direction < 0 ? 'scrolling' : 'present';
+      for (var step = 0; step < 100000; step++) {
+        checkAbort();
+        var now = Date.now();
+        // Chrome stops delivering scroll events to background tabs, so
+        // Discord loads nothing there. Pause instead of using up retries.
+        if (document.hidden) {
+          if (hiddenSince === null) {
+            hiddenSince = now;
+            record(direction, 'hidden', null);
+          }
+          progress(phase, 'Paused: Discord only loads messages while this tab is on screen. Switch back to it to carry on.');
+          await sleep(500);
+          continue;
         }
-        return finish();
-      }
-
-      // Scroll to top to trigger loading of older messages
-      var prevScrollTop = scroller.scrollTop;
-      scroller.scrollTop = 0;
-
-      if (scroller.scrollTop === 0 && prevScrollTop === 0 && collected.size > 0) {
-        // Already at top — wait for potential late loads
-        await sleep(1500);
-        harvestMessages();
-        if (checkComplete()) {
-          complete = true;
-          return finish();
+        if (hiddenSince !== null) {
+          hiddenSince = null;
+          states.clear();
+          lastChange = now;
+          settleSince = null;
+          missingSince = null;
         }
-        if (collected.size === prevCount) {
-          noNewCount++;
-          if (noNewCount >= NO_NEW_MSG_LIMIT) {
-            complete = checkComplete();
-            return finish();
+        var view = readView();
+        if (!view.scroller || !view.rows.length) {
+          if (missingSince === null) missingSince = now;
+          record(direction, 'no-list', view);
+          if (now - missingSince > 20000) return 'list-missing';
+          progress(phase, 'Waiting for Discord to show the messages…');
+          await sleep(400);
+          continue;
+        }
+        missingSince = null;
+        harvest(view);
+        if (direction < 0 && reachedLimit()) return 'limit';
+
+        var sc = view.scroller;
+        var atEdge = direction < 0
+          ? sc.scrollTop <= 3
+          : sc.scrollTop + sc.clientHeight >= sc.scrollHeight - 4;
+        var edgeRow = direction < 0 ? view.rows[0] : view.rows[view.rows.length - 1];
+        var sig = view.rows[0].id + ':' + edgeRow.id + ':' + Math.round(sc.scrollTop) + ':' + sc.scrollHeight;
+        if (sig !== signature) {
+          signature = sig;
+          lastChange = now;
+        }
+        var boundary = placeholdersPast(view, edgeRow, direction);
+        var note = '';
+        var action;
+
+        if (direction < 0 && atEdge && hasBeginning(view)) {
+          record(direction, 'beginning', view);
+          return 'beginning';
+        }
+        if (direction > 0 && atEdge && !boundary && !waitingForLatest(view)) {
+          if (settleSince === null) settleSince = now;
+          if (now - lastChange >= 1500 || now - settleSince >= 10000) {
+            record(direction, 'present', view);
+            return 'present';
+          }
+          action = 'settle';
+        } else if (boundary || atEdge) {
+          settleSince = null;
+          var st = states.get(edgeRow.id);
+          if (!st) {
+            st = { attempts: 0, reenter: false, waitUntil: 0 };
+            states.set(edgeRow.id, st);
+          }
+          var maxAttempts = boundary ? PAGINATION_ATTEMPTS.length : 4;
+          if (!paginate(sc, edgeRow, direction, st, now, maxAttempts)) {
+            record(direction, 'stalled', view);
+            return 'stalled';
+          }
+          action = 'page' + st.attempts + (st.reenter ? 'away' : '');
+          if (st.attempts >= 2) {
+            note = 'Discord is slow to load ' + (direction < 0 ? 'older' : 'newer') + ' messages. Trying again (' + st.attempts + ' of ' + maxAttempts + ')…';
           }
         } else {
-          noNewCount = 0;
+          sc.scrollTop += direction * Math.max(1, Math.floor(sc.clientHeight * 0.72));
+          action = 'step';
         }
-        onProgress({ collected: collected.size, oldestTs: oldestTs, phase: 'scrolling' });
-        continue;
+        record(direction, action, view);
+        progress(phase, note);
+        await sleep(STEP_MS);
       }
-
-      // Wait for new messages to load (virtualized list)
-      await waitForNewMessages(prevCount, 2500);
-      harvestMessages();
-
-      if (collected.size === prevCount) {
-        noNewCount++;
-        if (noNewCount >= NO_NEW_MSG_LIMIT) {
-          complete = checkComplete();
-          return finish();
-        }
-      } else {
-        noNewCount = 0;
-      }
-
-      onProgress({ collected: collected.size, oldestTs: oldestTs, phase: 'scrolling' });
+      return 'too-long';
     }
 
-    // Ran out of attempts
-    complete = checkComplete();
-    return finish();
+    // Phase 0: start from the newest messages. If Discord shows the
+    // "Jump to Present" bar, click it and wait for the rebuilt list.
+    var bar = jumpBar();
+    var button = bar ? jumpButton(bar) : null;
+    if (button) {
+      button.click();
+      record(1, 'jump', readView());
+      progress('present', 'Jumping to the newest messages…');
+      var jumpStart = Date.now();
+      while (Date.now() - jumpStart < 20000) {
+        checkAbort();
+        await sleep(300);
+        var after = readView();
+        if (after.rows.length && after.scroller && !jumpBar()) break;
+      }
+    }
+
+    var down = await collect(1);
+    var up = down === 'list-missing' ? down : await collect(-1);
+
+    var messages = Array.from(collected.values());
+    messages.sort(function (a, b) {
+      return (a.id.length - b.id.length) || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+    });
+    resolveAuthors(messages);
+    if (fromMs !== null) {
+      messages = messages.filter(function (m) { return snowflakeToMs(m.id) >= fromMs; });
+    }
+    if (messages.length > maxMessages) {
+      messages = messages.slice(messages.length - maxMessages);
+    }
+
+    onProgress({
+      collected: messages.length,
+      oldestTs: messages.length > 0 ? messages[0].ts : null,
+      phase: 'finishing',
+      note: ''
+    });
+
+    return {
+      messages: messages,
+      complete: up === 'beginning',
+      participants: computeParticipants(messages),
+      diagnostics: {
+        stopReason: up,
+        present: down,
+        seconds: Math.round((Date.now() - started) / 1000),
+        trail: trail
+      }
+    };
   }
 
   // -----------------------------------------------------------------------

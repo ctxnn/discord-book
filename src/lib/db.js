@@ -48,7 +48,8 @@ export function summarize(record, download = null) {
     messageCount: record.messages.length,
     firstTs: first ? first.ts : null,
     lastTs: last ? last.ts : null,
-    participants: record.participants.map(({ name, count }) => ({ name, count })),
+    participants: record.participants.map(({ name, count, id }) => ({ name, count, id: id || null })),
+    sources: (record.sources || []).map(({ key, chat }) => ({ key, title: chat.title, kind: chat.kind, serverName: chat.serverName || null })),
     download
   };
 }

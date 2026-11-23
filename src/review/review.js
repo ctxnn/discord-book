@@ -167,7 +167,8 @@ async function main() {
   const title = record.mode === 'pair' ? `${record.pair[0]} & ${record.pair[1]}` : record.chat.title;
   $('title').textContent = title;
   document.title = `Review · ${title}`;
-  const where = record.chat.kind === 'channel' ? `${record.chat.title}${record.chat.serverName ? ' · ' + record.chat.serverName : ''}` : record.chat.kind === 'group' ? 'Group DM' : 'Direct message';
+  const placeOf = (chat) => (chat.kind === 'channel' ? `${chat.title}${chat.serverName ? ' · ' + chat.serverName : ''}` : chat.kind === 'group' ? 'Group DM' : 'Direct message');
+  const where = record.sources?.length > 1 ? record.sources.map((s) => placeOf(s.chat)).join(' + ') : placeOf(record.chat);
   $('sub').textContent = `${where} · edition ${record.version} · ${pool.length.toLocaleString()} messages read`;
   for (const p of participantsOf(pool)) $('who').append(Object.assign(document.createElement('option'), { value: p.name, textContent: `${p.name} (${p.count})` }));
   document.querySelectorAll('.seg [data-view]').forEach((b) => b.addEventListener('click', () => {

@@ -56,6 +56,7 @@ async function runTests() {
     await testScrolledUpPartway(browser);
     await testNonFastTiming(browser);
     await testDoubleScrape(browser);
+    await testHiddenTabPause(browser);
     await testManualScrollToTop(browser);
     await testFromDate(browser);
     await testMaxMessages(browser);
@@ -150,12 +151,22 @@ async function testDmExact(browser) {
 
   var result = await page.evaluate(async function () {
     var res = await window.DiscordBookScraper.scrape({});
-    return { messages: res.messages, complete: res.complete, participants: res.participants };
+    var dropped = window.__mockLog.filter(function (e) { return e.op === 'dropped'; }).length;
+    return { messages: res.messages, complete: res.complete, participants: res.participants, stopReason: res.diagnostics.stopReason, dropped: dropped };
   });
   var truth = await page.evaluate(function () { return window.__mockTruth; });
 
   assert(result.complete === true, 'DM: complete === true');
+  assertEq(result.stopReason, 'beginning', 'DM: stopped because it reached the beginning');
+  assert(result.dropped > 0, 'DM: survived ' + result.dropped + ' history requests that Discord dropped');
   checkExactMatch(result, truth, 'DM');
+
+  // Profile photos sit beside the name in Discord, not inside it
+  var withHeader = result.messages.filter(function (m) { return !m.system && m.author && m.author.avatar; });
+  var truthIds = {};
+  truth.forEach(function (t) { truthIds[t.id] = t.authorId; });
+  assert(withHeader.length > result.messages.length / 4, 'DM: author photos found (' + withHeader.length + ')');
+  assert(withHeader.every(function (m) { return m.author.id === truthIds[m.id]; }), 'DM: user ids read from the photos');
 
   // Participants
   assert(result.participants.length > 0, 'DM: has participants');
@@ -280,14 +291,55 @@ async function testDoubleScrape(browser) {
   checkExactMatch(r1, truth, 'Double-1');
 
   // Second scrape — must also get all messages even though the DOM
-  // is now at the oldest messages and newest are trimmed
+  // is now at the oldest messages and newest are trimmed. Discord shows
+  // Jump to Present there, and clicking it rebuilds the whole list.
   var r2 = await page.evaluate(async function () {
+    var barBefore = !!document.querySelector('[class*="jumpToPresentBar"]');
+    var listBefore = document.querySelector('[data-list-id^="chat-messages"]');
     var res = await window.DiscordBookScraper.scrape({});
-    return { messages: res.messages, complete: res.complete };
+    return {
+      messages: res.messages,
+      complete: res.complete,
+      barBefore: barBefore,
+      rebuilt: listBefore !== document.querySelector('[data-list-id^="chat-messages"]') && !listBefore.isConnected
+    };
   });
 
+  assert(r2.barBefore && r2.rebuilt, 'Double-2: Jump to Present was shown and the list was rebuilt');
   assert(r2.complete === true, 'Double-2: second scrape complete');
   checkExactMatch(r2, truth, 'Double-2');
+
+  await page.close();
+}
+
+// -----------------------------------------------------------------------
+// Test: the tab goes to the background mid-scrape
+// -----------------------------------------------------------------------
+async function testHiddenTabPause(browser) {
+  console.log('\n--- Test: Background tab pauses instead of giving up ---');
+  var page = await openMockPage(browser, 'dm', true);
+
+  var result = await page.evaluate(async function () {
+    var hidden = false;
+    Object.defineProperty(document, 'hidden', { configurable: true, get: function () { return hidden; } });
+    var notes = [];
+    setTimeout(function () { hidden = true; }, 800);
+    setTimeout(function () { hidden = false; }, 5000);
+    var res = await window.DiscordBookScraper.scrape({
+      onProgress: function (p) { if (p.note && notes.indexOf(p.note) === -1) notes.push(p.note); }
+    });
+    return {
+      messages: res.messages,
+      complete: res.complete,
+      paused: res.diagnostics.trail.some(function (e) { return e.act === 'hidden'; }),
+      told: notes.some(function (n) { return n.indexOf('Paused') === 0; })
+    };
+  });
+  var truth = await page.evaluate(function () { return window.__mockTruth; });
+
+  assert(result.paused && result.told, 'Hidden: paused while the tab was hidden and said so');
+  assert(result.complete === true, 'Hidden: complete after the tab came back');
+  checkExactMatch(result, truth, 'Hidden');
 
   await page.close();
 }

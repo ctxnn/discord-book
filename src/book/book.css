@@ -472,6 +472,8 @@ html.theme-clothbound {
 .theme-clothbound .chapter-body > .keep:first-child h3.day { margin-top: 0; }
 .theme-clothbound .interlude { height: 0; margin: 0; padding-top: 3.4mm; }
 .theme-clothbound .interlude .int-text { display: none; }
+.theme-clothbound .interlude.venue { height: auto; padding-top: 2.6mm; text-align: center; }
+.theme-clothbound .interlude.venue .int-text { display: inline; font-style: italic; font-size: 8.8pt; letter-spacing: 0.02em; color: var(--muted); }
 .theme-clothbound .group { margin-top: 3.6mm; }
 .theme-clothbound .keep > .group,
 .theme-clothbound .group.opening { margin-top: 0; }
@@ -811,6 +813,7 @@ html.theme-playscript {
 .theme-playscript .sysmsg { font-style: italic; font-size: 9pt; color: #5a554d; margin: 2.6mm 0 2.6mm var(--col); hyphens: manual; }
 .theme-playscript .sysmsg::before { content: "["; }
 .theme-playscript .sysmsg::after { content: "]"; }
+.theme-playscript .interlude.venue { font-style: normal; font-variant: small-caps; letter-spacing: 0.04em; }
 .theme-playscript .interlude { font-style: italic; font-size: 8.6pt; color: #9a948a; margin: 3.6mm 0 2.8mm var(--col); }
 .theme-playscript .plate { margin: 1.4mm 0 2.4mm; }
 .theme-playscript .plate-frame { display: block; }

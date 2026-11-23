@@ -53,6 +53,7 @@ function sendToTab(page, message) {
 async function exportFrom(page, options) {
   const before = new Set(browser.targets());
   const panelText = () => page.evaluate(() => document.getElementById('discord-book-panel')?.shadowRoot?.querySelector('.status')?.textContent || '');
+  await page.bringToFront();
   const reply = await sendToTab(page, { type: 'start', options });
   check(reply?.ok, `start accepted (${JSON.stringify(options)})`);
   const s0 = Date.now();
@@ -107,6 +108,7 @@ await book.close();
 book = await exportFrom(dm, { mode: 'full', includeImages: false, theme: 'midnight' });
 record = await book.evaluate(async () => (await import('../lib/db.js')).getExport(new URLSearchParams(location.search).get('key')));
 check(record.version === 2, `re-export is edition 2 (got ${record.version})`);
+check(record.messages.length === truth.length && record.complete, `re-export from the top, after Jump to Present, still reads all ${truth.length} (got ${record.messages.length})`);
 files = await pdfFiles();
 const secondSize = (await stat(join(downloads, 'Discord Books', files[0]))).size;
 check(files.length === 1 && files[0] === firstName && secondSize !== firstSize, `re-export replaced the same file (${files.join(', ')}, ${firstSize} -> ${secondSize} bytes)`);
@@ -142,7 +144,7 @@ const isA = (m) => !m.system && lc(m.author?.name) === lc(pick[0]);
 const isB = (m) => !m.system && lc(m.author?.name) === lc(pick[1]);
 const mentionsOf = (m) => [...(m.html || '').matchAll(/<span class="mention">@?([^<]*)<\/span>/g)].map((x) => lc(x[1]));
 const splitSent = (t) => t.split(/(?<=[.!?…])\s+|\n+/).map((s) => s.trim()).filter(Boolean);
-const seed = everything.find((m) => isA(m) && !m.reply && !mentionsOf(m).length
+const seed = everything.find((m) => (isA(m) || isB(m)) && !m.reply && !mentionsOf(m).length
   && splitSent(m.text).length >= 3 && /[A-Za-z]{5,}/.test(splitSent(m.text).at(-1)));
 const phrase = splitSent(seed.text).at(-1).match(/[A-Za-z]{5,}/g).sort((a, b) => b.length - a.length)[0];
 const wordRe = new RegExp(`(?<![\\p{L}\\p{N}])${phrase}(?![\\p{L}\\p{N}])`, 'iu');
@@ -191,6 +193,7 @@ await book.close();
 
 {
   const before = new Set(browser.targets());
+  await dm.bringToFront();
   const reply = await sendToTab(dm, { type: 'start', options: { mode: 'pair', pair: ['Alice', 'Bob'], includeImages: false, review: true, filter: { scope: 'all' } } });
   check(reply?.ok, 'review flow: export started');
   const target = await browser.waitForTarget((t) => !before.has(t) && t.url().includes('/src/review/review.html'), { timeout: 240000 });
@@ -216,6 +219,47 @@ await book.close();
   check(saved.messages.length === finalCount && saved.messages.some((m) => m.author?.name === 'Charlie' && m.text.startsWith(added.slice(0, 20))), `review: saved selection has ${saved.messages.length} messages including the added Charlie message`);
   check(saved.pool.length === truth.length, `review: whole chat kept for adding later (${saved.pool.length})`);
   await review.close();
+}
+
+{
+  const dmPairKey = 'dm:123456789012345678:pair:alice|bob';
+  const extPage = await browser.newPage();
+  await extPage.goto(`chrome-extension://${extId}/src/book/book.html`).catch(() => {});
+  const dmPart = await extPage.evaluate(async (key) => (await import('../lib/db.js')).getExport(key), dmPairKey);
+  await extPage.close();
+  const pdfBefore = (await pdfFiles()).length;
+  const channelPage = await openDiscord('/channels/987654321098765432/123456789012345678?kind=channel&fast');
+  const channelPairTruth = await channelPage.evaluate(() => window.__mockTruth.filter((m) => !m.system && ['Alice', 'Bob'].includes(m.authorName)).length);
+  book = await exportFrom(channelPage, { mode: 'pair', pair: ['alice', 'BOB'], into: dmPairKey, includeImages: false, theme: 'clothbound', filter: { scope: 'all' } });
+  record = await book.evaluate(async () => (await import('../lib/db.js')).getExport(new URLSearchParams(location.search).get('key')));
+  check(record.key === dmPairKey && record.sources?.length === 2, `combined: channel added to the DM book (${record.key}, ${record.sources?.length} chats)`);
+  check(record.messages.length === dmPart.messages.length + channelPairTruth, `combined: ${dmPart.messages.length} reviewed DM messages + ${channelPairTruth} channel messages (got ${record.messages.length})`);
+  check(record.messages.every((m, i) => i === 0 || Date.parse(m.ts) >= Date.parse(record.messages[i - 1].ts)), 'combined: DM and channel messages interleaved by time');
+  check(record.messages.filter((m) => m.source?.startsWith('ch:')).every((m) => ['Alice', 'Bob'].includes(m.author.name)) && record.version === dmPart.version + 1, `combined: channel part is only Alice and Bob, edition ${record.version}`);
+  const venues = await book.$$eval('.interlude.venue', (els) => els.map((e) => e.textContent));
+  const about = await book.$eval('#colophon', (e) => e.textContent).catch(() => '');
+  check(venues.some((v) => v.includes('direct messages')) && venues.some((v) => v.includes('#general')) && about.includes('Combined from'), `combined: the book marks where each part was said (${venues.length} markers)`);
+  check((await pdfFiles()).length === pdfBefore, 'combined: replaced the DM book PDF instead of adding one');
+  await book.close();
+
+  book = await exportFrom(dm, { mode: 'pair', pair: ['Alice', 'Bob'], includeImages: false, theme: 'clothbound', filter: { scope: 'all' } });
+  record = await book.evaluate(async () => (await import('../lib/db.js')).getExport(new URLSearchParams(location.search).get('key')));
+  const dmCount = truth.filter((t) => ['Alice', 'Bob'].includes(t.author)).length;
+  check(record.sources?.length === 2 && record.messages.length === dmCount + channelPairTruth, `combined: re-reading the DM replaces only the DM part (${record.messages.length} = ${dmCount} + ${channelPairTruth})`);
+  await book.close();
+
+  const picker = await browser.newPage();
+  const channelTab = await sw.evaluate(async (url) => (await chrome.tabs.query({})).find((t) => t.url === url).id, channelPage.url());
+  await picker.goto(`chrome-extension://${extId}/src/popup/popup.html?tab=${channelTab}`);
+  await picker.waitForSelector('#chat:not([hidden])');
+  await picker.waitForFunction((key) => [...document.querySelectorAll('#into option')].some((o) => o.value === key), {}, dmPairKey);
+  await picker.select('#into', dmPairKey);
+  await picker.waitForFunction(() => document.getElementById('go').textContent.startsWith('Add to that book'));
+  const filled = await picker.evaluate(() => [document.getElementById('p1').value, document.getElementById('p2').value]);
+  check(filled.join('&') === 'Alice&Bob', `popup: picking the DM book fills in its two people (${filled.join(' & ')})`);
+  await picker.screenshot({ path: join(out, 'popup-combine.png'), fullPage: true });
+  await picker.close();
+  await channelPage.close();
 }
 
 const popup = await browser.newPage();

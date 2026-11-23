@@ -257,8 +257,19 @@ function append(parent, ...kids) {
 
 /* ----------------------------------------------------------- derivations */
 
+function channelName(chat) {
+  return '#' + String(chat.title || 'channel').replace(/^#/, '');
+}
+
+function venueText(chat) {
+  if (chat.kind === 'channel') return 'In ' + channelName(chat) + (chat.serverName ? ', on ' + chat.serverName : '');
+  if (chat.kind === 'group') return 'In the group chat' + (chat.title ? ' ' + chat.title : '');
+  return 'In their direct messages';
+}
+
 function deriveMeta(record) {
   const { chat, mode, pair, participants } = record;
+  const combined = record.sources?.length > 1 ? record.sources.map((s) => s.chat) : null;
   const names = participants.map((p) => p.name).filter(Boolean);
   const bare = (s) => String(s || '').replace(/^[@#]/, '').trim().toLowerCase();
   let title, subtitle, people;
@@ -266,7 +277,9 @@ function deriveMeta(record) {
   if (mode === 'pair' && pair && pair.length === 2) {
     people = pair.map((n) => cap(n || 'Unknown'));
     title = people[0] + ' & ' + people[1];
-    subtitle = 'in ' + chat.title + (chat.serverName ? ' \u00b7 ' + chat.serverName : '');
+    subtitle = combined
+      ? 'in ' + joinNames(combined.map((c) => (c.kind === 'channel' ? channelName(c) + (c.serverName ? ' \u00b7 ' + c.serverName : '') : c.kind === 'group' ? 'a group chat' : 'their DMs')))
+      : 'in ' + chat.title + (chat.serverName ? ' \u00b7 ' + chat.serverName : '');
   } else if (chat.kind === 'channel') {
     people = names;
     title = chat.title;
@@ -301,9 +314,10 @@ function deriveMeta(record) {
         ? MONTHS[first.getMonth()] + ' \u2013 ' + MONTHS[last.getMonth()] + ' ' + last.getFullYear()
         : MONTHS[first.getMonth()] + ' ' + first.getFullYear() + ' \u2013 ' + MONTHS[last.getMonth()] + ' ' + last.getFullYear();
   }
-  const where = chat.kind === 'channel'
-    ? chat.title + (chat.serverName ? ' on ' + chat.serverName : '')
-    : chat.kind === 'group' ? 'a group chat' : 'a direct message';
+  const placeOf = (c) => (c.kind === 'channel'
+    ? c.title + (c.serverName ? ' on ' + c.serverName : '')
+    : c.kind === 'group' ? 'a group chat' : 'a direct message');
+  const where = combined ? joinNames(combined.map(placeOf)) : placeOf(chat);
   return {
     title,
     subtitle,
@@ -765,16 +779,16 @@ function buildColophon(ctx) {
   row('Edition', cap(ordinalWord(record.version)) + ' edition'
     + (record.version > 1 ? ', replacing the ' + ordinalWord(record.version - 1) : ''));
   row('Exported', longDate(record.createdAt || new Date().toISOString()));
-  let source;
-  if (record.chat.kind === 'channel') {
-    source = 'The ' + record.chat.title + ' channel' + (record.chat.serverName ? ' of ' + record.chat.serverName : '');
-  } else if (record.chat.kind === 'group') {
-    source = 'A group direct message' + (record.chat.title ? ', ' + record.chat.title : '');
-  } else {
-    const bare = String(record.chat.title || '').replace(/^@/, '');
+  const sourceOf = (chat) => {
+    if (chat.kind === 'channel') return 'the ' + chat.title + ' channel' + (chat.serverName ? ' of ' + chat.serverName : '');
+    if (chat.kind === 'group') return 'a group direct message' + (chat.title ? ', ' + chat.title : '');
+    const bare = String(chat.title || '').replace(/^@/, '');
     const match = record.participants.find((p) => p.name.toLowerCase() === bare.toLowerCase());
-    source = 'A direct message with ' + (match ? match.name : bare || 'someone');
-  }
+    return 'a direct message with ' + (match ? match.name : bare || 'someone');
+  };
+  const source = record.sources?.length > 1
+    ? 'Combined from ' + joinNames(record.sources.map((s) => sourceOf(s.chat)))
+    : cap(sourceOf(record.chat));
   row('Source', source + ', on Discord');
   row('Messages', fmtNum(record.messages.length)
     + (meta.first ? ', ' + longDate(meta.first.toISOString()) + ' to ' + longDate(meta.last.toISOString()) : ''));
@@ -1023,12 +1037,19 @@ function buildChapterBody(ctx, ch) {
   let lastTs = null;
   let scene = 0;
   let holder = null; // keeps a heading together with the first block after it
+  let holderSize = 0;
   let first = true;
   const perDay = new Map();
   for (const m of ch.messages) perDay.set(dayKey(m.ts), (perDay.get(dayKey(m.ts)) || 0) + 1);
 
+  const hold = (node) => {
+    holder = el('div', 'keep');
+    holder.appendChild(node);
+    holderSize = 1;
+    sec.appendChild(holder);
+  };
   const place = (node) => {
-    if (holder && holder.childElementCount === 1) { holder.appendChild(node); holder = null; return; }
+    if (holder && holder.childElementCount === holderSize) { holder.appendChild(node); holder = null; return; }
     holder = null;
     sec.appendChild(node);
   };
@@ -1038,16 +1059,24 @@ function buildChapterBody(ctx, ch) {
     const k = dayKey(ts);
     if (k !== lastDay) {
       scene++;
-      holder = el('div', 'keep');
-      holder.appendChild(dayHeading(ctx, dayDate(k), scene, ts, perDay.get(k)));
-      sec.appendChild(holder);
+      hold(dayHeading(ctx, dayDate(k), scene, ts, perDay.get(k)));
       lastDay = k;
     } else if (lastTs && new Date(ts) - new Date(lastTs) >= 3 * 3600 * 1000) {
-      holder = el('div', 'keep');
-      holder.appendChild(interlude(ctx, ts));
-      sec.appendChild(holder);
+      hold(interlude(ctx, ts));
     }
     lastTs = g.system ? g.system.ts : g.last.ts;
+    const venue = !g.system && ctx.venues && ctx.venues.get(g.items[0].source);
+    if (venue && venue.key !== ctx.lastVenue) {
+      ctx.lastVenue = venue.key;
+      const line = el('p', 'interlude venue');
+      line.appendChild(el('span', 'int-text', venueText(venue.chat)));
+      if (holder && holder.childElementCount === holderSize) {
+        holder.appendChild(line);
+        holderSize += 1;
+      } else {
+        hold(line);
+      }
+    }
 
     if (g.system) {
       place(buildSystem(ctx, g.system));
@@ -1056,7 +1085,7 @@ function buildChapterBody(ctx, ch) {
     const [head, ...rest] = buildGroup(ctx, g.items, first);
     // Under a heading, only the speaker line and first message are kept with
     // it; the rest of the group continues freely so pages fill properly.
-    const tail = holder && holder.childElementCount === 1 ? splitTail(head) : null;
+    const tail = holder && holder.childElementCount === holderSize ? splitTail(head) : null;
     place(head);
     if (tail) sec.appendChild(tail);
     for (const node of rest) sec.appendChild(node);
@@ -1653,6 +1682,8 @@ export async function renderBook(record, root, { includeImages = true, theme } =
     plates: 0,
     people: makePeople(record, meta, theme),
     stats: computeStats(record),
+    venues: record.sources?.length > 1 ? new Map(record.sources.map((s) => [s.key, s])) : null,
+    lastVenue: null,
   };
 
   root.replaceChildren();

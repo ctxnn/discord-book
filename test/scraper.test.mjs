@@ -168,6 +168,17 @@ async function testDmExact(browser) {
   assert(withHeader.length > result.messages.length / 4, 'DM: author photos found (' + withHeader.length + ')');
   assert(withHeader.every(function (m) { return m.author.id === truthIds[m.id]; }), 'DM: user ids read from the photos');
 
+  // A reply's own words, not the quoted preview of the message it answers
+  var truthById = {};
+  truth.forEach(function (t) { truthById[t.id] = t; });
+  var replies = result.messages.filter(function (m) { return truthById[m.id] && truthById[m.id].reply; });
+  var badReplies = replies.filter(function (m) {
+    var t = truthById[m.id];
+    return !m.reply || m.reply.author !== t.reply.author || m.reply.text !== t.reply.text || m.text === t.reply.text || !m.text;
+  });
+  badReplies.slice(0, 3).forEach(function (m) { console.log('    bad reply: ' + JSON.stringify({ text: m.text, reply: m.reply })); });
+  assert(replies.length > 0 && badReplies.length === 0, 'DM: ' + replies.length + ' replies keep their own text and the quoted message separately (' + badReplies.length + ' wrong)');
+
   // Participants
   assert(result.participants.length > 0, 'DM: has participants');
   assert(result.participants.length <= 3, 'DM: at most 3 participants');

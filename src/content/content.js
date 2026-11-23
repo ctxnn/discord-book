@@ -243,7 +243,7 @@
     };
     const reply = await chrome.runtime.sendMessage({ type: 'export:save', data, options: { includeImages: options.includeImages !== false, theme: options.theme, review: options.review === true, into: options.into || null } });
     if (!reply?.ok) throw new Error(reply?.error || 'Could not save the export.');
-    return { count: messages.length, version: reply.version, complete: data.complete, review: options.review === true, combined: reply.sources > 1, stop: result.diagnostics?.stopReason, from: pool[0]?.ts, dated: !!options.fromDate };
+    return { count: messages.length, version: reply.version, complete: data.complete, review: options.review === true, combined: reply.sources > 1, twoPeople: !!pair || (chat.kind === 'dm' && data.participants.length === 2), stop: result.diagnostics?.stopReason, from: pool[0]?.ts, dated: !!options.fromDate };
   }
 
   chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
@@ -262,7 +262,7 @@
         (r) => {
           const partial = !r.complete && !r.dated;
           const why = partial ? `\n${STOPPED[r.stop] || 'The chat history could not be read to the very beginning.'} The book starts at ${r.from ? new Date(r.from).toLocaleDateString() : 'the oldest message reached'}.` : '';
-          show(`Done: ${r.count.toLocaleString()} messages picked, edition ${r.version}${r.combined ? ' of the combined book' : ''}.${why}\n${r.review ? 'Check the messages in the new tab, then make the PDF.' : 'Your PDF is being made in the new tab.'}`, 'done', partial);
+          show(`Done: ${r.count.toLocaleString()} messages picked, edition ${r.version}${r.combined ? ' of the combined book' : ''}.${why}\n${r.review ? `Check the messages in the new tab, then make the PDF.${r.twoPeople && !r.combined ? ' To add their messages from a server too, use “Add to this book” there.' : ''}` : 'Your PDF is being made in the new tab.'}`, 'done', partial);
           if (!partial) setTimeout(hide, 8000);
         },
         (e) => show(e?.name === 'AbortError' ? 'Cancelled.' : String(e?.message || e), e?.name === 'AbortError' ? 'done' : 'error', true)

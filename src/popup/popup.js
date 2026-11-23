@@ -99,6 +99,30 @@ async function refreshLibrary() {
   }));
 }
 
+// The review page can leave a request to add a server channel to a book.
+// Opened on another chat, the popup takes it up with everything filled in.
+async function applyPending() {
+  const { pendingAdd: p } = await chrome.storage.local.get('pendingAdd');
+  const book = p && books.find((s) => s.key === p.into);
+  if (!book || (book.chat.guildId === chat.guildId && book.chat.channelId === chat.channelId)) return;
+  setMode('pair');
+  $('into').value = p.into;
+  await chooseBook();
+  setScope('conversation');
+  $('f-replies').checked = p.filter.replies;
+  $('f-quick').checked = p.filter.backAndForth;
+  $('f-says').value = p.filter.phrases.join(', ');
+  $('f-who').value = String(p.filter.saidBy);
+  const who = p.filter.saidBy === 'either' ? 'either of them' : p.pair[p.filter.saidBy];
+  const what = [
+    p.filter.replies && 'their replies, @mentions and quick answers to each other',
+    p.filter.phrases.length && `the sentences where ${who} says ${p.filter.phrases.map((x) => `“${x}”`).join(', ')}`
+  ].filter(Boolean);
+  $('pending-title').textContent = `${p.title} · ${book.chat.title}`;
+  $('pending-what').textContent = `From this channel: ${what.join(', and ')}. Check the two names below match how they appear here.`;
+  $('pending').hidden = false;
+}
+
 async function ensureContentScript() {
   try {
     const r = await chrome.tabs.sendMessage(tab.id, { type: 'ping' });
@@ -145,6 +169,7 @@ async function start() {
   await chrome.storage.local.set({ lastOptions: { includeImages: options.includeImages, theme: options.theme, review: options.review } });
   const r = await chrome.tabs.sendMessage(tab.id, { type: 'start', options });
   if (!r?.ok) return showError(r?.error || 'Could not start.');
+  if (options.into) await chrome.storage.local.remove('pendingAdd');
   window.close();
 }
 
@@ -190,6 +215,13 @@ async function init() {
   document.querySelectorAll('.seg [data-mode]').forEach((b) => b.addEventListener('click', () => setMode(b.dataset.mode)));
   document.querySelectorAll('.seg [data-scope]').forEach((b) => b.addEventListener('click', () => setScope(b.dataset.scope)));
   $('into').addEventListener('change', () => chooseBook().catch((e) => showError(String(e.message || e))));
+  $('pending-cancel').addEventListener('click', async () => {
+    await chrome.storage.local.remove('pendingAdd');
+    $('pending').hidden = true;
+    $('into').value = '';
+    await chooseBook();
+  });
+  if (!info.busy) await applyPending();
   $('p1').addEventListener('input', refreshSaved);
   $('p2').addEventListener('input', refreshSaved);
   $('go').addEventListener('click', () => start().catch((e) => showError(String(e.message || e))));

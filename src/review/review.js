@@ -150,6 +150,45 @@ function bulkShown(on) {
   updateCounts();
 }
 
+const phrasesOf = (text) => text.split(',').map((p) => p.trim().replace(/^["'“”‘’]+|["'“”‘’]+$/g, '').trim()).filter(Boolean);
+
+// Offer to bring the same two people's messages from a server channel into
+// this book. The choice waits in storage until the popup opens on a channel.
+async function offerMore() {
+  const pair = record.pair || (record.chat.kind === 'dm' && record.participants.length >= 2 ? record.participants.slice(0, 2).map((p) => p.name) : null);
+  if (pair?.length !== 2) return;
+  $('more').hidden = false;
+  if (record.sources?.length > 1) $('more-title').textContent = 'Add another server channel?';
+  document.querySelector('.pair-names').textContent = `${pair[0]} and ${pair[1]}`;
+  $('m-who').append(new Option(pair[0], '0'), new Option(pair[1], '1'));
+  const ready = () => {
+    $('m-next').hidden = false;
+    $('m-next').textContent = `Ready. In your Discord tab, open the server channel where they talk and click the Discord Book icon. ${pair[0]}, ${pair[1]} and these choices are filled in there; click “Add to that book”. You can make this PDF now or after.`;
+    $('m-go').textContent = 'Update';
+  };
+  const { pendingAdd } = await chrome.storage.local.get('pendingAdd');
+  if (pendingAdd?.into === key) {
+    $('m-conv').checked = pendingAdd.filter.replies;
+    $('m-says').checked = pendingAdd.filter.phrases.length > 0;
+    $('m-words').value = pendingAdd.filter.phrases.join(', ');
+    $('m-who').value = String(pendingAdd.filter.saidBy);
+    ready();
+  }
+  $('m-words').addEventListener('input', () => { if ($('m-words').value.trim()) $('m-says').checked = true; });
+  $('m-skip').addEventListener('click', () => { $('more').hidden = true; });
+  $('m-go').addEventListener('click', async () => {
+    const conv = $('m-conv').checked;
+    const phrases = $('m-says').checked ? phrasesOf($('m-words').value) : [];
+    const problem = $('m-says').checked && !phrases.length ? 'Type the words to look for, or untick that line.' : !conv && !phrases.length ? 'Pick at least one thing to add.' : '';
+    $('m-error').textContent = problem;
+    $('m-error').hidden = !problem;
+    if (problem) return;
+    const who = $('m-who').value;
+    await chrome.storage.local.set({ pendingAdd: { into: key, title: pair.join(' & '), pair, filter: { scope: 'conversation', replies: conv, backAndForth: conv, phrases, saidBy: who === 'either' ? 'either' : Number(who) } } });
+    ready();
+  });
+}
+
 async function makePdf() {
   $('make').disabled = true;
   $('make').textContent = 'Saving…';
@@ -194,6 +233,7 @@ async function main() {
   }
   render();
   updateCounts();
+  await offerMore();
 }
 
 function showError(error) {

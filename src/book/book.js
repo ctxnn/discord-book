@@ -47,22 +47,27 @@ async function readStream(tabId, handle) {
 
 async function printToPdf() {
   const { id: tabId } = await chrome.tabs.getCurrent();
-  await chrome.debugger.attach({ tabId }, '1.3');
-  try {
-    let timer;
-    const timeout = new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('Chrome took too long to make the PDF')), 180000); });
-    const { stream } = await Promise.race([timeout, chrome.debugger.sendCommand({ tabId }, 'Page.printToPDF', {
-      preferCSSPageSize: true,
-      printBackground: true,
-      displayHeaderFooter: false,
-      generateDocumentOutline: true,
-      generateTaggedPDF: true,
-      transferMode: 'ReturnAsStream'
-    })]).finally(() => clearTimeout(timer));
-    return await readStream(tabId, stream);
-  } finally {
-    await chrome.debugger.detach({ tabId }).catch(() => {});
-  }
+  // Chrome only paints the tab in front, and printing needs painted pages.
+  await chrome.tabs.update(tabId, { active: true });
+  let timer;
+  const timeout = new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('Chrome took too long to make the PDF')), 180000); });
+  const work = (async () => {
+    await chrome.debugger.attach({ tabId }, '1.3');
+    try {
+      const { stream } = await chrome.debugger.sendCommand({ tabId }, 'Page.printToPDF', {
+        preferCSSPageSize: true,
+        printBackground: true,
+        displayHeaderFooter: false,
+        generateDocumentOutline: true,
+        generateTaggedPDF: true,
+        transferMode: 'ReturnAsStream'
+      });
+      return await readStream(tabId, stream);
+    } finally {
+      await chrome.debugger.detach({ tabId }).catch(() => {});
+    }
+  })();
+  return Promise.race([timeout, work]).finally(() => clearTimeout(timer));
 }
 
 function waitForDownload(id) {

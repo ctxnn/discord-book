@@ -144,8 +144,9 @@ const isA = (m) => !m.system && lc(m.author?.name) === lc(pick[0]);
 const isB = (m) => !m.system && lc(m.author?.name) === lc(pick[1]);
 const mentionsOf = (m) => [...(m.html || '').matchAll(/<span class="mention">@?([^<]*)<\/span>/g)].map((x) => lc(x[1]));
 const splitSent = (t) => t.split(/(?<=[.!?…])\s+|\n+/).map((s) => s.trim()).filter(Boolean);
-const seed = everything.find((m) => (isA(m) || isB(m)) && !m.reply && !mentionsOf(m).length
-  && splitSent(m.text).length >= 3 && /[A-Za-z]{5,}/.test(splitSent(m.text).at(-1)));
+const candidates = everything.filter((m) => (isA(m) || isB(m)) && !m.reply && !mentionsOf(m).length
+  && /[A-Za-z]{5,}/.test(splitSent(m.text || '').at(-1) || ''));
+const seed = [3, 2, 1].map((n) => candidates.find((m) => splitSent(m.text).length >= n)).find(Boolean);
 const phrase = splitSent(seed.text).at(-1).match(/[A-Za-z]{5,}/g).sort((a, b) => b.length - a.length)[0];
 const wordRe = new RegExp(`(?<![\\p{L}\\p{N}])${phrase}(?![\\p{L}\\p{N}])`, 'iu');
 const expectedIds = new Set();
@@ -210,6 +211,15 @@ await book.close();
   await review.click('.row:not(.on)');
   const finalCount = Number((await review.$eval('#count', (e) => e.textContent)).replace(/\D/g, ''));
   check(finalCount === initial - 2, `review: removed 3 and added 1 (${initial} -> ${finalCount})`);
+  check(await review.$eval('#more', (e) => !e.hidden), 'review: asks whether to add their server messages to this book');
+  await review.evaluate(() => window.scrollTo(0, 0));
+  await review.type('#m-words', 'spoiler');
+  await review.select('#m-who', '0');
+  await review.click('#m-go');
+  await review.waitForSelector('#m-next:not([hidden])', { timeout: 5000 }).catch(async (e) => { console.log('      m-error:', await review.$eval('#m-error', (x) => x.textContent)); throw e; });
+  const pending = await review.evaluate(async () => ({ key: new URLSearchParams(location.search).get('key'), ...(await chrome.storage.local.get('pendingAdd')) }));
+  check(pending.pendingAdd?.into === pending.key && pending.pendingAdd.filter.phrases.join() === 'spoiler' && pending.pendingAdd.filter.saidBy === 0 && pending.pendingAdd.filter.replies === true,
+    `review: "Set it up" saves what to add from the server (${JSON.stringify(pending.pendingAdd?.filter)})`);
   await review.screenshot({ path: join(out, 'review.png') });
   await review.click('#make');
   await review.waitForFunction(() => location.pathname.endsWith('/book.html'), { timeout: 30000 });
@@ -252,6 +262,18 @@ await book.close();
   const channelTab = await sw.evaluate(async (url) => (await chrome.tabs.query({})).find((t) => t.url === url).id, channelPage.url());
   await picker.goto(`chrome-extension://${extId}/src/popup/popup.html?tab=${channelTab}`);
   await picker.waitForSelector('#chat:not([hidden])');
+  await picker.waitForSelector('#pending:not([hidden])');
+  const applied = await picker.evaluate(() => ({
+    into: document.getElementById('into').value, says: document.getElementById('f-says').value, who: document.getElementById('f-who').value,
+    conv: !document.getElementById('conversation').hidden, people: [document.getElementById('p1').value, document.getElementById('p2').value].join('&'),
+    go: document.getElementById('go').textContent, what: document.getElementById('pending-what').textContent
+  }));
+  console.log('      pending:', applied.what);
+  check(applied.into === dmPairKey && applied.says === 'spoiler' && applied.who === '0' && applied.conv && applied.people === 'Alice&Bob' && applied.go.startsWith('Add to that book'),
+    `popup: the server channel opens ready to add to the DM book with the review page's choices (${JSON.stringify(applied)})`);
+  await picker.screenshot({ path: join(out, 'popup-pending.png'), fullPage: true });
+  await picker.click('#pending-cancel');
+  await picker.waitForSelector('#pending', { hidden: true });
   await picker.waitForFunction((key) => [...document.querySelectorAll('#into option')].some((o) => o.value === key), {}, dmPairKey);
   await picker.select('#into', dmPairKey);
   await picker.waitForFunction(() => document.getElementById('go').textContent.startsWith('Add to that book'));

@@ -233,7 +233,15 @@
       isSystem = true;
     }
     // Also check: has content_ but no message-content id
-    var contentDiv = li.querySelector('div[id^="message-content-"]');
+    // A reply also holds a preview of the original message, with that
+    // message's own message-content id; take only this message's content.
+    var contentDiv = li.querySelector('#message-content-' + id);
+    if (!contentDiv) {
+      var contentDivs = li.querySelectorAll('div[id^="message-content-"]');
+      for (var cdi = 0; cdi < contentDivs.length && !contentDiv; cdi++) {
+        if (!contentDivs[cdi].closest('[id^="message-reply-context-"], [class*="repliedMessage"], [id^="message-accessories-"]')) contentDiv = contentDivs[cdi];
+      }
+    }
     if (!contentDiv && !isSystem) {
       var contentEl = li.querySelector('[class*="content_"]');
       if (contentEl && contentEl.textContent && contentEl.textContent.trim()) {
@@ -339,7 +347,7 @@
     var replyCtx = li.querySelector('div[id^="message-reply-context-"], [class*="repliedMessage_"]');
     if (replyCtx) {
       var replyAuthor = replyCtx.querySelector('[class*="username_"]');
-      var replyText = replyCtx.querySelector('[class*="repliedTextContent_"], [class*="repliedTextPreview_"]');
+      var replyText = replyCtx.querySelector('[id^="message-content-"], [class*="repliedTextContent_"], [class*="repliedTextPreview_"]');
       var replyAuthorName = replyAuthor ? (replyAuthor.getAttribute('data-text') || replyAuthor.textContent || '').trim().replace(/^@/, '') : '';
       var replySnippet = replyText ? (replyText.textContent || '').trim() : '';
       reply = { author: replyAuthorName, text: replySnippet };

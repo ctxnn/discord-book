@@ -641,20 +641,29 @@
       return li;
     }
 
-    // Reply context
+    // Reply context, built like Discord's: the quoted preview of the
+    // original message carries that message's own message-content id.
     if (msg.reply) {
       var replyDiv = document.createElement('div');
       replyDiv.id = 'message-reply-context-' + msg.id;
-      replyDiv.className = 'replyContainer_f07d62';
+      replyDiv.className = 'repliedMessage_c19a55';
+      var repliedTo = AUTHORS.filter(function (a) { return a.name === msg.reply.author; })[0];
+      var replyAvatar = document.createElement('img');
+      replyAvatar.className = 'replyAvatar_c19a55';
+      replyAvatar.src = repliedTo ? repliedTo.avatar : '';
       var replyAuthorSpan = document.createElement('span');
       replyAuthorSpan.className = 'username_c19a55';
-      replyAuthorSpan.textContent = msg.reply.author;
-      var replyTextSpan = document.createElement('span');
-      replyTextSpan.className = 'repliedTextContent_c19a55';
-      replyTextSpan.textContent = msg.reply.text;
+      replyAuthorSpan.textContent = '@' + msg.reply.author;
+      var replyPreview = document.createElement('div');
+      replyPreview.className = 'repliedTextPreview_c19a55';
+      var replyTextDiv = document.createElement('div');
+      replyTextDiv.id = 'message-content-' + String(BigInt(msg.id) - 4194304000n);
+      replyTextDiv.className = 'markup_75297 messageContent_c19a55 repliedTextContent_c19a55';
+      replyTextDiv.textContent = msg.reply.text;
+      replyPreview.appendChild(replyTextDiv);
+      replyDiv.appendChild(replyAvatar);
       replyDiv.appendChild(replyAuthorSpan);
-      replyDiv.appendChild(document.createTextNode(' '));
-      replyDiv.appendChild(replyTextSpan);
+      replyDiv.appendChild(replyPreview);
       li.appendChild(replyDiv);
     }
 

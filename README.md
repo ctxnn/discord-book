@@ -53,8 +53,11 @@ PDF, shift-click for a range, switch to **Whole chat** to add any other message 
 **Add day** / **Remove day**. **Make PDF** then saves the edition and downloads it. **Edit messages** in the PDF tab
 reopens the same page later.
 
-**One book from a DM and a server:** make the DM book first. Then open a server channel where the same two people
-talk, choose **Two people**, and pick the DM book under **Add to a saved book**. The two names fill in by themselves
+**One book from a DM and a server:** after a DM book is made, the review page asks whether they also talk in a server.
+Tick what to add (both are ticked by default): their conversation there, and the sentences where either of them, or
+one of them, says words you type. Click **Set it up**, open that server channel in Discord and click the extension: the
+popup is already filled in, so click **Add to that book**. You can also do it by hand: open the channel, choose **Two
+people**, and pick the DM book under **Add to a saved book**. The two names fill in by themselves
 (matched by Discord user id, so different server nicknames are fine). Their channel messages join the DM book in time
 order, the book marks each switch with a line such as "In #general, on My Server", and the PDF and saved entry are
 replaced by the next edition. Reading either chat again later replaces only that chat's part of the book.

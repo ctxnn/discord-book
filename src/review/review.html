@@ -34,6 +34,27 @@
   </nav>
   <p class="help" id="help">Click a message to remove it from the PDF. Switch to <em>Whole chat</em> to add any other message. Shift-click selects a range; day buttons act on a whole day.</p>
   <p class="error" id="error" hidden></p>
+  <section class="more" id="more" hidden>
+    <div class="more-text">
+      <p class="eyebrow">Add to this book</p>
+      <h2 id="more-title">Do they also talk in a server?</h2>
+      <p>Bring their messages from a server channel into this same book, in time order. Both kinds below are added together; untick one to leave it out. Then open that channel in Discord.</p>
+    </div>
+    <div class="more-form">
+      <p class="pick-intro">From the server, add:</p>
+      <label class="pick solo"><input type="checkbox" id="m-conv" checked><span>Their conversation there: replies, @mentions and quick answers between <b class="pair-names"></b></span></label>
+      <label class="pick"><input type="checkbox" id="m-says" checked><span>and the sentences where</span>
+        <select id="m-who"><option value="either">either of them</option></select>
+        <span>says</span>
+        <input id="m-words" type="text" placeholder="x, good night" autocomplete="off"></label>
+      <div class="more-actions">
+        <button type="button" id="m-go" class="primary">Set it up</button>
+        <button type="button" id="m-skip" class="ghost">Not now</button>
+      </div>
+      <p class="more-next" id="m-next" hidden></p>
+      <p class="more-error" id="m-error" hidden></p>
+    </div>
+  </section>
   <main id="list"></main>
 </body>
 </html>

@@ -62,7 +62,13 @@ people**, and pick the DM book under **Add to a saved book**. The two names fill
 order, the book marks each switch with a line such as "In #general, on My Server", and the PDF and saved entry are
 replaced by the next edition. Reading either chat again later replaces only that chat's part of the book.
 
-**Options:** *Start from date* stops scrolling at that date, which helps in huge channels. You can also turn images off
+**Big channels:** Discord loads about 50 messages per request, so a 50,000-message channel means roughly 1,000 loads.
+Two dates under **More options** keep it short. *Skip newer messages after* types `in:#channel before:date` into Discord's own
+search bar and clicks the result, so the reader lands straight at that date instead of scrolling down through everything
+newer. *Read back to* stops reading at an earlier date. **Stop & keep** on the progress panel ends a run early and saves
+the messages read so far, marked as partial in the book.
+
+**Options:** *Read back to* stops scrolling at that date, which helps in huge channels. You can also turn images off
 (the style picker is always visible). *Open* in the saved-books list re-renders a saved chat, with buttons to save the PDF
 again, edit messages, or print it.
 

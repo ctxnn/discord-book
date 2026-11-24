@@ -1117,6 +1117,76 @@
     return (ph ? ph.offsetHeight : 0) + 300;
   }
 
+  // -----------------------------------------------------------------------
+  // Search, like Discord's: "in:<channel> before:<date>" lists the newest
+  // matches and each result can be jumped to.
+  // -----------------------------------------------------------------------
+  var searchBox = document.getElementById('searchInput');
+  var lastQuery = '';
+
+  function nearestIndexOnOrBefore(ms) {
+    for (var i = ALL_MESSAGES.length - 1; i >= 0; i--) {
+      if (snowflakeToMs(ALL_MESSAGES[i].id) <= ms) return i;
+    }
+    return -1;
+  }
+
+  function runSearch(text) {
+    lastQuery = text;
+    var day = (text.match(/before:(\d{4}-\d{2}-\d{2})/) || [])[1];
+    var from = (text.match(/from:(\S+)/) || [])[1];
+    var cutoff = day ? Date.parse(day + 'T00:00:00Z') : Date.now();
+    var hits = [];
+    for (var i = ALL_MESSAGES.length - 1; i >= 0 && hits.length < 25; i--) {
+      var m = ALL_MESSAGES[i];
+      if (snowflakeToMs(m.id) > cutoff) continue;
+      if (from && String(m.authorName || '').toLowerCase() !== from.toLowerCase()) continue;
+      hits.push(m);
+    }
+    var panel = document.getElementById('searchResults');
+    if (!panel) {
+      panel = document.createElement('div');
+      panel.id = 'searchResults';
+      panel.setAttribute('data-list-id', 'search-results');
+      panel.style.cssText = 'position:fixed;right:12px;top:60px;width:280px;max-height:60vh;overflow:auto;background:#2b2d31;padding:6px;border-radius:6px;z-index:50';
+      document.body.appendChild(panel);
+    }
+    panel.replaceChildren();
+    hits.forEach(function (m) {
+      var item = document.createElement('div');
+      item.id = 'search-result-' + m.id;
+      item.setAttribute('role', 'listitem');
+      item.style.cssText = 'padding:6px;font-size:12px;color:#dbdee1';
+      var who = document.createElement('strong');
+      who.textContent = (m.authorName || 'system') + ': ';
+      var jump = document.createElement('button');
+      jump.setAttribute('aria-label', 'Jump');
+      jump.textContent = 'Jump';
+      item.append(who, document.createTextNode((m.text || '').slice(0, 40) + ' '), jump);
+      jump.addEventListener('click', function () { jumpToMessage(m.id); });
+      panel.appendChild(item);
+    });
+    window.__mockSearch = { query: text, hits: hits.length };
+  }
+
+  function jumpToMessage(id) {
+    var idx = ALL_MESSAGES.findIndex(function (m) { return m.id === id; });
+    if (idx < 0) return;
+    var panel = document.getElementById('searchResults');
+    if (panel) panel.remove();
+    renderWindow(Math.max(0, idx - 25), Math.min(ALL_MESSAGES.length - 1, idx + 24));
+    scroller.scrollTop = scroller.scrollHeight;
+    logOp('jump-search');
+  }
+
+  if (searchBox) {
+    searchBox.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      runSearch(searchBox.value);
+    });
+  }
+
   // A fetch starts only on a scroll event that brings the viewport into the
   // zone near an edge, and the next one only after the viewport has left it.
   function onScroll() {

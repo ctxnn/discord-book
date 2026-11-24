@@ -8,6 +8,7 @@
 
   const STOPPED = {
     stalled: 'Discord stopped loading older messages, even after waiting and retrying.',
+    stopped: 'It kept what had been read when you stopped.',
     'list-missing': 'The message list disappeared. Was the chat switched or closed?',
     'too-long': 'The chat was too long to finish in one go.'
   };
@@ -56,11 +57,17 @@
         <div class="status"></div>
         <div class="bar"><i></i></div>
         <div class="hint">Keep this tab open and in front until reading finishes.</div>
-        <div class="row"><button class="copy" hidden>Copy details</button><button class="cancel">Cancel</button></div>
+        <div class="row"><button class="copy" hidden>Copy details</button><button class="stop">Stop &amp; keep</button><button class="cancel">Cancel</button></div>
       </div>`;
     shadow.querySelector('.cancel').addEventListener('click', () => {
       if (job) job.controller.abort();
       else hide();
+    });
+    shadow.querySelector('.stop').addEventListener('click', () => {
+      if (job) {
+        job.control.stop = true;
+        shadow.querySelector('.status').textContent = 'Stopping, keeping what was read…';
+      }
     });
     shadow.querySelector('.copy').addEventListener('click', async (event) => {
       const report = JSON.stringify({ page: location.pathname, agent: navigator.userAgent, ...lastDiagnostics }, null, 1);
@@ -75,7 +82,7 @@
       event.target.textContent = 'Copied. Paste it to the developer';
     });
     document.documentElement.appendChild(host);
-    panel = { host, card: shadow.querySelector('.card'), status: shadow.querySelector('.status'), button: shadow.querySelector('.cancel'), copy: shadow.querySelector('.copy'), hint: shadow.querySelector('.hint') };
+    panel = { host, card: shadow.querySelector('.card'), status: shadow.querySelector('.status'), button: shadow.querySelector('.cancel'), stop: shadow.querySelector('.stop'), copy: shadow.querySelector('.copy'), hint: shadow.querySelector('.hint') };
     return panel;
   }
 
@@ -84,6 +91,7 @@
     p.status.textContent = text;
     p.card.className = `card ${state === 'working' ? '' : state}`;
     p.button.textContent = state === 'working' ? 'Cancel' : 'Close';
+    p.stop.hidden = state !== 'working';
     p.hint.hidden = state !== 'working';
     p.copy.hidden = !(details && lastDiagnostics);
     p.copy.textContent = 'Copy details';
@@ -196,13 +204,16 @@
     }
 
     const controller = new AbortController();
-    job = { controller, chat };
+    const control = { stop: false };
+    job = { controller, chat, control };
     show(`Reading ${chat.title}…`);
     lastDiagnostics = null;
     const result = await scraper.scrape({
       fromDate: options.fromDate ? new Date(options.fromDate) : null,
+      untilDate: options.untilDate ? new Date(options.untilDate) : null,
       maxMessages: options.maxMessages || Infinity,
       signal: controller.signal,
+      control,
       onProgress: (p) => show(`Reading ${chat.title}…\n${p.collected.toLocaleString()} messages${p.oldestTs ? ` · back to ${monthYear(p.oldestTs)}` : ''}${p.note ? `\n${p.note}` : ''}`)
     });
     lastDiagnostics = { ...result.diagnostics, collected: result.messages.length, complete: result.complete };
@@ -235,7 +246,7 @@
       mode: pair ? 'pair' : 'full',
       pair,
       filter,
-      complete: result.complete && !options.fromDate,
+      complete: result.complete && !options.fromDate && !options.untilDate && result.diagnostics?.stopReason !== 'stopped',
       participants: participantsOf(messages),
       messages,
       pool,
@@ -243,7 +254,7 @@
     };
     const reply = await chrome.runtime.sendMessage({ type: 'export:save', data, options: { includeImages: options.includeImages !== false, theme: options.theme, review: options.review === true, into: options.into || null } });
     if (!reply?.ok) throw new Error(reply?.error || 'Could not save the export.');
-    return { count: messages.length, version: reply.version, complete: data.complete, review: options.review === true, combined: reply.sources > 1, twoPeople: !!pair || (chat.kind === 'dm' && data.participants.length === 2), stop: result.diagnostics?.stopReason, from: pool[0]?.ts, dated: !!options.fromDate };
+    return { count: messages.length, version: reply.version, complete: data.complete, review: options.review === true, combined: reply.sources > 1, twoPeople: !!pair || (chat.kind === 'dm' && data.participants.length === 2), stop: result.diagnostics?.stopReason, from: pool[0]?.ts, dated: !!options.fromDate || !!options.untilDate };
   }
 
   chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {

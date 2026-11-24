@@ -82,7 +82,9 @@
 
     <details>
       <summary>More options</summary>
-      <label>Start from date <span class="muted">(optional, faster for huge channels)</span><input id="from" type="date"></label>
+      <label>Read back to <span class="muted">(stops there; faster for huge channels)</span><input id="from" type="date"></label>
+      <label id="until-field">Skip newer messages after <span class="muted">(channels only: Discord's search jumps straight there)</span><input id="until" type="date"></label>
+      <p class="hint">Leave both empty to read the whole chat. Reading goes from the bottom back, so filling these in keeps a huge channel quick.</p>
       <label class="check"><input id="images" type="checkbox" checked><span>Include images</span></label>
     </details>
 

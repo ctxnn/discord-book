@@ -157,6 +157,7 @@ async function start() {
     mode,
     pair: mode === 'pair' ? [$('p1').value.trim(), $('p2').value.trim()] : null,
     fromDate: $('from').value || null,
+    untilDate: mode === 'pair' && chat.kind === 'channel' ? $('until').value || null : null,
     includeImages: $('images').checked,
     theme: $('theme').value,
     review: $('review').checked,

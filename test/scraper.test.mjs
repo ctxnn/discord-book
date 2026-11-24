@@ -57,6 +57,8 @@ async function runTests() {
     await testNonFastTiming(browser);
     await testDoubleScrape(browser);
     await testHiddenTabPause(browser);
+    await testStopAndKeep(browser);
+    await testSeekWithSearch(browser);
     await testManualScrollToTop(browser);
     await testFromDate(browser);
     await testMaxMessages(browser);
@@ -319,6 +321,59 @@ async function testDoubleScrape(browser) {
   assert(r2.barBefore && r2.rebuilt, 'Double-2: Jump to Present was shown and the list was rebuilt');
   assert(r2.complete === true, 'Double-2: second scrape complete');
   checkExactMatch(r2, truth, 'Double-2');
+
+  await page.close();
+}
+
+// -----------------------------------------------------------------------
+// Test: Stop & keep
+// -----------------------------------------------------------------------
+async function testStopAndKeep(browser) {
+  console.log('\n--- Test: Stop and keep what was read ---');
+  var page = await openMockPage(browser, 'dm', false);
+
+  var result = await page.evaluate(async function () {
+    var control = { stop: false };
+    setTimeout(function () { control.stop = true; }, 900);
+    var res = await window.DiscordBookScraper.scrape({ control: control });
+    return { count: res.messages.length, complete: res.complete, stop: res.diagnostics.stopReason };
+  });
+  var truth = await page.evaluate(function () { return window.__mockTruth; });
+
+  assertEq(result.stop, 'stopped', 'Stop: says it was stopped');
+  assert(result.complete === false, 'Stop: the book is marked partial');
+  assert(result.count > 0 && result.count < truth.length, 'Stop: kept the ' + result.count + ' messages read so far');
+
+  await page.close();
+}
+
+// -----------------------------------------------------------------------
+// Test: skip newer messages by jumping with Discord's search
+// -----------------------------------------------------------------------
+async function testSeekWithSearch(browser) {
+  console.log('\n--- Test: Jump to a date with search ---');
+  var page = await openMockPage(browser, 'channel', false);
+
+  var result = await page.evaluate(async function () {
+    var all = window.__mockTruth;
+    var cutoff = new Date(all[Math.floor(all.length * 0.4)].id ? Number((BigInt(all[Math.floor(all.length * 0.4)].id) >> 22n) + 1420070400000n) : Date.now());
+    var res = await window.DiscordBookScraper.scrape({ untilDate: cutoff });
+    var searched = window.__mockSearch || null;
+    return {
+      count: res.messages.length,
+      newest: res.messages[res.messages.length - 1].ts,
+      cutoff: cutoff.toISOString(),
+      complete: res.complete,
+      search: searched,
+      present: res.diagnostics.present
+    };
+  });
+
+  assert(result.search && /before:\d{4}-\d{2}-\d{2}/.test(result.search.query), 'Search: typed a before: date into Discord\'s search (' + (result.search && result.search.query) + ')');
+  assertEq(result.present, 'sought', 'Search: jumped instead of scrolling through newer messages');
+  assert(result.count > 0 && result.count < 702, 'Search: read only up to the date (' + result.count + ' of 702)');
+  assert(new Date(result.newest) < new Date(Date.parse(result.cutoff) + 86400000), 'Search: nothing newer than that day is included (newest ' + result.newest + ')');
+  assert(result.complete === false, 'Search: marked partial, because newer messages were skipped');
 
   await page.close();
 }

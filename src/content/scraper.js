@@ -789,12 +789,113 @@
     return participants;
   }
 
+  // -----------------------------------------------------------------------
+  // Seeking with Discord's own search
+  // -----------------------------------------------------------------------
+
+  var SEARCH_INPUT = ['input[aria-label="Search"]', 'input[placeholder="Search"]', '[class*="searchBar"] input[type="text"]', 'input[type="text"][placeholder*="Search" i]'];
+
+  function searchInput() {
+    for (var i = 0; i < SEARCH_INPUT.length; i++) {
+      var el = document.querySelector(SEARCH_INPUT[i]);
+      if (el && !el.closest('[id^="discord-book"]')) return el;
+    }
+    return null;
+  }
+
+  function searchResults() {
+    return document.querySelector('[data-list-id="search-results"], [class*="searchResultsWrap"], [class*="searchResults_"]');
+  }
+
+  function resultItems() {
+    var box = searchResults();
+    if (!box) return [];
+    var items = box.querySelectorAll('[id^="search-result-"], li[class*="searchResult"], [class*="searchResult_"]');
+    return Array.prototype.filter.call(items, function (el) { return !el.parentElement.closest('[id^="search-result-"]'); });
+  }
+
+  function jumpLink(item) {
+    var buttons = item.querySelectorAll('button, a, [role="button"]');
+    for (var i = 0; i < buttons.length; i++) {
+      var label = (buttons[i].getAttribute('aria-label') || '') + ' ' + (buttons[i].textContent || '');
+      if (/jump/i.test(label)) return buttons[i];
+    }
+    return buttons.length ? buttons[buttons.length - 1] : item;
+  }
+
+  function typeInto(input, text) {
+    input.focus();
+    var setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set;
+    setter.call(input, text);
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+
+  function pressEnter(el) {
+    for (var type of ['keydown', 'keypress', 'keyup']) {
+      el.dispatchEvent(new KeyboardEvent(type, { key: 'Enter', code: 'Enter', keyCode: 13, which: 13, bubbles: true, cancelable: true }));
+    }
+  }
+
+  /**
+   * Jump the channel straight to a date using Discord's search bar:
+   * "in:#channel before:<date>" finds the newest message before it, and
+   * clicking that result loads the timeline right there. Saves scrolling
+   * through months of newer messages.
+   */
+  async function seekToDate(channelId, untilMs, signal, onProgress) {
+    var input = searchInput();
+    if (!input || !channelId) return false;
+    var day = new Date(untilMs + 86400000).toISOString().slice(0, 10);
+    onProgress('Looking for ' + day + ' in Discord\u2019s search\u2026');
+    typeInto(input, 'in:' + channelId + ' before:' + day);
+    await sleep(200);
+    pressEnter(input);
+
+    var clicked = false;
+    var start = Date.now();
+    while (Date.now() - start < 15000) {
+      if (signal && signal.aborted) throw new DOMException('Aborted', 'AbortError');
+      await sleep(400);
+      var items = resultItems();
+      if (items.length) {
+        clicked = true;
+        jumpLink(items[0]).click();
+        break;
+      }
+    }
+    if (!clicked) {
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', keyCode: 27, bubbles: true }));
+      return false;
+    }
+
+    var landed = false;
+    var waitStart = Date.now();
+    while (Date.now() - waitStart < 20000) {
+      await sleep(400);
+      var view = readView();
+      if (!view.rows.length) continue;
+      var first = snowflakeToMs(view.rows[0].id.match(ROW_ID)[2]);
+      var last = snowflakeToMs(view.rows[view.rows.length - 1].id.match(ROW_ID)[2]);
+      // We are there when the shown messages reach back past the date and
+      // the window still covers it, so nothing between is skipped.
+      if (first <= untilMs + 2 * 86400000 && last >= untilMs - 2 * 86400000) {
+        landed = true;
+        break;
+      }
+    }
+    await sleep(300);
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', keyCode: 27, bubbles: true }));
+    return landed;
+  }
+
   async function scrape(opts) {
     opts = opts || {};
     var fromMs = opts.fromDate ? opts.fromDate.getTime() : null;
     var maxMessages = opts.maxMessages || Infinity;
     var onProgress = opts.onProgress || function () {};
     var signal = opts.signal || null;
+    var untilMs = opts.untilDate ? opts.untilDate.getTime() : null;
+    var control = opts.control || null;
 
     var collected = new Map();
     var oldestMs = null;
@@ -803,6 +904,10 @@
 
     function checkAbort() {
       if (signal && signal.aborted) throw new DOMException('Aborted', 'AbortError');
+    }
+
+    function stopped() {
+      return !!(control && control.stop);
     }
 
     checkAbort();
@@ -865,6 +970,7 @@
       var phase = direction < 0 ? 'scrolling' : 'present';
       for (var step = 0; step < 100000; step++) {
         checkAbort();
+        if (stopped()) return 'stopped';
         var now = Date.now();
         // Chrome stops delivering scroll events to background tabs, so
         // Discord loads nothing there. Pause instead of using up retries.
@@ -966,7 +1072,22 @@
       }
     }
 
-    var down = await collect(1);
+    // Skip the newest messages entirely when the book starts further back:
+    // jump there with Discord's search instead of scrolling down through them.
+    var down = 'skipped';
+    if (untilMs !== null) {
+      var chat = getChatInfo();
+      var landed = await seekToDate(chat && chat.kind === 'channel' ? chat.channelId : null, untilMs, signal, function (note) {
+        progress('seeking', note);
+      });
+      down = landed ? 'sought' : 'seek-failed';
+      if (!landed) {
+        progress('seeking', 'Discord would not jump there, so reading from the newest message instead.');
+        down = await collect(1);
+      }
+    } else {
+      down = await collect(1);
+    }
     var up = down === 'list-missing' ? down : await collect(-1);
 
     var messages = Array.from(collected.values());
@@ -976,6 +1097,9 @@
     resolveAuthors(messages);
     if (fromMs !== null) {
       messages = messages.filter(function (m) { return snowflakeToMs(m.id) >= fromMs; });
+    }
+    if (untilMs !== null) {
+      messages = messages.filter(function (m) { return snowflakeToMs(m.id) < untilMs + 86400000; });
     }
     if (messages.length > maxMessages) {
       messages = messages.slice(messages.length - maxMessages);
@@ -990,7 +1114,8 @@
 
     return {
       messages: messages,
-      complete: up === 'beginning',
+      // Skipping newer messages means the book is not the whole chat.
+      complete: up === 'beginning' && untilMs === null,
       participants: computeParticipants(messages),
       diagnostics: {
         stopReason: up,
